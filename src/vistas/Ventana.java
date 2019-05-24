@@ -45,15 +45,32 @@ public class Ventana {
     }
     
     public void decidirBotonesMenu(MenuView menuView) {
-        switch(menuView.getEstado()){
+        switch(menuView.getEstado()) {
             case 1:
                 frame.setVisible(true);
             break;
             case 2:
+                InstructionsView instructionsView = new InstructionsView(frame, true);
+                decidirBotonesInstrucciones(instructionsView);
+            break;
+            case 3:
                 System.exit(0);
             break;
         }
     }
+    
+    public void decidirBotonesInstrucciones(InstructionsView instructionsView) {
+        switch(instructionsView.getEstado()) {
+            case 1:
+                crearVistaMenu();
+            break;
+        }
+    }
+    
+    public void crearVistaMenu() {
+       MenuView menuView = new MenuView(frame, true);
+       decidirBotonesMenu(menuView);
+   }
 
     public void setMundo(World world) {
         this.world = world;

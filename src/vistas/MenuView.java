@@ -28,7 +28,6 @@ public class MenuView extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(this);
         setVisible(true);
-        setBackground(Color.DARK_GRAY);
     }
 
     /**
@@ -38,12 +37,16 @@ public class MenuView extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bPlay = new javax.swing.JButton();
-        bExit = new javax.swing.JButton();
-        bInstructions = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        bPlay = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        bInstructions = new javax.swing.JButton();
+        bExit = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -51,10 +54,25 @@ public class MenuView extends javax.swing.JDialog {
         setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AvengersIcon.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CaptainAmericaShield (1).png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/IronMan (1).png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(1, 1, 1));
+        jLabel4.setText("Play Now");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 90, 20));
+
         bPlay.setForeground(new java.awt.Color(145, 150, 153));
-        bPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PlayNow.png"))); // NOI18N
+        bPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buttonPlayNow.png"))); // NOI18N
         bPlay.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         bPlay.setBorderPainted(false);
+        bPlay.setContentAreaFilled(false);
         bPlay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bPlay.setLabel("");
         bPlay.addActionListener(new java.awt.event.ActionListener() {
@@ -62,10 +80,35 @@ public class MenuView extends javax.swing.JDialog {
                 bPlayActionPerformed(evt);
             }
         });
-        getContentPane().add(bPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 100, 50));
+        getContentPane().add(bPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 100, 50));
+
+        jLabel5.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(1, 1, 1));
+        jLabel5.setText("Exit");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(1, 1, 1));
+        jLabel6.setText("Instructions");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, -1, -1));
+
+        bInstructions.setForeground(new java.awt.Color(145, 150, 153));
+        bInstructions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buttonInstructions.png"))); // NOI18N
+        bInstructions.setBorderPainted(false);
+        bInstructions.setContentAreaFilled(false);
+        bInstructions.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bInstructions.setPreferredSize(new java.awt.Dimension(128, 44));
+        bInstructions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bInstructionsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bInstructions, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, -1, -1));
 
         bExit.setForeground(new java.awt.Color(145, 150, 153));
-        bExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Exit.png"))); // NOI18N
+        bExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buttonExit.png"))); // NOI18N
+        bExit.setBorderPainted(false);
+        bExit.setContentAreaFilled(false);
         bExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bExit.setPreferredSize(new java.awt.Dimension(54, 44));
         bExit.addActionListener(new java.awt.event.ActionListener() {
@@ -73,22 +116,12 @@ public class MenuView extends javax.swing.JDialog {
                 bExitActionPerformed(evt);
             }
         });
-        getContentPane().add(bExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+        getContentPane().add(bExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, -1, -1));
 
-        bInstructions.setForeground(new java.awt.Color(145, 150, 153));
-        bInstructions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Instructions.png"))); // NOI18N
-        bInstructions.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bInstructions.setPreferredSize(new java.awt.Dimension(128, 44));
-        getContentPane().add(bInstructions, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AvengersIcon.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CaptainAmericaShield (1).png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/IronMan (1).png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
+        jLabel7.setFont(new java.awt.Font("Purisa", 1, 60)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(42, 42, 42));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AvengersTitle_1.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 170));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AvengersPixel.jpg"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
@@ -103,9 +136,13 @@ public class MenuView extends javax.swing.JDialog {
 
     private void bPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPlayActionPerformed
         estado = 1;
-        //        ventana.decidirBotonesMenu(estado);
         dispose();
     }//GEN-LAST:event_bPlayActionPerformed
+
+    private void bInstructionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInstructionsActionPerformed
+        estado = 2;
+        dispose();
+    }//GEN-LAST:event_bInstructionsActionPerformed
 
     public int getEstado() {
         return estado;
@@ -119,5 +156,9 @@ public class MenuView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }
