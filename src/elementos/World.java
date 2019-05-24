@@ -5,12 +5,16 @@
  */
 package elementos;
 
+import IOelements.LectorMapa;
+import IOelements.LectorMapaTxt;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import keyElements.KeyInput;
 import vistas.Ventana;
 
@@ -24,21 +28,35 @@ public class World extends Canvas implements Runnable{
     private Thread thread;
     private boolean isRunning;
     private Handler handler;
-    private Map map;
+    private LectorMapa lectorMapa;
+    public static int LEVEL = 0;
     
-    public World() {
+    public World() throws IOException  {
         Ventana ventana = new Ventana(1280, 960, "AvengersGame",this);
-        start();
+        
         handler = new Handler();
-        this.addKeyListener(new KeyInput(handler));         
-        this.map = new Map(handler,0, 0);
+        this.lectorMapa = new LectorMapaTxt(handler);
+        
+        Map map1;
+        System.out.println("Hola");
+        map1 = lectorMapa.leerMapa();
+        map1.addGameObject(new Player(handler, 0, 0));
+        handler.addMap(map1);
+        start();
+        this.addKeyListener(new KeyInput(handler));
+        
+        
     }
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        World mundo = new World();
+        try {
+            World world = new World();
+        } catch (IOException ex) {
+            System.out.println("Hj");
+        }
         
     }
 
@@ -80,7 +98,7 @@ public class World extends Canvas implements Runnable{
         try {
             thread.join();
         } catch (InterruptedException ex) {
-            Logger.getLogger(World.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Paailas las tyangas");
         }
     }
 
@@ -99,7 +117,7 @@ public class World extends Canvas implements Runnable{
         Graphics g = bs.getDrawGraphics();
         
         //draw
-        this.map.render(g);
+        handler.getMaps().get(0).render(g);
         handler.render(g);
         
         g.dispose();

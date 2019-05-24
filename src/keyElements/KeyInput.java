@@ -8,6 +8,7 @@ package keyElements;
 import elementos.GameObject;
 import elementos.Handler;
 import elementos.Player;
+import elementos.World;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -27,8 +28,8 @@ public class KeyInput extends KeyAdapter{
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
         
-        for (int i = 0; i < handler.getGameObjects().size(); i++) {
-            GameObject tempObject = handler.getGameObjects().get(i);
+        for (int i = 0; i < handler.getMaps().get(0).getGameObjects().size(); i++) {
+            GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
             
             if (tempObject instanceof Player) {
                 if(key == KeyEvent.VK_W) handler.setUp(true);
@@ -41,8 +42,8 @@ public class KeyInput extends KeyAdapter{
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
         
-        for (int i = 0; i < handler.getGameObjects().size(); i++) {
-            GameObject tempObject = handler.getGameObjects().get(i);
+        for (int i = 0; i < handler.getMaps().get(0).getGameObjects().size(); i++) {
+            GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
             
             if (tempObject instanceof Player) {
                 if(key == KeyEvent.VK_W) handler.setUp(false);

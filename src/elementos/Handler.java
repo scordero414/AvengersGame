@@ -14,14 +14,14 @@ import java.util.ArrayList;
  */
 public class Handler {
     
-    private ArrayList<GameObject> gameObjects;
+    private ArrayList<Map> maps;
     private boolean up;
     private boolean down;
     private boolean left;
     private boolean right;
     
     public Handler() {
-        this.gameObjects = new ArrayList<>();
+        this.maps = new ArrayList<>();
         this.up = false;
         this.down = false;
         this.left = false;
@@ -29,30 +29,32 @@ public class Handler {
     }
     
     public void tick(){
-        for (int i = 0; i < gameObjects.size(); i++) {
-            GameObject tempObject = gameObjects.get(i);
+        Map map = maps.get(0);
+        for (int i = 0; i < map.getGameObjects().size(); i++) {
+            GameObject tempObject =  map.getGameObjects().get(i);
             tempObject.tick();
         }
     }
     
     public void render(Graphics g){
-        for (int i = 0; i < gameObjects.size(); i++) {
-            GameObject tempObject = gameObjects.get(i);
+        Map map = maps.get(0);
+        for (int i = 0; i < map.getGameObjects().size(); i++) {
+            GameObject tempObject = map.getGameObjects().get(i);
             tempObject.render(g);  
         }
     }
     
     
-    public void addGameObject(GameObject tempGameObject){
-        gameObjects.add(tempGameObject);
+    public void addMap(Map map){
+        maps.add(map);
     }
     
-    public void removeGameObject(GameObject tempGameObject){
-        gameObjects.remove(tempGameObject);
+    public void removeGameObject(Map tempGameObject){
+        maps.remove(tempGameObject);
     }
 
-    public ArrayList<GameObject> getGameObjects() {
-        return gameObjects;
+    public ArrayList<Map> getMaps() {
+        return maps;
     }
 
     public boolean isUp() {

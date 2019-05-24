@@ -51,7 +51,6 @@ public class MenuView extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
-        setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AvengersIcon.png"))); // NOI18N
@@ -66,7 +65,7 @@ public class MenuView extends javax.swing.JDialog {
         lPlayNow.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
         lPlayNow.setForeground(new java.awt.Color(1, 1, 1));
         lPlayNow.setText("Play Now");
-        lPlayNow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lPlayNow.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lPlayNow.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lPlayNowMouseClicked(evt);
@@ -79,8 +78,7 @@ public class MenuView extends javax.swing.JDialog {
         bPlay.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         bPlay.setBorderPainted(false);
         bPlay.setContentAreaFilled(false);
-        bPlay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bPlay.setLabel("");
+        bPlay.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bPlayActionPerformed(evt);
@@ -91,7 +89,7 @@ public class MenuView extends javax.swing.JDialog {
         lExit.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
         lExit.setForeground(new java.awt.Color(1, 1, 1));
         lExit.setText("Exit");
-        lExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lExitMouseClicked(evt);
@@ -102,7 +100,7 @@ public class MenuView extends javax.swing.JDialog {
         lInstrucciones.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
         lInstrucciones.setForeground(new java.awt.Color(1, 1, 1));
         lInstrucciones.setText("Instructions");
-        lInstrucciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lInstrucciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lInstrucciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lInstruccionesMouseClicked(evt);
@@ -114,7 +112,7 @@ public class MenuView extends javax.swing.JDialog {
         bInstructions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buttonInstructions.png"))); // NOI18N
         bInstructions.setBorderPainted(false);
         bInstructions.setContentAreaFilled(false);
-        bInstructions.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bInstructions.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bInstructions.setPreferredSize(new java.awt.Dimension(128, 44));
         bInstructions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +125,7 @@ public class MenuView extends javax.swing.JDialog {
         bExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buttonExit.png"))); // NOI18N
         bExit.setBorderPainted(false);
         bExit.setContentAreaFilled(false);
-        bExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bExit.setPreferredSize(new java.awt.Dimension(54, 44));
         bExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

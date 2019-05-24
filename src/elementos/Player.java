@@ -22,8 +22,8 @@ public class Player extends GameObject{
         super(handler, x, y);
         this.handler = handler;
         this.handler = handler;
-        setWidth(50);
-        setHeight(70);
+        setWidth(32);
+        setHeight(32);
     }
 
     

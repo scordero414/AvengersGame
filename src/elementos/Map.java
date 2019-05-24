@@ -8,6 +8,7 @@ package elementos;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,13 +17,19 @@ import java.awt.Rectangle;
 public class Map extends Sprite{
 
     private Handler handler;
+    private ArrayList<GameObject> gameObjects;
+    private boolean up;
+    private boolean down;
+    private boolean left;
+    private boolean right;
 
     public Map(Handler handler, int x, int y) {
         super(handler, x, y);
         this.handler = handler;
-        this.handler.addGameObject(new Player(handler, 100, 100));
+        gameObjects = new ArrayList<>();
         setWidth(1280);
         setHeight(960);
+        
     }
 
     @Override
@@ -32,8 +39,6 @@ public class Map extends Sprite{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.WHITE);
-        g.fillRect(0,0,1280,960);
         handler.render(g);
     }
 
@@ -41,5 +46,22 @@ public class Map extends Sprite{
     public Rectangle getBounds() {
         return new Rectangle(x, y, getWidth(), getHeight());
     }
+
+    public ArrayList<GameObject> getGameObjects() {
+        return gameObjects;
+    }
+
+    public void setGameObjects(ArrayList<GameObject> gameObjects) {
+        this.gameObjects = gameObjects;
+    }
+    
+    public void addGameObject(GameObject tempObject){
+        gameObjects.add(tempObject);
+    }
+    
+    public void removeGameObject(GameObject tempGameObject){
+        gameObjects.remove(tempGameObject);
+    }
+    
     
 }
