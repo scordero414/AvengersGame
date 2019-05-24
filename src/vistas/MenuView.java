@@ -40,10 +40,10 @@ public class MenuView extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lPlayNow = new javax.swing.JLabel();
         bPlay = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lExit = new javax.swing.JLabel();
+        lInstrucciones = new javax.swing.JLabel();
         bInstructions = new javax.swing.JButton();
         bExit = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -63,10 +63,16 @@ public class MenuView extends javax.swing.JDialog {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/IronMan (1).png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel4.setText("Play Now");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 90, 20));
+        lPlayNow.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
+        lPlayNow.setForeground(new java.awt.Color(1, 1, 1));
+        lPlayNow.setText("Play Now");
+        lPlayNow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lPlayNow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lPlayNowMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lPlayNow, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 90, 20));
 
         bPlay.setForeground(new java.awt.Color(145, 150, 153));
         bPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buttonPlayNow.png"))); // NOI18N
@@ -82,15 +88,27 @@ public class MenuView extends javax.swing.JDialog {
         });
         getContentPane().add(bPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 100, 50));
 
-        jLabel5.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel5.setText("Exit");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, -1, -1));
+        lExit.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
+        lExit.setForeground(new java.awt.Color(1, 1, 1));
+        lExit.setText("Exit");
+        lExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lExitMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel6.setText("Instructions");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, -1, -1));
+        lInstrucciones.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
+        lInstrucciones.setForeground(new java.awt.Color(1, 1, 1));
+        lInstrucciones.setText("Instructions");
+        lInstrucciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lInstrucciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lInstruccionesMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lInstrucciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, -1, -1));
 
         bInstructions.setForeground(new java.awt.Color(145, 150, 153));
         bInstructions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buttonInstructions.png"))); // NOI18N
@@ -144,6 +162,21 @@ public class MenuView extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_bInstructionsActionPerformed
 
+    private void lPlayNowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lPlayNowMouseClicked
+        estado = 1;
+        dispose();
+    }//GEN-LAST:event_lPlayNowMouseClicked
+
+    private void lInstruccionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInstruccionesMouseClicked
+        estado = 2;
+        dispose();
+    }//GEN-LAST:event_lInstruccionesMouseClicked
+
+    private void lExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lExitMouseClicked
+        estado = 3;
+        System.exit(0);
+    }//GEN-LAST:event_lExitMouseClicked
+
     public int getEstado() {
         return estado;
     }
@@ -156,9 +189,9 @@ public class MenuView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lExit;
+    private javax.swing.JLabel lInstrucciones;
+    private javax.swing.JLabel lPlayNow;
     // End of variables declaration//GEN-END:variables
 }
