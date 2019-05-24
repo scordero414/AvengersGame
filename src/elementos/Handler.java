@@ -28,7 +28,6 @@ public class Handler {
         this.right = false;
     }
     
-    
     public void tick(){
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
@@ -87,5 +86,6 @@ public class Handler {
     public void setRight(boolean right) {
         this.right = right;
     }
-    
+
+   
 }

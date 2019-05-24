@@ -17,18 +17,28 @@ public class Player extends GameObject{
 
     private static final int VEL = 8;
     private Handler handler;
-    
-    public Player(int x, int y,Handler handler) {
-        super(x, y);
+
+    public Player(Handler handler, int x, int y) {
+        super(handler, x, y);
+        this.handler = handler;
         this.handler = handler;
         setWidth(50);
         setHeight(70);
     }
 
+    
+    
+    
+
     @Override
     public void tick() {
         x += velX;
         y += velY;  
+        move();
+        
+    }
+
+    public void move(){
         
         if(handler.isDown())  {
             velY = VEL;
@@ -51,7 +61,7 @@ public class Player extends GameObject{
             velX = 0;
         }
     }
-
+    
     @Override
     public void render(Graphics g) {
        g.setColor(Color.yellow);

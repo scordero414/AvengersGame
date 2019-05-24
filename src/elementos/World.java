@@ -24,13 +24,14 @@ public class World extends Canvas implements Runnable{
     private Thread thread;
     private boolean isRunning;
     private Handler handler;
+    private Map map;
     
     public World() {
         Ventana ventana = new Ventana(1280, 960, "AvengersGame",this);
         start();
         handler = new Handler();
-        this.addKeyListener(new KeyInput(handler)); 
-        handler.addGameObject(new Player(100, 100, handler));
+        this.addKeyListener(new KeyInput(handler));         
+        this.map = new Map(handler,0, 0);
     }
     
     /**
@@ -83,7 +84,7 @@ public class World extends Canvas implements Runnable{
         }
     }
 
-    private void tick() {
+    public void tick() {
         handler.tick();
     }
 
@@ -98,13 +99,14 @@ public class World extends Canvas implements Runnable{
         Graphics g = bs.getDrawGraphics();
         
         //draw
-        g.setColor(Color.WHITE);
-        g.fillRect(0,0,1280,960);
-        
+        this.map.render(g);
         handler.render(g);
         
         g.dispose();
         bs.show();
     }
+
+   
+
     
 }
