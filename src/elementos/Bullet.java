@@ -15,7 +15,7 @@ import java.awt.Rectangle;
  */
 public class Bullet extends GameObject{
 
-    public static int BULLET_SPEED = 10;
+    public static int BULLET_SPEED = 40;
     private Handler handler;
     
     public Bullet(Handler handler, int x, int y,int xMouse, int yMouse) {
@@ -31,6 +31,15 @@ public class Bullet extends GameObject{
     public void tick() {
         x += velX;
         y += velY;
+        
+        for (int i = 0; i < (handler.getMaps().get(0).getGameObjects()).size(); i++) {
+            GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
+            if(tempObject instanceof Block){
+                if(getBounds().intersects(((Block) tempObject).getBounds())){
+                    handler.getMaps().get(0).getGameObjects().remove(this);
+                }
+            }
+        }
     }
 
     @Override
