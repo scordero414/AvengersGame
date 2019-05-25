@@ -7,6 +7,7 @@ package IOelements;
 
 import com.sun.org.apache.xerces.internal.impl.io.UTF8Reader;
 import com.sun.xml.internal.org.jvnet.fastinfoset.FastInfosetSerializer;
+import elementos.Block;
 import elementos.Floor;
 import elementos.GameObject;
 import elementos.Handler;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 public class LectorMapaTxt implements LectorMapa {
     
     private int width = 60;
-    private int height = 30;
+    private int height = 40;
     private final Path ruta = Paths.get("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\Mapas\\mapa_1.txt");
     private Handler handler;
     public LectorMapaTxt(Handler handler) {
@@ -49,7 +50,7 @@ public class LectorMapaTxt implements LectorMapa {
         String line = null;
         int index = 0;
         while ((line = reader.readLine()) != null) {
-            String[] values = line.split("");
+            String[] values = line.split(" ");
             //recorremos el arrar de string
             for (int i = 0; i<values.length; i++) {
             //se obtiene el primer caracter de el arreglo de strings
@@ -68,6 +69,10 @@ public class LectorMapaTxt implements LectorMapa {
         for(int i = 0 ; i<matriz.length ; i++){
             for(int j=0; j<matriz[0].length ; j++){
                 switch(matriz[i][j]){
+                    case '1':
+                        GameObject block = new Block(handler, j*32, i*32);
+                        map.addGameObject(block);
+                    break;
                     case '0':
                         GameObject floor = new Floor(handler, j*32, i*32);
                         map.addGameObject(floor);

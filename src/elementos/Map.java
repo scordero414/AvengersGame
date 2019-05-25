@@ -22,18 +22,20 @@ public class Map extends Sprite{
     private boolean down;
     private boolean left;
     private boolean right;
+    
 
     public Map(Handler handler, int x, int y) {
         super(handler, x, y);
         this.handler = handler;
         gameObjects = new ArrayList<>();
-        setWidth(1280);
+        setWidth(1920);
         setHeight(960);
         
     }
 
     @Override
     public void tick() {
+        
         handler.tick();
     }
 
@@ -62,6 +64,7 @@ public class Map extends Sprite{
     public void removeGameObject(GameObject tempGameObject){
         gameObjects.remove(tempGameObject);
     }
+
     
     
 }

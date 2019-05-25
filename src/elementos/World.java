@@ -10,6 +10,7 @@ import IOelements.LectorMapaTxt;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -29,12 +30,14 @@ public class World extends Canvas implements Runnable{
     private boolean isRunning;
     private Handler handler;
     private LectorMapa lectorMapa;
+    private Camera camera;
     public static int LEVEL = 0;
     
     public World() throws IOException  {
         Ventana ventana = new Ventana(1280, 960, "AvengersGame",this);
         
         handler = new Handler();
+        camera = new Camera(0, 0);
         this.lectorMapa = new LectorMapaTxt(handler);
         
         Map map1;
@@ -103,6 +106,12 @@ public class World extends Canvas implements Runnable{
     }
 
     public void tick() {
+        for (int i = 0; i < (handler.getMaps().get(0).getGameObjects()).size(); i++) {
+            GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
+            if(tempObject instanceof Player){
+                camera.tick(tempObject);
+            }
+        }
         handler.tick();
     }
 
@@ -115,11 +124,14 @@ public class World extends Canvas implements Runnable{
         }
         
         Graphics g = bs.getDrawGraphics();
-        
+        Graphics2D g2d = (Graphics2D) g;
         //draw
+        g2d.translate(-camera.getX(), -camera.getY());
+        
         handler.getMaps().get(0).render(g);
         handler.render(g);
         
+        g2d.translate(camera.getX(), camera.getY());
         g.dispose();
         bs.show();
     }

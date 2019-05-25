@@ -13,9 +13,10 @@ import java.awt.image.BufferedImage;
  *
  * @author ASUS
  */
-public class Floor extends GameObject{
-    private BufferedImage floor = loadSprite("fondo.png");
-    public Floor(Handler handler, int x, int y) {
+public class Block extends GameObject{
+    private BufferedImage block = loadSprite("ParedLateral.png");
+    
+    public Block(Handler handler, int x, int y) {
         super(handler, x, y);
     }
 
@@ -26,12 +27,12 @@ public class Floor extends GameObject{
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(floor, x, y, null);
+        g.drawImage(block, x, y, null);
     }
 
     @Override
     public Rectangle getBounds() {
-        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

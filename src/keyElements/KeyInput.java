@@ -25,6 +25,7 @@ public class KeyInput extends KeyAdapter{
         this.handler = handler;
     }
     
+    @Override
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
         
@@ -39,6 +40,7 @@ public class KeyInput extends KeyAdapter{
             }
         }
     }
+    @Override
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
         
