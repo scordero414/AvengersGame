@@ -38,7 +38,6 @@ public class LectorMapaTxt implements LectorMapa {
     }
     
     
-    
     @Override
     public Map leerMapa() throws IOException{
         

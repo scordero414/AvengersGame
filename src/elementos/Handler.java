@@ -29,22 +29,24 @@ public class Handler {
     }
     
     public void tick(){
-        Map map = maps.get(0);
-        for (int i = 0; i < map.getGameObjects().size(); i++) {
-            GameObject tempObject =  map.getGameObjects().get(i);
+        ArrayList<GameObject> gameObjects = getGameObjectsOfMap();
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject tempObject =  gameObjects.get(i);
             tempObject.tick();
         }
     }
     
     public void render(Graphics g){
-        Map map = maps.get(0);
-        for (int i = 0; i < map.getGameObjects().size(); i++) {
-            GameObject tempObject = map.getGameObjects().get(i);
+        ArrayList<GameObject> gameObjects = getGameObjectsOfMap();
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject tempObject = gameObjects.get(i);
             tempObject.render(g);  
         }
     }
     
-    
+    public ArrayList<GameObject> getGameObjectsOfMap(){
+        return maps.get(0).getGameObjects();
+    }
     public void addMap(Map map){
         maps.add(map);
     }

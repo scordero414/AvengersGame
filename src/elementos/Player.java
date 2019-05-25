@@ -33,6 +33,8 @@ public class Player extends GameObject{
 
     // This is the actual animation
     private Animation animation = standingAnimation;
+    
+    
 
     public Player(Handler handler, int x, int y) {
         super(handler, x, y);
@@ -95,8 +97,8 @@ public class Player extends GameObject{
     }
 
     private void checkCollision(){
-        for (int i = 0; i < handler.getMaps().get(0).getGameObjects().size(); i++) {
-            GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
+        for (int i = 0; i < handler.getGameObjectsOfMap().size(); i++) {
+            GameObject tempObject = handler.getGameObjectsOfMap().get(i);
             if(tempObject instanceof Block){
                 if(getBounds().intersects(((Block) tempObject).getBounds())){
                     x += velX * -1;

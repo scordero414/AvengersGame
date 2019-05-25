@@ -19,6 +19,9 @@ public class Camera {
     }
     
     public void tick(GameObject object){
+        move(object);
+    }
+    private void move(GameObject object){
         x += ((object.getX() - x) - 1920/2) * 0.05f;
         y += ((object.getY() - y) - 960/2) * 0.05f;
         
@@ -32,12 +35,9 @@ public class Camera {
             y = 0;
         }
         if(y >= 640){
-            y = 640;
+            y = 640+32;
         }
-        
-        
     }
-
     public float getX() {
         return x;
     }

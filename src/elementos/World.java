@@ -107,8 +107,8 @@ public class World extends Canvas implements Runnable{
     }
 
     public void tick() {
-        for (int i = 0; i < (handler.getMaps().get(0).getGameObjects()).size(); i++) {
-            GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
+        for (int i = 0; i < (handler.getGameObjectsOfMap()).size(); i++) {
+            GameObject tempObject = handler.getGameObjectsOfMap().get(i);
             if(tempObject instanceof Player){
                 camera.tick(tempObject);
             }

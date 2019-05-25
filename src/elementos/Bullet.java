@@ -32,16 +32,18 @@ public class Bullet extends GameObject{
         x += velX;
         y += velY;
         
-        for (int i = 0; i < (handler.getMaps().get(0).getGameObjects()).size(); i++) {
-            GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
+        checkBulletHitsGameObjects();
+    }
+    public void checkBulletHitsGameObjects(){
+        for (int i = 0; i < (handler.getGameObjectsOfMap()).size(); i++) {
+            GameObject tempObject = handler.getGameObjectsOfMap().get(i);
             if(tempObject instanceof Block){
                 if(getBounds().intersects(((Block) tempObject).getBounds())){
-                    handler.getMaps().get(0).getGameObjects().remove(this);
+                    handler.getGameObjectsOfMap().remove(this);
                 }
             }
         }
     }
-
     @Override
     public void render(Graphics g) {
         g.setColor(Color.RED);
