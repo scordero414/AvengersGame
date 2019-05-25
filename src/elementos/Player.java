@@ -37,9 +37,8 @@ public class Player extends GameObject{
     public Player(Handler handler, int x, int y) {
         super(handler, x, y);
         this.handler = handler;
-        this.handler = handler;
-        setWidth(32);
-        setHeight(32);
+        setWidth(40);
+        setHeight(40);
     }
 
     
@@ -49,7 +48,8 @@ public class Player extends GameObject{
     @Override
     public void tick() {
         x += velX;
-        y += velY;  
+        y += velY; 
+        checkCollision();
         move();
         animation.stop();
     }
@@ -94,6 +94,18 @@ public class Player extends GameObject{
         g.drawImage(animation.getSprite(), x, y, null);
     }
 
+    private void checkCollision(){
+        for (int i = 0; i < handler.getMaps().get(0).getGameObjects().size(); i++) {
+            GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
+            if(tempObject instanceof Block){
+                if(getBounds().intersects(((Block) tempObject).getBounds())){
+                    x += velX * -1;
+                    y += velY * -1;
+                }
+            }
+        }
+    }
+    
     @Override
     public Rectangle getBounds() {
         return new Rectangle(getX(),getY(),getWidth(), getHeight());

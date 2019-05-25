@@ -43,7 +43,7 @@ public class World extends Canvas implements Runnable{
         Map map1;
         System.out.println("Hola");
         map1 = lectorMapa.leerMapa();
-        map1.addGameObject(new Player(handler, 0, 0));
+        map1.addGameObject(new Player(handler, 100, 100));
         handler.addMap(map1);
         start();
         this.addKeyListener(new KeyInput(handler));

@@ -18,6 +18,8 @@ public class Block extends GameObject{
     
     public Block(Handler handler, int x, int y) {
         super(handler, x, y);
+        setWidth(32);
+        setHeight(32);
     }
 
     @Override
@@ -32,7 +34,7 @@ public class Block extends GameObject{
 
     @Override
     public Rectangle getBounds() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Rectangle(x, y, getWidth(), getHeight());
     }
     
 }
