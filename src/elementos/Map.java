@@ -29,7 +29,7 @@ public class Map extends Sprite{
         this.handler = handler;
         gameObjects = new ArrayList<>();
         setWidth(1920);
-        setHeight(960);
+        setHeight(1600);
         
     }
 
@@ -41,6 +41,8 @@ public class Map extends Sprite{
 
     @Override
     public void render(Graphics g) {
+        g.setColor(Color.white);
+        g.fillRect(x, y, getWidth(), getHeight());
         handler.render(g);
     }
 

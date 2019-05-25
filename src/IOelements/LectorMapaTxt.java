@@ -73,10 +73,10 @@ public class LectorMapaTxt implements LectorMapa {
                         GameObject block = new Block(handler, j*32, i*32);
                         map.addGameObject(block);
                     break;
-                    case '0':
-                        GameObject floor = new Floor(handler, j*32, i*32);
-                        map.addGameObject(floor);
-                    break;
+//                    case '0':
+//                        GameObject floor = new Floor(handler, j*32, i*32);
+//                        map.addGameObject(floor);
+//                    break;
                     
                 }
 

@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import keyElements.KeyInput;
+import mouseElements.MouseInput;
 import vistas.Ventana;
 
 /**
@@ -47,7 +48,7 @@ public class World extends Canvas implements Runnable{
         handler.addMap(map1);
         start();
         this.addKeyListener(new KeyInput(handler));
-        
+        this.addMouseListener(new MouseInput(handler, camera));
         
     }
     
