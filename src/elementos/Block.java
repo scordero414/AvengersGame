@@ -16,9 +16,10 @@ import java.awt.image.BufferedImage;
 public class Block extends GameObject{
     private final int SIDE_BLOCK = 2;
     private final int HIGHER_BLOCK = 1;
+    private final int CORNER_BLOCK = 3;
     private BufferedImage sideBlock = loadSprite("ParedLateral.png");
     private BufferedImage higherBlock = loadSprite("ParedSuperior.png");
-    
+    private BufferedImage cornerBlock = loadSprite("EsquinaInferior.png");
     private int typeBlock;
     public Block(Handler handler, int x, int y,int typeBlock) {
         super(handler, x, y);
@@ -40,6 +41,9 @@ public class Block extends GameObject{
             break;
             case HIGHER_BLOCK:
                 g.drawImage(sideBlock, x, y, null);
+            break;
+            case CORNER_BLOCK:
+                g.drawImage(cornerBlock, x, y, null);
             break;
         }
     }

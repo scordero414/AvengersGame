@@ -80,6 +80,10 @@ public class LectorMapaTxt implements LectorMapa {
                         GameObject higherBlock = new Block(handler, j*32, i*32,2);
                         map.addGameObject(higherBlock);
                     break;
+                    case '3':
+                        GameObject cornerBlock = new Block(handler, j*32, i*32,3);
+                        map.addGameObject(cornerBlock);
+                    break;
                     
                 }
 

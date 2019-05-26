@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
  * @author ASUS
  */
 public class Floor extends GameObject{
-    private BufferedImage floor = loadSprite("fondo.png");
+    private BufferedImage floor = loadSprite("floor (1).png");
     public Floor(Handler handler, int x, int y) {
         super(handler, x, y);
     }

@@ -135,6 +135,10 @@ public class World extends Canvas implements Runnable{
         handler.render(g);
         
         g2d.translate(camera.getX(), camera.getY());
+        
+        handler.getMaps().get(0).getPlayerOfMap().drawLifeLine(g,(getWidth()/2),getHeight()-60);
+        handler.getMaps().get(0).getPlayerOfMap().drawAmmoLine(g,(getWidth()/2),getHeight()-30);
+        
         g.dispose();
         bs.show();
     }

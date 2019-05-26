@@ -43,6 +43,7 @@ public class Map extends Sprite{
     public void render(Graphics g) {
 //        g.setColor(Color.white);
 //        g.fillRect(x, y, getWidth(), getHeight());
+        
         handler.render(g);
     }
 
@@ -67,6 +68,13 @@ public class Map extends Sprite{
         gameObjects.remove(tempGameObject);
     }
 
-    
+    public Player getPlayerOfMap(){
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject tempObject = gameObjects.get(i);
+            if(tempObject instanceof Player)
+                return (Player) tempObject;
+        }
+        return null;
+    }
     
 }

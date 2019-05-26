@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import static javafx.scene.text.Font.font;
 
 /**
  *
@@ -34,13 +35,16 @@ public class Player extends GameObject{
     // This is the actual animation
     private Animation animation = standingAnimation;
     
-    
+    private int life;
+    private int ammo;
 
     public Player(Handler handler, int x, int y) {
         super(handler, x, y);
         this.handler = handler;
         setWidth(40);
         setHeight(40);
+        this.life = 100;
+        this.ammo = 100;
     }
 
     
@@ -91,11 +95,10 @@ public class Player extends GameObject{
     
     @Override
     public void render(Graphics g) {
-//       g.setColor(Color.yellow);
-//       g.fillRect(x, y, getWidth(), getHeight());
         g.drawImage(animation.getSprite(), x, y, null);
     }
 
+    
     private void checkCollision(){
         for (int i = 0; i < handler.getGameObjectsOfMap().size(); i++) {
             GameObject tempObject = handler.getGameObjectsOfMap().get(i);
@@ -108,9 +111,49 @@ public class Player extends GameObject{
         }
     }
     
+    public void drawLifeLine(Graphics g,int width,int height){
+        g.setColor(Color.GRAY);
+        g.fillRect(width-300,height,600,20);
+        g.setColor(new Color(135, 233, 94));
+        g.fillRect(width-300,height,getLife()*6,20);
+        g.setColor(Color.BLACK);
+        g.drawRect(width-300,height,600,20);
+        String life = getLife()+"/100";
+        g.drawString(life, width-life.length(), height+15);
+    }
+    
+    public void drawAmmoLine(Graphics g,int width,int height){
+        g.setColor(Color.GRAY);
+        g.fillRect(width-300,height,600,20);
+        g.setColor(new Color(84, 169, 242));
+        g.fillRect(width-300,height,getAmmo()*6,20);
+        g.setColor(Color.BLACK);
+        g.drawRect(width-300,height,600,20);
+        String ammo = getAmmo()+"/100";
+        g.drawString(ammo, width-ammo.length(), height+15);
+    }
+    
     @Override
     public Rectangle getBounds() {
         return new Rectangle(getX(),getY(),getWidth(), getHeight());
     }
+
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
+    }
+
+    public int getAmmo() {
+        return ammo;
+    }
+
+    public void setAmmo(int ammo) {
+        this.ammo = ammo;
+    }
+
+    
     
 }
