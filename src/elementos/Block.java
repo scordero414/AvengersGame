@@ -14,12 +14,17 @@ import java.awt.image.BufferedImage;
  * @author ASUS
  */
 public class Block extends GameObject{
-    private BufferedImage block = loadSprite("ParedLateral.png");
+    private final int SIDE_BLOCK = 2;
+    private final int HIGHER_BLOCK = 1;
+    private BufferedImage sideBlock = loadSprite("ParedLateral.png");
+    private BufferedImage higherBlock = loadSprite("ParedSuperior.png");
     
-    public Block(Handler handler, int x, int y) {
+    private int typeBlock;
+    public Block(Handler handler, int x, int y,int typeBlock) {
         super(handler, x, y);
         setWidth(32);
         setHeight(32);
+        this.typeBlock = typeBlock;
     }
 
     @Override
@@ -29,7 +34,14 @@ public class Block extends GameObject{
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(block, x, y, null);
+        switch(typeBlock){
+            case SIDE_BLOCK:
+                g.drawImage(higherBlock, x, y, null);
+            break;
+            case HIGHER_BLOCK:
+                g.drawImage(sideBlock, x, y, null);
+            break;
+        }
     }
 
     @Override

@@ -68,14 +68,18 @@ public class LectorMapaTxt implements LectorMapa {
         for(int i = 0 ; i<matriz.length ; i++){
             for(int j=0; j<matriz[0].length ; j++){
                 switch(matriz[i][j]){
-                    case '1':
-                        GameObject block = new Block(handler, j*32, i*32);
-                        map.addGameObject(block);
+                    case '0':
+                        GameObject floor = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor);
                     break;
-//                    case '0':
-//                        GameObject floor = new Floor(handler, j*32, i*32);
-//                        map.addGameObject(floor);
-//                    break;
+                    case '1':
+                        GameObject sideBlock = new Block(handler, j*32, i*32,1);
+                        map.addGameObject(sideBlock);
+                    break;
+                    case '2':
+                        GameObject higherBlock = new Block(handler, j*32, i*32,2);
+                        map.addGameObject(higherBlock);
+                    break;
                     
                 }
 

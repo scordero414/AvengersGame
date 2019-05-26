@@ -129,6 +129,8 @@ public class World extends Canvas implements Runnable{
         //draw
         g2d.translate(-camera.getX(), -camera.getY());
         
+        g.setColor(Color.black);
+        g.fillRect(0, 0, 1920, 1600);
         handler.getMaps().get(0).render(g);
         handler.render(g);
         
