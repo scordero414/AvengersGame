@@ -29,8 +29,7 @@ public class Ventana {
         this.height = height;
         this.frame = new JFrame(name);
         inicializarFrame();
-        MenuView menuView = new MenuView(frame, true);
-        decidirBotonesMenu(menuView);
+        crearVistaMenu();
     }
 
     public void inicializarFrame(){
@@ -75,5 +74,11 @@ public class Ventana {
     public void setMundo(World world) {
         this.world = world;
     }
+
+    public JFrame getFrame() {
+        return frame;
+    }
+    
+    
     
 }

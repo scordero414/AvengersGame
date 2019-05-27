@@ -14,6 +14,7 @@ import elementos.Handler;
 import elementos.LaserBeam;
 import elementos.Map;
 import elementos.Player;
+import elementos.ShieldRecharge;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.BufferedReader;
@@ -89,10 +90,15 @@ public class LectorMapaTxt implements LectorMapa {
                         GameObject laser = new LaserBeam(handler, j*32, i*32);
                         map.addGameObject(laser);
                     break;
+                    case 's':
+                        GameObject shield = new ShieldRecharge(handler, j*32, i*32);
+                        map.addGameObject(shield);
+                    break;
                     
                 }
 
             }
         }
+        map.addGameObject(new Player(handler, 100, 100));
    }
 }

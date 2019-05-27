@@ -44,12 +44,9 @@ public class Player extends GameObject{
         setWidth(23);
         setHeight(32);
         this.life = 100;
-        this.ammo = 100;
+        this.ammo = 0;
     }
 
-    
-    
-    
 
     @Override
     public void tick() {
@@ -57,6 +54,7 @@ public class Player extends GameObject{
         y += velY; 
         checkCollision();
         move();
+        
         animation.stop();
     }
 
@@ -115,8 +113,21 @@ public class Player extends GameObject{
                         setAmmo(getAmmo()- laser.DAMAGE); 
                     }else if(life>0){
                        setLife(getLife()- laser.DAMAGE);
+                    }else if(life <= 0){
+                        handler.getGameObjectsOfMap().remove(this);
                     }
-                    
+                }
+            }
+            if(tempObject instanceof ShieldRecharge){
+                ShieldRecharge shield = (ShieldRecharge) tempObject;
+                if(getBounds().intersects(shield.getBounds())){
+                    if(ammo >= 0  && ammo <100){
+                        setAmmo(getAmmo()+ ShieldRecharge.RECHARGE); 
+                        handler.getGameObjectsOfMap().add(new Floor(handler, shield.getX(), shield.getY()));
+                        handler.getGameObjectsOfMap().remove(shield);
+                        handler.getGameObjectsOfMap().remove(this);
+                        handler.getGameObjectsOfMap().add(this);
+                    }
                 }
             }
         }

@@ -43,11 +43,10 @@ public class World extends Canvas implements Runnable{
         
         Map map1;
         System.out.println("Hola");
-        map1 = lectorMapa.leerMapa();
-        map1.addGameObject(new Player(handler, 100, 100));
+        map1 = lectorMapa.leerMapa();        
         handler.addMap(map1);
         start();
-        this.addKeyListener(new KeyInput(handler));
+        this.addKeyListener(new KeyInput(handler,ventana));
         this.addMouseListener(new MouseInput(handler, camera));
         
     }
@@ -135,9 +134,14 @@ public class World extends Canvas implements Runnable{
         handler.render(g);
         
         g2d.translate(camera.getX(), camera.getY());
+        for (int i = 0; i < (handler.getGameObjectsOfMap()).size(); i++) {
+            GameObject tempObject = handler.getGameObjectsOfMap().get(i);
+            if(tempObject instanceof Player){
+                handler.getMaps().get(0).getPlayerOfMap().drawLifeLine(g,(getWidth()/2),getHeight()-60);
+                handler.getMaps().get(0).getPlayerOfMap().drawAmmoLine(g,(getWidth()/2),getHeight()-30);
+            }
+        }
         
-        handler.getMaps().get(0).getPlayerOfMap().drawLifeLine(g,(getWidth()/2),getHeight()-60);
-        handler.getMaps().get(0).getPlayerOfMap().drawAmmoLine(g,(getWidth()/2),getHeight()-30);
         
         g.dispose();
         bs.show();

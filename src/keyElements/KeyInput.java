@@ -11,6 +11,7 @@ import elementos.Player;
 import elementos.World;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import vistas.Ventana;
 
 /**
  *
@@ -20,9 +21,10 @@ public class KeyInput extends KeyAdapter{
     
     
     private Handler handler;
-
-    public KeyInput(Handler handler) {
+    private Ventana ventana;
+    public KeyInput(Handler handler,Ventana ventana) {
         this.handler = handler;
+        this.ventana = ventana;
     }
     
     @Override
@@ -38,6 +40,10 @@ public class KeyInput extends KeyAdapter{
                 if(key == KeyEvent.VK_A) handler.setLeft(true);
                 if(key == KeyEvent.VK_D) handler.setRight(true);
             }
+        }
+        if(key == KeyEvent.VK_ESCAPE){
+            ventana.getFrame().setVisible(false);
+            ventana.crearVistaMenu();
         }
     }
     @Override
