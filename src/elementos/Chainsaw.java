@@ -8,6 +8,7 @@ package elementos;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,6 +18,8 @@ import java.util.logging.Logger;
  */
 public class Chainsaw extends MobileEnemy{
     
+    public static final int DAMAGE = 1;
+    private BufferedImage chainsawImage = loadSprite("Sierra.gif");
     private final int SIDE_BLOCK = 2;
     private final int UPRIGHT_BLOCK = 1;
 //    private boolean running;
@@ -30,10 +33,10 @@ public class Chainsaw extends MobileEnemy{
         this.typeChainsaw = typeChainsaw;
         switch(typeChainsaw){
             case SIDE_BLOCK:
-                velX = 10;
+                velX = 6;
             break;
             case UPRIGHT_BLOCK:
-                velY = 10;
+                velY = 6;
             break;
         }
 //        this.running = false;
@@ -62,8 +65,7 @@ public class Chainsaw extends MobileEnemy{
     
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.yellow);
-        g.fillRect(x, y, width, height);
+        g.drawImage(chainsawImage, x, y, null);
     }
 
     @Override

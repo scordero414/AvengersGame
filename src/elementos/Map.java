@@ -38,6 +38,7 @@ public class Map extends Sprite{
         player = getPlayerOfMap();
         ArrayList<Chainsaw> chainsaws = getChainsawsOfMap();
         checkPlayerCollisionAnotherElements(player,chainsaws);
+        
         handler.tick();
     }
 
@@ -89,63 +90,69 @@ public class Map extends Sprite{
         return chainsaws;
     }
     public void checkPlayerCollisionAnotherElements(Player player,ArrayList<Chainsaw> chainsaws){
-        
+        checkPlayerCollisionChainsaw(chainsaws, player);
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
             
-            for(int j = 0; j<chainsaws.size();j++){
-            
-            
-                if(tempObject instanceof Block){
-                    Block block = (Block) tempObject;
-                    if(player.checkCollision(block)){
-                        player.stop();
-                    }
-                    if(chainsaws.get(j).checkCollision(block)){
-                        chainsaws.get(j).moveBack();
-                    }
+            if(tempObject instanceof Block){
+                Block block = (Block) tempObject;
+                if(player.checkCollision(block)){
+                    player.stop();
                 }
-                if(tempObject instanceof LaserBeam){
-                    LaserBeam laser = (LaserBeam) tempObject;
-                    if(player.checkCollision(laser)){
-                        if(player.getAmmo() > 0){
-                            player.loseAmmo(LaserBeam.DAMAGE);
-                        }else if(player.getLife()>0){
-                           player.loseLife(LaserBeam.DAMAGE);
-                        }else if(player.getLife() <= 0){
-                            handler.getGameObjectsOfMap().remove(player);
-                        }
-                    }
+                checkChainsawCollisionBlock(chainsaws, block);
+            }
+            if(tempObject instanceof LaserBeam){
+                LaserBeam laser = (LaserBeam) tempObject;
+                if(player.checkCollision(laser)){
+                    determineWhatToDecrease(player,LaserBeam.DAMAGE);
                 }
-                if(tempObject instanceof Chuzo){
-                    Chuzo chuzo = (Chuzo) tempObject;
-                    if(player.checkCollision(chuzo)){
+            }
+            if(tempObject instanceof Chuzo){
+                Chuzo chuzo = (Chuzo) tempObject;
+                if(player.checkCollision(chuzo)){
 
-                        if(player.getAmmo() > 0){
-                            player.loseAmmo(Chuzo.DAMAGE);
-                            if(player.getAmmo() <0){
-                                player.setAmmo(0);
-                            }
-                        }else if(player.getLife()>0){
-                           player.loseLife(Chuzo.DAMAGE);
-                        }else if(player.getLife() <= 0){
-                            handler.getGameObjectsOfMap().remove(player);
-                        }
-                    }
-                    if(chainsaws.get(j).checkCollision(tempObject)){
-                        chainsaws.get(j).moveBack();
-                    }
+                    determineWhatToDecrease(player,Chuzo.DAMAGE);
                 }
-                if(tempObject instanceof ShieldRecharge){
-                    ShieldRecharge shield = (ShieldRecharge) tempObject;
-                    if(player.checkCollision(shield)){
-                        if(player.getAmmo() >= 0  && player.getAmmo() <100){
-                            player.increaseShield(ShieldRecharge.RECHARGE);
-                            gameObjects.remove(shield);
-                        }
+            }
+            if(tempObject instanceof ShieldRecharge){
+                ShieldRecharge shield = (ShieldRecharge) tempObject;
+                if(player.checkCollision(shield)){
+                    if(player.getAmmo() >= 0  && player.getAmmo() <100){
+                        player.increaseShield(ShieldRecharge.RECHARGE);
+                        gameObjects.remove(shield);
                     }
                 }
             }
+            
+        }
+        
+    }
+    private void checkChainsawCollisionBlock( ArrayList<Chainsaw> chainsaws,Block block){
+        for(int j = 0; j<chainsaws.size();j++){
+            if(chainsaws.get(j).checkCollision(block)){
+                chainsaws.get(j).moveBack();
+            }
+        }
+    }
+    private void checkPlayerCollisionChainsaw( ArrayList<Chainsaw> chainsaws,Player player){
+        for(int j = 0; j<chainsaws.size();j++){
+            if(player.getBounds().intersects(chainsaws.get(j).getBounds())){
+                //gameObjects.remove(chainsaws.get(j));
+                determineWhatToDecrease(player,Chainsaw.DAMAGE);
+            }
+        }
+        System.out.println("qwqwwqqwqwqw");
+    }
+    private void determineWhatToDecrease(Player player,int amountDamage){
+        if(player.getAmmo() > 0){
+            player.loseAmmo(amountDamage);
+            if(player.getAmmo() <0){
+                player.setAmmo(0);
+            }
+        }else if(player.getLife()>0){
+           player.loseLife(amountDamage);
+        }else if(player.getLife() <= 0){
+            handler.getGameObjectsOfMap().remove(player);
         }
     }
 }
