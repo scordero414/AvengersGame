@@ -8,6 +8,7 @@ package IOelements;
 import com.sun.org.apache.xerces.internal.impl.io.UTF8Reader;
 import com.sun.xml.internal.org.jvnet.fastinfoset.FastInfosetSerializer;
 import elementos.Block;
+import elementos.Chuzo;
 import elementos.Floor;
 import elementos.GameObject;
 import elementos.Handler;
@@ -93,6 +94,14 @@ public class LectorMapaTxt implements LectorMapa {
                     case 's':
                         GameObject shield = new ShieldRecharge(handler, j*32, i*32);
                         map.addGameObject(shield);
+                    break;
+                    case 'c':
+                        GameObject chuzo = new Chuzo(handler, j*32, i*32,1);
+                        map.addGameObject(chuzo);
+                    break;
+                    case 'x':
+                        GameObject chuzo2 = new Chuzo(handler, j*32, i*32,2);
+                        map.addGameObject(chuzo2);
                     break;
                     
                 }

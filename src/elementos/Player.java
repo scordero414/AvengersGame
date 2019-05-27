@@ -118,6 +118,22 @@ public class Player extends GameObject{
                     }
                 }
             }
+            if(tempObject instanceof Chuzo){
+                Chuzo chuzo = (Chuzo) tempObject;
+                if(getBounds().intersects(chuzo.getBounds())){
+                    
+                    if(ammo > 0){
+                        setAmmo(getAmmo() - Chuzo.DAMAGE);
+                        if(getAmmo() <0){
+                            setAmmo(0);
+                        }
+                    }else if(life>0){
+                       setLife(getLife() - Chuzo.DAMAGE);
+                    }else if(life <= 0){
+                        handler.getGameObjectsOfMap().remove(this);
+                    }
+                }
+            }
             if(tempObject instanceof ShieldRecharge){
                 ShieldRecharge shield = (ShieldRecharge) tempObject;
                 if(getBounds().intersects(shield.getBounds())){

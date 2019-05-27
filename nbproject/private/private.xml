@@ -9,12 +9,20 @@
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Sprite.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Player.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/IOelements/LectorMapaTxt.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Trap.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/ShieldRecharge.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Map.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Enemy.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Block.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Bullet.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/ConsumableItem.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/vistas/MenuView.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/GameObject.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Frame.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Handler.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/LaserBeam.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/keyElements/KeyInput.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Chuzo.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/vistas/Ventana.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Animation.java</file>
         </group>

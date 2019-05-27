@@ -8,6 +8,7 @@ package elementos;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -16,6 +17,7 @@ import java.awt.Rectangle;
 public class ShieldRecharge extends ConsumableItem{
 
     public static final int RECHARGE = 10;
+    private BufferedImage potionImage = loadSprite("potion.png");
     
     public ShieldRecharge(Handler handler, int x, int y) {
         super(handler, x, y);
@@ -30,8 +32,9 @@ public class ShieldRecharge extends ConsumableItem{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(new Color(84, 169, 242));
-        g.fillRect(x, y, width, height);
+//        g.setColor(new Color(84, 169, 242));
+//        g.fillRect(x, y, width, height);
+        g.drawImage(potionImage, x, y, null);
     }
 
     @Override

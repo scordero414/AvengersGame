@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
  *
  * @author ASUS
  */
-public class LaserBeam extends Enemy{
+public class LaserBeam extends Trap{
     
     private BufferedImage fondoLaser = loadSprite("fondoLaser.png");
     public static final int DAMAGE = 100;
