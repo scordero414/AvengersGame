@@ -52,6 +52,7 @@ public class Player extends GameObject{
     public void tick() {
         x += velX;
         y += velY; 
+        handler.getMaps().get(0).checkPlayerCollisionAnotherElements(this);
         move();
         animation.stop();
     }
