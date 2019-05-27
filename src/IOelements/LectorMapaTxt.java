@@ -11,6 +11,7 @@ import elementos.Block;
 import elementos.Floor;
 import elementos.GameObject;
 import elementos.Handler;
+import elementos.LaserBeam;
 import elementos.Map;
 import elementos.Player;
 import java.awt.Color;
@@ -83,6 +84,10 @@ public class LectorMapaTxt implements LectorMapa {
                     case '3':
                         GameObject cornerBlock = new Block(handler, j*32, i*32,3);
                         map.addGameObject(cornerBlock);
+                    break;
+                    case 'l':
+                        GameObject laser = new LaserBeam(handler, j*32, i*32);
+                        map.addGameObject(laser);
                     break;
                     
                 }

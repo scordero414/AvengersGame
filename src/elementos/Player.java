@@ -41,8 +41,8 @@ public class Player extends GameObject{
     public Player(Handler handler, int x, int y) {
         super(handler, x, y);
         this.handler = handler;
-        setWidth(40);
-        setHeight(40);
+        setWidth(23);
+        setHeight(32);
         this.life = 100;
         this.ammo = 100;
     }
@@ -106,6 +106,17 @@ public class Player extends GameObject{
                 if(getBounds().intersects(((Block) tempObject).getBounds())){
                     x += velX * -1;
                     y += velY * -1;
+                }
+            }
+            if(tempObject instanceof LaserBeam){
+                LaserBeam laser = (LaserBeam) tempObject;
+                if(getBounds().intersects(laser.getBounds())){
+                    if(ammo > 0){
+                        setAmmo(getAmmo()- laser.DAMAGE); 
+                    }else if(life>0){
+                       setLife(getLife()- laser.DAMAGE);
+                    }
+                    
                 }
             }
         }

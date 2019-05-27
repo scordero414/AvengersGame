@@ -5,6 +5,8 @@
  */
 package elementos;
 
+import static elementos.Sprite.loadSprite;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -13,10 +15,14 @@ import java.awt.image.BufferedImage;
  *
  * @author ASUS
  */
-public class Floor extends GameObject{
-    private BufferedImage floor = loadSprite("fondo (2).png");
-    public Floor(Handler handler, int x, int y) {
+public class LaserBeam extends Enemy{
+    
+    private BufferedImage fondoLaser = loadSprite("fondoLaser.png");
+    public static final int DAMAGE = 100;
+    public LaserBeam(Handler handler, int x, int y) {
         super(handler, x, y);
+        setWidth(10);
+        setHeight(32);
     }
 
     @Override
@@ -26,12 +32,12 @@ public class Floor extends GameObject{
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(floor, x, y, null);
+        g.drawImage(fondoLaser, x, y, null);
     }
 
     @Override
     public Rectangle getBounds() {
-        return null;
+        return new Rectangle(x, y, getWidth()+16, getHeight());
     }
     
 }
