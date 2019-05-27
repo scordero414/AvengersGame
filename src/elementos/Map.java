@@ -22,7 +22,7 @@ public class Map extends Sprite{
     private boolean down;
     private boolean left;
     private boolean right;
-    
+    private Player player;
 
     public Map(Handler handler, int x, int y) {
         super(handler, x, y);
@@ -30,11 +30,14 @@ public class Map extends Sprite{
         gameObjects = new ArrayList<>();
         setWidth(1920);
         setHeight(1600);
+        
     }
 
     @Override
     public void tick() {
+        player = getPlayerOfMap();
         
+        checkPlayerCollisionAnotherElements(player);
         handler.tick();
     }
 
@@ -74,6 +77,60 @@ public class Map extends Sprite{
                 return (Player) tempObject;
         }
         return null;
+    }
+    
+    public void checkPlayerCollisionAnotherElements(Player player){
+        
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject tempObject = gameObjects.get(i);
+            
+            if(tempObject instanceof Block){
+                Block block = (Block) tempObject;
+                if(player.checkCollision(block)){
+                    player.stop();
+                }
+            }
+            if(tempObject instanceof LaserBeam){
+                LaserBeam laser = (LaserBeam) tempObject;
+                if(player.checkCollision(laser)){
+                    if(player.getAmmo() > 0){
+                        player.loseAmmo(LaserBeam.DAMAGE);
+                    }else if(player.getLife()>0){
+                       player.loseLife(LaserBeam.DAMAGE);
+                    }else if(player.getLife() <= 0){
+                        handler.getGameObjectsOfMap().remove(player);
+                    }
+                }
+            }
+            if(tempObject instanceof Chuzo){
+                Chuzo chuzo = (Chuzo) tempObject;
+                if(player.checkCollision(chuzo)){
+                    
+                    if(player.getAmmo() > 0){
+                        player.loseAmmo(Chuzo.DAMAGE);
+                        if(player.getAmmo() <0){
+                            player.setAmmo(0);
+                        }
+                    }else if(player.getLife()>0){
+                       player.loseLife(Chuzo.DAMAGE);
+                    }else if(player.getLife() <= 0){
+                        handler.getGameObjectsOfMap().remove(player);
+                    }
+                }
+            }
+            if(tempObject instanceof ShieldRecharge){
+                ShieldRecharge shield = (ShieldRecharge) tempObject;
+                if(player.checkCollision(shield)){
+                    if(player.getAmmo() >= 0  && player.getAmmo() <100){
+                        player.increaseShield(ShieldRecharge.RECHARGE);
+                        handler.getGameObjectsOfMap().add(new Floor(handler, shield.getX(), shield.getY()));
+                        handler.getGameObjectsOfMap().remove(shield);
+                        handler.getGameObjectsOfMap().remove(player);
+                        handler.getGameObjectsOfMap().add(player);
+                    }
+                }
+            }
+        }
     }
     
 }

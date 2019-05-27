@@ -112,6 +112,8 @@ public class World extends Canvas implements Runnable{
                 camera.tick(tempObject);
             }
         }
+        if(!handler.getMaps().isEmpty())
+            handler.getMaps().get(0).tick();
         handler.tick();
     }
 

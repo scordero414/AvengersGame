@@ -61,16 +61,7 @@ public abstract class Sprite {
 
         return spriteSheet.getSubimage(xGrid * TILE_SIZE, yGrid * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
-    
-    public boolean checkCollision(Sprite another) {
-        if (this.x < another.x + another.width &&
-            this.x + this.width > another.x &&
-            this.y < another.y + another.height &&
-            this.height + this.y > another.y) {
-             return true;
-        }
-        return false;
-    }
+   
 
     
 //    public boolean isOutOfGameSection(){

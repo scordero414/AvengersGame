@@ -17,7 +17,7 @@ import static javafx.scene.text.Font.font;
  */
 public class Player extends GameObject{
 
-    private static final int VEL = 8;
+    private static final int VEL = 4;
     private Handler handler;
     private final BufferedImage[] walkingUp = {getSprite(0, 3), getSprite(1, 3), getSprite(2, 3)};
     private final BufferedImage[] walkingDown = {getSprite(0, 0), getSprite(1, 0), getSprite(2, 0)};
@@ -41,8 +41,8 @@ public class Player extends GameObject{
     public Player(Handler handler, int x, int y) {
         super(handler, x, y);
         this.handler = handler;
-        setWidth(23);
-        setHeight(32);
+        setWidth(40);
+        setHeight(40);
         this.life = 100;
         this.ammo = 0;
     }
@@ -52,9 +52,7 @@ public class Player extends GameObject{
     public void tick() {
         x += velX;
         y += velY; 
-        checkCollision();
         move();
-        
         animation.stop();
     }
 
@@ -97,56 +95,11 @@ public class Player extends GameObject{
     }
 
     
-    private void checkCollision(){
-        for (int i = 0; i < handler.getGameObjectsOfMap().size(); i++) {
-            GameObject tempObject = handler.getGameObjectsOfMap().get(i);
-            if(tempObject instanceof Block){
-                if(getBounds().intersects(((Block) tempObject).getBounds())){
-                    x += velX * -1;
-                    y += velY * -1;
-                }
-            }
-            if(tempObject instanceof LaserBeam){
-                LaserBeam laser = (LaserBeam) tempObject;
-                if(getBounds().intersects(laser.getBounds())){
-                    if(ammo > 0){
-                        setAmmo(getAmmo()- laser.DAMAGE); 
-                    }else if(life>0){
-                       setLife(getLife()- laser.DAMAGE);
-                    }else if(life <= 0){
-                        handler.getGameObjectsOfMap().remove(this);
-                    }
-                }
-            }
-            if(tempObject instanceof Chuzo){
-                Chuzo chuzo = (Chuzo) tempObject;
-                if(getBounds().intersects(chuzo.getBounds())){
-                    
-                    if(ammo > 0){
-                        setAmmo(getAmmo() - Chuzo.DAMAGE);
-                        if(getAmmo() <0){
-                            setAmmo(0);
-                        }
-                    }else if(life>0){
-                       setLife(getLife() - Chuzo.DAMAGE);
-                    }else if(life <= 0){
-                        handler.getGameObjectsOfMap().remove(this);
-                    }
-                }
-            }
-            if(tempObject instanceof ShieldRecharge){
-                ShieldRecharge shield = (ShieldRecharge) tempObject;
-                if(getBounds().intersects(shield.getBounds())){
-                    if(ammo >= 0  && ammo <100){
-                        setAmmo(getAmmo()+ ShieldRecharge.RECHARGE); 
-                        handler.getGameObjectsOfMap().add(new Floor(handler, shield.getX(), shield.getY()));
-                        handler.getGameObjectsOfMap().remove(shield);
-                        handler.getGameObjectsOfMap().remove(this);
-                        handler.getGameObjectsOfMap().add(this);
-                    }
-                }
-            }
-        }
+    public void loseLife(int amount){        
+        setLife(getLife()- amount);
+    }
+    public void loseAmmo(int amount){        
+        setAmmo(getAmmo()- amount);
     }
     
     public void drawLifeLine(Graphics g,int width,int height){
@@ -171,9 +124,20 @@ public class Player extends GameObject{
         g.drawString(ammo, width-ammo.length(), height+15);
     }
     
+    public boolean checkCollision(GameObject tempObject){
+        return getBounds().intersects(tempObject.getBounds());
+    }
+    public void increaseShield(int amount){
+        setAmmo(getAmmo()+ amount);
+    }
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(getX(),getY(),getWidth(), getHeight());
+        return new Rectangle(x,y,getWidth(), getHeight());
+    }
+    
+    public void stop(){
+        x += velX * -1;
+        y += velY * -1;
     }
 
     public int getLife() {
