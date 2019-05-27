@@ -32,7 +32,19 @@ public class Handler {
         ArrayList<GameObject> gameObjects = getGameObjectsOfMap();
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject =  gameObjects.get(i);
-            tempObject.tick();
+            if(tempObject instanceof Floor){
+                continue;
+            }if(tempObject instanceof Block){
+                continue;
+            }if(tempObject instanceof Chuzo){
+                continue;
+            }if(tempObject instanceof Trap){
+                continue;
+            }if(tempObject instanceof ConsumableItem){
+                continue;
+            }else{
+                tempObject.tick();
+            }
         }
     }
     

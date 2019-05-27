@@ -17,7 +17,7 @@ import static javafx.scene.text.Font.font;
  */
 public class Player extends GameObject{
 
-    private static final int VEL = 4;
+    private static final int VEL = 8;
     private Handler handler;
     private final BufferedImage[] walkingUp = {getSprite(0, 3), getSprite(1, 3), getSprite(2, 3)};
     private final BufferedImage[] walkingDown = {getSprite(0, 0), getSprite(1, 0), getSprite(2, 0)};
@@ -52,7 +52,7 @@ public class Player extends GameObject{
     public void tick() {
         x += velX;
         y += velY; 
-        handler.getMaps().get(0).checkPlayerCollisionAnotherElements(this);
+        handler.getMaps().get(0).checkPlayerCollisionAnotherElements(this,handler.getMaps().get(0).getChainsawsOfMap());
         move();
         animation.stop();
     }

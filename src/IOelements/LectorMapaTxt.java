@@ -8,12 +8,14 @@ package IOelements;
 import com.sun.org.apache.xerces.internal.impl.io.UTF8Reader;
 import com.sun.xml.internal.org.jvnet.fastinfoset.FastInfosetSerializer;
 import elementos.Block;
+import elementos.Chainsaw;
 import elementos.Chuzo;
 import elementos.Floor;
 import elementos.GameObject;
 import elementos.Handler;
 import elementos.LaserBeam;
 import elementos.Map;
+import elementos.Outrider;
 import elementos.Player;
 import elementos.ShieldRecharge;
 import java.awt.Color;
@@ -68,6 +70,7 @@ public class LectorMapaTxt implements LectorMapa {
     }
     
     public void dibujarMatriz(Map map,char[][] matriz){
+        ArrayList<GameObject> mobileObjects = new ArrayList<>();
         for(int i = 0 ; i<matriz.length ; i++){
             for(int j=0; j<matriz[0].length ; j++){
                 switch(matriz[i][j]){
@@ -92,6 +95,8 @@ public class LectorMapaTxt implements LectorMapa {
                         map.addGameObject(laser);
                     break;
                     case 's':
+                        GameObject floor4 = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor4);
                         GameObject shield = new ShieldRecharge(handler, j*32, i*32);
                         map.addGameObject(shield);
                     break;
@@ -103,11 +108,38 @@ public class LectorMapaTxt implements LectorMapa {
                         GameObject chuzo2 = new Chuzo(handler, j*32, i*32,2);
                         map.addGameObject(chuzo2);
                     break;
-                    
+                    case 'm':
+                        GameObject chainsaw = new Chainsaw(handler, j*32, i*32,1);
+                        mobileObjects.add(chainsaw);
+                        GameObject floor1 = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor1);
+                    break;
+                    case 'n':
+                        GameObject chainsaw2 = new Chainsaw(handler, j*32, i*32,2);
+                        mobileObjects.add(chainsaw2);
+                        GameObject floor5 = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor5);
+                    break;
+                    case 'e':
+                        GameObject outrider = new Outrider(handler, j*32, i*32);
+                        mobileObjects.add(outrider);
+                        GameObject floor2 = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor2);
+                    break;
+                    case 'p':
+                        GameObject player = new Player(handler, j*32, i*32);
+                        mobileObjects.add(player);
+                        GameObject floor3 = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor3);
+                    break;
                 }
 
             }
         }
-        map.addGameObject(new Player(handler, 100, 100));
+        
+        for (int i = 0; i < mobileObjects.size(); i++) {
+            GameObject get = mobileObjects.get(i);
+            map.addGameObject(get);
+        }
    }
 }
