@@ -89,6 +89,16 @@ public class Map extends Sprite{
         }
         return chainsaws;
     }
+    public ArrayList<Block> getBlocksOfMap(){
+        ArrayList<Block> blocks = new ArrayList<>();
+        for (int j = 0; j < gameObjects.size(); j++) {
+            GameObject get = gameObjects.get(j);
+            if(get instanceof Block){
+                blocks.add((Block) get);
+            }
+        }
+        return blocks;
+    }
     public void removetLasersOfMap(){
        
         for (int j = 0; j < gameObjects.size(); j++) {
@@ -174,11 +184,21 @@ public class Map extends Sprite{
                     }
                 }
             }
+            if(tempObject instanceof Bullet){
+                Bullet bullet = (Bullet) tempObject;
+                checkBulletCollisionBlock(getBlocksOfMap(), bullet);
+            }
             
         }
         
     }
-    
+    private void checkBulletCollisionBlock(ArrayList<Block> blocks, Bullet bullet){
+        for(int j = 0; j<blocks.size();j++){
+            if(bullet.checkBulletHitsGameObjects(blocks.get(j))){
+                gameObjects.remove(bullet);
+            }
+        }
+    }
     private void checkChainsawCollisionBlock( ArrayList<Chainsaw> chainsaws,Block block){
         for(int j = 0; j<chainsaws.size();j++){
             if(chainsaws.get(j).checkCollision(block)){
