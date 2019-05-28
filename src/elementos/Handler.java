@@ -19,7 +19,7 @@ public class Handler {
     private boolean down;
     private boolean left;
     private boolean right;
-    
+    public static int LEVEL = 1;
     public Handler() {
         this.maps = new ArrayList<>();
         this.up = false;
@@ -42,6 +42,8 @@ public class Handler {
                 continue;
             }if(tempObject instanceof ConsumableItem){
                 continue;
+            }if(tempObject instanceof Gem){
+                continue;
             }else{
                 tempObject.tick();
             }
@@ -57,7 +59,7 @@ public class Handler {
     }
     
     public ArrayList<GameObject> getGameObjectsOfMap(){
-        return maps.get(0).getGameObjects();
+        return maps.get(LEVEL-1).getGameObjects();
     }
     public void addMap(Map map){
         maps.add(map);

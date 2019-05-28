@@ -37,12 +37,16 @@ public class Player extends GameObject{
     
     private int life;
     private int ammo;
+    
+    private boolean haveGem;
+    private Gem gemObtained;
 
     public Player(Handler handler, int x, int y) {
         super(handler, x, y);
         this.handler = handler;
-        setWidth(40);
-        setHeight(40);
+        setWidth(32);
+        setHeight(32);
+        haveGem = false;
         this.life = 100;
         this.ammo = 0;
     }
@@ -125,6 +129,22 @@ public class Player extends GameObject{
         g.drawString(ammo, width-ammo.length(), height+15);
     }
     
+    public void drawInventary(Graphics g,int width,int height){
+        
+        g.setColor(Color.GRAY);
+        g.fillRect(width+5,height+5,100,100);
+//        g.setColor(new Color(84, 169, 242));
+//        g.fillRect(width-300,height,getAmmo()*6,20);
+        g.setColor(Color.BLACK);
+        g.fillRect(width+10,height+10,90,90);
+        g.drawRect(width+5,height+5,100,100);
+        if(haveGem){
+            g.drawImage(gemObtained.getImageOfGem(),width+40,height+40,null);
+        }
+//        String ammo = getAmmo()+"/100";
+//        g.drawString(ammo, width-ammo.length(), height+15);
+    }
+    
     public boolean checkCollision(GameObject tempObject){
         return getBounds().intersects(tempObject.getBounds());
     }
@@ -135,7 +155,10 @@ public class Player extends GameObject{
     public Rectangle getBounds() {
         return new Rectangle(x,y,getWidth(), getHeight());
     }
-    
+    public void saveGem(Gem gem){
+        gemObtained = gem;
+        haveGem = true;
+    }
     public void stop(){
         x += velX * -1;
         y += velY * -1;
@@ -157,6 +180,7 @@ public class Player extends GameObject{
         this.ammo = ammo;
     }
 
+    
     
     
 }

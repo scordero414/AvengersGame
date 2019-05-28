@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class Chainsaw extends MobileEnemy{
     
-    public static final int DAMAGE = 1;
+    public static final int DAMAGE = 6;
     private BufferedImage chainsawImage = loadSprite("Sierra.gif");
     private final int SIDE_BLOCK = 2;
     private final int UPRIGHT_BLOCK = 1;

@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
  * @author ASUS
  */
 public class Chuzo extends Trap{
+    
     private final int SIDE_CHUZO = 2;
     private final int HIGHER_CHUZO = 1;
     private BufferedImage sideChuzo = loadSprite("Chuzos2.png");

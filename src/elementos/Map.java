@@ -93,7 +93,13 @@ public class Map extends Sprite{
         checkPlayerCollisionChainsaw(chainsaws, player);
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
-            
+            if(tempObject instanceof Gem){
+                if(player.checkCollision(tempObject)){
+                    gameObjects.remove(tempObject);
+                    player.saveGem((Gem) tempObject);
+                }
+                
+            }
             if(tempObject instanceof Block){
                 Block block = (Block) tempObject;
                 if(player.checkCollision(block)){
@@ -141,7 +147,6 @@ public class Map extends Sprite{
                 determineWhatToDecrease(player,Chainsaw.DAMAGE);
             }
         }
-        System.out.println("qwqwwqqwqwqw");
     }
     private void determineWhatToDecrease(Player player,int amountDamage){
         if(player.getAmmo() > 0){

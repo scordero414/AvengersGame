@@ -12,6 +12,7 @@ import elementos.Chainsaw;
 import elementos.Chuzo;
 import elementos.Floor;
 import elementos.GameObject;
+import elementos.Gem;
 import elementos.Handler;
 import elementos.LaserBeam;
 import elementos.Map;
@@ -73,9 +74,10 @@ public class LectorMapaTxt implements LectorMapa {
         ArrayList<GameObject> mobileObjects = new ArrayList<>();
         for(int i = 0 ; i<matriz.length ; i++){
             for(int j=0; j<matriz[0].length ; j++){
+                GameObject floor;
                 switch(matriz[i][j]){
                     case '0':
-                        GameObject floor = new Floor(handler, j*32, i*32);
+                        floor = new Floor(handler, j*32, i*32);
                         map.addGameObject(floor);
                     break;
                     case '1':
@@ -95,8 +97,8 @@ public class LectorMapaTxt implements LectorMapa {
                         map.addGameObject(laser);
                     break;
                     case 's':
-                        GameObject floor4 = new Floor(handler, j*32, i*32);
-                        map.addGameObject(floor4);
+                        floor = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor);
                         GameObject shield = new ShieldRecharge(handler, j*32, i*32);
                         map.addGameObject(shield);
                     break;
@@ -111,26 +113,32 @@ public class LectorMapaTxt implements LectorMapa {
                     case 'm':
                         GameObject chainsaw = new Chainsaw(handler, j*32, i*32,1);
                         mobileObjects.add(chainsaw);
-                        GameObject floor1 = new Floor(handler, j*32, i*32);
-                        map.addGameObject(floor1);
+                        floor = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor);
                     break;
                     case 'n':
                         GameObject chainsaw2 = new Chainsaw(handler, j*32, i*32,2);
                         mobileObjects.add(chainsaw2);
-                        GameObject floor5 = new Floor(handler, j*32, i*32);
-                        map.addGameObject(floor5);
+                        floor = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor);
                     break;
                     case 'e':
                         GameObject outrider = new Outrider(handler, j*32, i*32);
                         mobileObjects.add(outrider);
-                        GameObject floor2 = new Floor(handler, j*32, i*32);
-                        map.addGameObject(floor2);
+                        floor = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor);
                     break;
                     case 'p':
                         GameObject player = new Player(handler, j*32, i*32);
                         mobileObjects.add(player);
                         GameObject floor3 = new Floor(handler, j*32, i*32);
                         map.addGameObject(floor3);
+                    break;
+                    case 'g':
+                        floor = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor);
+                        GameObject gem = new Gem(handler, j*32, i*32);
+                        map.addGameObject(gem);
                     break;
                 }
 

@@ -7,10 +7,17 @@ package vistas;
 
 import elementos.World;
 import java.awt.Dimension;
+import java.awt.Label;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.TimerTask;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
@@ -22,6 +29,7 @@ public class Ventana {
     private JFrame frame;
     private int width;
     private int height;
+    private int seg;
     
     public Ventana(int width, int height, String name,World world){
         this.width = width;
@@ -29,6 +37,7 @@ public class Ventana {
         this.height = height;
         this.frame = new JFrame(name);
         inicializarFrame();
+        initPanel();
         crearVistaMenu();
     }
 
@@ -42,11 +51,16 @@ public class Ventana {
         frame.setLocationRelativeTo(null);
         frame.setVisible(false);
     }
+    public void initPanel(){
+        
+    }
     
     public void decidirBotonesMenu(MenuView menuView) {
         switch(menuView.getEstado()) {
             case 1:
                 frame.setVisible(true);
+                LoadView loadView = new LoadView(frame, false);
+                
             break;
             case 2:
                 InstructionsView instructionsView = new InstructionsView(frame, true);
@@ -69,7 +83,7 @@ public class Ventana {
     public void crearVistaMenu() {
        MenuView menuView = new MenuView(frame, true);
        decidirBotonesMenu(menuView);
-   }
+    }
 
     public void setMundo(World world) {
         this.world = world;
@@ -78,6 +92,7 @@ public class Ventana {
     public JFrame getFrame() {
         return frame;
     }
+    
     
     
     

@@ -130,7 +130,7 @@ public class World extends Canvas implements Runnable{
         
         g.setColor(Color.black);
         g.fillRect(0, 0, 1920, 1600);
-        handler.getMaps().get(0).render(g);
+        handler.getMaps().get(Handler.LEVEL-1).render(g);
         handler.render(g);
         
         g2d.translate(camera.getX(), camera.getY());
@@ -139,6 +139,7 @@ public class World extends Canvas implements Runnable{
             if(tempObject instanceof Player){
                 handler.getMaps().get(0).getPlayerOfMap().drawLifeLine(g,(getWidth()/2),getHeight()-60);
                 handler.getMaps().get(0).getPlayerOfMap().drawAmmoLine(g,(getWidth()/2),getHeight()-30);
+                handler.getMaps().get(0).getPlayerOfMap().drawInventary(g,0,0);
             }
         }
         
@@ -146,6 +147,7 @@ public class World extends Canvas implements Runnable{
         g.dispose();
         bs.show();
     }
+
 
    
 
