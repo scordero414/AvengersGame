@@ -5,25 +5,24 @@
         <group>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/World.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/IOelements/LectorMapa.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Floor.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Sprite.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Player.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/IOelements/LectorMapaTxt.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Chest.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Map.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Enemy.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/vistas/InstructionsView.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Block.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Gem.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Bullet.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/Mapas/mapa_1.txt</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/vistas/LoadView.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/vistas/MenuView.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/mouseElements/MouseInput.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/GameObject.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Frame.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Handler.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/LaserBeam.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/MobileEnemy.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/keyElements/KeyInput.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Chainsaw.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Chuzo.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/vistas/Ventana.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Animation.java</file>
         </group>
     </open-files>
 </project-private>
