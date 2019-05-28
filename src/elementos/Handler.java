@@ -19,7 +19,9 @@ public class Handler {
     private boolean down;
     private boolean left;
     private boolean right;
+    private boolean pressBuuton2;
     public static int LEVEL = 1;
+    
     public Handler() {
         this.maps = new ArrayList<>();
         this.up = false;
@@ -105,5 +107,16 @@ public class Handler {
         this.right = right;
     }
 
+    public boolean isPressBuuton2() {
+        return pressBuuton2;
+    }
+
+    public void setPressBuuton2(boolean pressBuuton2) {
+        this.pressBuuton2 = pressBuuton2;
+    }
+
+    
+
+    
    
 }

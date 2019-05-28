@@ -6,6 +6,7 @@
 package keyElements;
 
 import elementos.GameObject;
+import elementos.Gem;
 import elementos.Handler;
 import elementos.Player;
 import elementos.World;
@@ -39,6 +40,7 @@ public class KeyInput extends KeyAdapter{
                 if(key == KeyEvent.VK_S) handler.setDown(true);  
                 if(key == KeyEvent.VK_A) handler.setLeft(true);
                 if(key == KeyEvent.VK_D) handler.setRight(true);
+                //if(key == KeyEvent.VK_E) handler.setPressE(true);
             }
         }
         if(key == KeyEvent.VK_ESCAPE){
@@ -58,6 +60,7 @@ public class KeyInput extends KeyAdapter{
                 if(key == KeyEvent.VK_S) handler.setDown(false);  
                 if(key == KeyEvent.VK_A) handler.setLeft(false);
                 if(key == KeyEvent.VK_D) handler.setRight(false);
+//                if(key == KeyEvent.VK_E) handler.setPressE(false);
             }
         }
     }

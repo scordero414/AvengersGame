@@ -9,6 +9,7 @@ import com.sun.org.apache.xerces.internal.impl.io.UTF8Reader;
 import com.sun.xml.internal.org.jvnet.fastinfoset.FastInfosetSerializer;
 import elementos.Block;
 import elementos.Chainsaw;
+import elementos.Chest;
 import elementos.Chuzo;
 import elementos.Floor;
 import elementos.GameObject;
@@ -93,8 +94,16 @@ public class LectorMapaTxt implements LectorMapa {
                         map.addGameObject(cornerBlock);
                     break;
                     case 'l':
-                        GameObject laser = new LaserBeam(handler, j*32, i*32);
-                        map.addGameObject(laser);
+                        floor = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor);
+                        GameObject laser = new LaserBeam(handler, j*32, i*32,2);
+                        map.addGameObject(laser);                        
+                    break;
+                    case 'k':
+                        floor = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor);
+                        GameObject laser2 = new LaserBeam(handler, j*32, i*32,1);
+                        map.addGameObject(laser2);                        
                     break;
                     case 's':
                         floor = new Floor(handler, j*32, i*32);
@@ -139,6 +148,12 @@ public class LectorMapaTxt implements LectorMapa {
                         map.addGameObject(floor);
                         GameObject gem = new Gem(handler, j*32, i*32);
                         map.addGameObject(gem);
+                    break;
+                    case 'h':
+                        floor = new Floor(handler, j*32, i*32);
+                        map.addGameObject(floor);
+                        GameObject chest = new Chest(handler, j*32, i*32);
+                        map.addGameObject(chest);
                     break;
                 }
 

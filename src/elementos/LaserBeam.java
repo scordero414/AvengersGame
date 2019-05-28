@@ -17,12 +17,17 @@ import java.awt.image.BufferedImage;
  */
 public class LaserBeam extends Trap{
     
-    private BufferedImage fondoLaser = loadSprite("fondoLaser.png");
+    private BufferedImage[] fondoLaser = new BufferedImage[2];
+    
     public static final int DAMAGE = 100;
-    public LaserBeam(Handler handler, int x, int y) {
+    private int typeLaser;
+    public LaserBeam(Handler handler, int x, int y,int typeLaser) {
         super(handler, x, y);
         setWidth(10);
         setHeight(32);
+        initLaserImages();
+        this.typeLaser = typeLaser;
+        
     }
 
     @Override
@@ -32,12 +37,15 @@ public class LaserBeam extends Trap{
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(fondoLaser, x, y, null);
+        g.drawImage(fondoLaser[typeLaser-1], x, y, null);
     }
 
     @Override
     public Rectangle getBounds() {
         return new Rectangle(x, y, getWidth()+16, getHeight());
     }
-    
+    public void initLaserImages(){
+        fondoLaser[0] = loadSprite("fondoLaser.png");
+        fondoLaser[1] = loadSprite("fondoLaser2.png");
+    }
 }

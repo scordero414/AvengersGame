@@ -37,7 +37,7 @@ public class Player extends GameObject{
     
     private int life;
     private int ammo;
-    
+    private boolean obtGem;
     private boolean haveGem;
     private Gem gemObtained;
 
@@ -46,6 +46,7 @@ public class Player extends GameObject{
         this.handler = handler;
         setWidth(32);
         setHeight(32);
+        obtGem = false;
         haveGem = false;
         this.life = 100;
         this.ammo = 0;
@@ -138,7 +139,7 @@ public class Player extends GameObject{
         g.setColor(Color.BLACK);
         g.fillRect(width+10,height+10,90,90);
         g.drawRect(width+5,height+5,100,100);
-        if(haveGem){
+        if(isHaveGem()){
             g.drawImage(gemObtained.getImageOfGem(),width+40,height+40,null);
         }
 //        String ammo = getAmmo()+"/100";
@@ -157,7 +158,7 @@ public class Player extends GameObject{
     }
     public void saveGem(Gem gem){
         gemObtained = gem;
-        haveGem = true;
+        
     }
     public void stop(){
         x += velX * -1;
@@ -179,6 +180,24 @@ public class Player extends GameObject{
     public void setAmmo(int ammo) {
         this.ammo = ammo;
     }
+
+    public void setHaveGem(boolean haveGem) {
+        this.haveGem = haveGem;
+    }
+
+    public boolean isHaveGem() {
+        return haveGem;
+    }
+
+    public Gem getGemObtained() {
+        return gemObtained;
+    }
+
+    public void setGemObtained(Gem gemObtained) {
+        this.gemObtained = gemObtained;
+    }
+
+        
 
     
     

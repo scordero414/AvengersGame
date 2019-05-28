@@ -13,6 +13,7 @@ import elementos.Player;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javafx.scene.input.MouseButton;
 
 /**
  *
@@ -30,16 +31,32 @@ public class MouseInput extends MouseAdapter{
     
     
     
+    @Override
     public void mousePressed(MouseEvent e){
         int xMouse = (int)(e.getX() + camera.getX());
         int yMouse = (int)(e.getY() + camera.getY());
-        
-         for (int i = 0; i < handler.getMaps().get(0).getGameObjects().size(); i++) {
-            GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
-            
-            if (tempObject instanceof Player) {
-                handler.getMaps().get(0).getGameObjects().add(new Bullet(handler, tempObject.getX()+32, tempObject.getY()+32,xMouse,yMouse));
-            }
+        if(e.getButton() == MouseEvent.BUTTON1){
+            for (int i = 0; i < handler.getMaps().get(0).getGameObjects().size(); i++) {
+               GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
+
+               if (tempObject instanceof Player) {
+                   handler.getMaps().get(0).getGameObjects().add(new Bullet(handler, tempObject.getX()+32, tempObject.getY()+32,xMouse,yMouse));
+
+               }
+               
+           }
         }
+        
+        if(e.getButton()==MouseEvent.BUTTON3){
+            handler.setPressBuuton2(true);
+        }
+        
     }
+    @Override
+    public void mouseReleased(MouseEvent e){
+        if(e.getButton()==MouseEvent.BUTTON3){
+                handler.setPressBuuton2(false);
+            }
+    }
+    
 }

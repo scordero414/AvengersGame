@@ -89,16 +89,60 @@ public class Map extends Sprite{
         }
         return chainsaws;
     }
+    public void removetLasersOfMap(){
+       
+        for (int j = 0; j < gameObjects.size(); j++) {
+            GameObject get = gameObjects.get(j);
+            if(get instanceof LaserBeam){
+                gameObjects.remove(get);
+            }
+        }
+    }
+    public Gem getGemOfMap(){
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject get = gameObjects.get(i);
+            if(get instanceof Gem){
+                return (Gem)get;
+            }
+        }
+        return null;
+    }
     public void checkPlayerCollisionAnotherElements(Player player,ArrayList<Chainsaw> chainsaws){
         checkPlayerCollisionChainsaw(chainsaws, player);
+        
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
             if(tempObject instanceof Gem){
                 if(player.checkCollision(tempObject)){
-                    gameObjects.remove(tempObject);
-                    player.saveGem((Gem) tempObject);
+                    if(handler.isPressBuuton2()){
+                        player.setHaveGem(true);
+                        if(player.isHaveGem()){
+                            player.saveGem((Gem) tempObject);
+                            gameObjects.remove(tempObject);                        
+                        }
+                        if(player.getGemObtained() != null){
+                            gameObjects.add(new Gem(handler, player.getX(), player.getY()));
+                        }  
+                    }else{
+                        player.setHaveGem(false);
+                    }
+                }   
+            }
+            if(tempObject instanceof Chest){
+                Chest chest = (Chest) tempObject;
+                 if(player.getGemObtained() != null){
+                    if(player.getGemObtained().getBounds().intersects(((Chest) tempObject).getBounds())){
+                        chest.setItsFull(true);
+                        player.setHaveGem(false);
+                        gameObjects.remove(getGemOfMap());
+                    }else{
+                        chest.setItsFull(false);
+                    }
+                    
+                    if(chest.isItsFull()){
+                        removetLasersOfMap();
+                    }
                 }
-                
             }
             if(tempObject instanceof Block){
                 Block block = (Block) tempObject;
@@ -108,6 +152,7 @@ public class Map extends Sprite{
                 checkChainsawCollisionBlock(chainsaws, block);
             }
             if(tempObject instanceof LaserBeam){
+                
                 LaserBeam laser = (LaserBeam) tempObject;
                 if(player.checkCollision(laser)){
                     determineWhatToDecrease(player,LaserBeam.DAMAGE);
@@ -160,4 +205,5 @@ public class Map extends Sprite{
             handler.getGameObjectsOfMap().remove(player);
         }
     }
+    
 }
