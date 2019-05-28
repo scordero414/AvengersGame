@@ -17,8 +17,8 @@ public class Gem extends GameObject{
     
     protected BufferedImage[] gemImage = new BufferedImage[6];
     private int level;
-    public Gem(Handler handler, int x, int y) {
-        super(handler, x, y);
+    public Gem( int x, int y) {
+        super( x, y);
         initImages();
         level = Handler.LEVEL;
     }

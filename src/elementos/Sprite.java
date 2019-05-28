@@ -23,18 +23,16 @@ public abstract class Sprite {
     protected int height;
     protected int velX;
     protected int velY;
-    protected Handler handler;
     protected static BufferedImage spriteSheet;
     protected static final int TILE_SIZE = 32;
     
-    public Sprite( Handler handler,int x, int y) {
+    public Sprite(int x, int y) {
         this.x = x;
         this.y = y;
         this.velX = 0;
         this.velY = 0;
         this.width = 20;
         this.height = 20;
-        this.handler = handler;
     }
     
     public abstract void tick();

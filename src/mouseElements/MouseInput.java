@@ -40,7 +40,7 @@ public class MouseInput extends MouseAdapter{
                GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
 
                if (tempObject instanceof Player) {
-                   handler.getMaps().get(0).getGameObjects().add(new Bullet(handler, tempObject.getX()+32, tempObject.getY()+32,xMouse,yMouse));
+                   handler.getMaps().get(0).getGameObjects().add(new Bullet(tempObject.getX()+32, tempObject.getY()+32,xMouse,yMouse));
 
                }
                

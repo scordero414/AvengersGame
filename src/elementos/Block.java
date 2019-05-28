@@ -21,8 +21,8 @@ public class Block extends GameObject{
     private BufferedImage higherBlock = loadSprite("ParedSuperior.png");
     private BufferedImage cornerBlock = loadSprite("EsquinaInferior.png");
     private int typeBlock;
-    public Block(Handler handler, int x, int y,int typeBlock) {
-        super(handler, x, y);
+    public Block( int x, int y,int typeBlock) {
+        super(x, y);
         setWidth(32);
         setHeight(32);
         this.typeBlock = typeBlock;

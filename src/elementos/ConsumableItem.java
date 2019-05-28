@@ -11,8 +11,8 @@ package elementos;
  */
 public abstract class ConsumableItem extends GameObject{
     
-    public ConsumableItem(Handler handler, int x, int y) {
-        super(handler, x, y);
+    public ConsumableItem( int x, int y) {
+        super( x, y);
     }
     
 }

@@ -21,8 +21,8 @@ public class LaserBeam extends Trap{
     
     public static final int DAMAGE = 100;
     private int typeLaser;
-    public LaserBeam(Handler handler, int x, int y,int typeLaser) {
-        super(handler, x, y);
+    public LaserBeam( int x, int y,int typeLaser) {
+        super( x, y);
         setWidth(10);
         setHeight(32);
         initLaserImages();

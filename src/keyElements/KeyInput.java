@@ -36,10 +36,10 @@ public class KeyInput extends KeyAdapter{
             GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
             
             if (tempObject instanceof Player) {
-                if(key == KeyEvent.VK_W) handler.setUp(true);
-                if(key == KeyEvent.VK_S) handler.setDown(true);  
-                if(key == KeyEvent.VK_A) handler.setLeft(true);
-                if(key == KeyEvent.VK_D) handler.setRight(true);
+                if(key == KeyEvent.VK_W) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setUp(true);
+                if(key == KeyEvent.VK_S) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setDown(true);  
+                if(key == KeyEvent.VK_A) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setLeft(true);
+                if(key == KeyEvent.VK_D) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setRight(true);
                 //if(key == KeyEvent.VK_E) handler.setPressE(true);
             }
         }
@@ -56,10 +56,10 @@ public class KeyInput extends KeyAdapter{
             GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
             
             if (tempObject instanceof Player) {
-                if(key == KeyEvent.VK_W) handler.setUp(false);
-                if(key == KeyEvent.VK_S) handler.setDown(false);  
-                if(key == KeyEvent.VK_A) handler.setLeft(false);
-                if(key == KeyEvent.VK_D) handler.setRight(false);
+                if(key == KeyEvent.VK_W) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setUp(false);
+                if(key == KeyEvent.VK_S) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setDown(false);  
+                if(key == KeyEvent.VK_A) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setLeft(false);
+                if(key == KeyEvent.VK_D) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setRight(false);
 //                if(key == KeyEvent.VK_E) handler.setPressE(false);
             }
         }

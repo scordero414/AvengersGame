@@ -14,8 +14,8 @@ import java.awt.Rectangle;
  */
 public abstract class GameObject extends Sprite {
 
-    public GameObject(Handler handler, int x, int y) {
-        super(handler, x, y);
+    public GameObject(int x, int y) {
+        super( x, y);
     }
 
 

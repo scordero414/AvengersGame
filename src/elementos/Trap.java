@@ -11,8 +11,8 @@ package elementos;
  */
 public abstract class Trap extends Enemy{
     
-    public Trap(Handler handler, int x, int y) {
-        super(handler, x, y);
+    public Trap(int x, int y) {
+        super( x, y);
     }
     
 }

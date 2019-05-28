@@ -15,8 +15,8 @@ import java.awt.Rectangle;
  */
 public class Outrider extends MobileEnemy{
 
-    public Outrider(Handler handler, int x, int y) {
-        super(handler, x, y);
+    public Outrider( int x, int y) {
+        super( x, y);
     }
 
     @Override

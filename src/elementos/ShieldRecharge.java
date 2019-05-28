@@ -19,8 +19,8 @@ public class ShieldRecharge extends ConsumableItem{
     public static final int RECHARGE = 10;
     private BufferedImage potionImage = loadSprite("potion.png");
     
-    public ShieldRecharge(Handler handler, int x, int y) {
-        super(handler, x, y);
+    public ShieldRecharge(int x, int y) {
+        super( x, y);
         setWidth(32);
         setHeight(32);
     }

@@ -15,9 +15,9 @@ import java.awt.Rectangle;
 public abstract class MobileEnemy extends Enemy implements Runnable{
 
     protected Thread thread;
-    public MobileEnemy(Handler handler, int x, int y) {
-        super(handler, x, y);
-        thread = new Thread(this);
+    public MobileEnemy( int x, int y) {
+        super( x, y);
+        //thread = new Thread(this);
     }
 
     public abstract void run();

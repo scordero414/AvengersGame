@@ -18,7 +18,6 @@ import static javafx.scene.text.Font.font;
 public class Player extends GameObject{
 
     private static final int VEL = 8;
-    private Handler handler;
     private final BufferedImage[] walkingUp = {getSprite(0, 3), getSprite(1, 3), getSprite(2, 3)};
     private final BufferedImage[] walkingDown = {getSprite(0, 0), getSprite(1, 0), getSprite(2, 0)};
     private final BufferedImage[] walkingLeft = {getSprite(0, 1), getSprite(1, 1), getSprite(2, 1)}; 
@@ -40,12 +39,18 @@ public class Player extends GameObject{
     private boolean obtGem;
     private boolean haveGem;
     private Gem gemObtained;
-
-    public Player(Handler handler, int x, int y) {
-        super(handler, x, y);
-        this.handler = handler;
+    private boolean isAlive;
+    
+    private boolean up;
+    private boolean down;
+    private boolean left;
+    private boolean right;
+    
+    public Player( int x, int y) {
+        super( x, y);
         setWidth(32);
         setHeight(32);
+        isAlive = true;
         obtGem = false;
         haveGem = false;
         this.life = 100;
@@ -57,39 +62,39 @@ public class Player extends GameObject{
     public void tick() {
         x += velX;
         y += velY; 
-        handler.getMaps().get(0).checkCollisionInTheMap(this,handler.getMaps().get(0).getChainsawsOfMap());
+        //handler.getMaps().get(0).checkCollisionInTheMap(this,handler.getMaps().get(0).getChainsawsOfMap());
         move();
         animation.stop();
     }
 
     public void move(){
         
-        if(handler.isDown())  {
+        if(isDown())  {
             velY = VEL;
             animation = walkDownAnimation;
             animation.start();
-        }else if(!handler.isUp()){
+        }else if(!isUp()){
             velY = 0;
         }
-        if(handler.isUp()){
+        if(isUp()){
             velY = -VEL;
             animation = walkUpAnimation;
             animation.start();
-        }else if(!handler.isDown()){
+        }else if(!isDown()){
             velY = 0;
         }
-        if(handler.isLeft()){
+        if(isLeft()){
             velX = -VEL;
             animation = walkLeftAnimation;
             animation.start();
-        }else if(!handler.isRight()){
+        }else if(!isRight()){
             velX = 0;
         }
-        if(handler.isRight()){
+        if(isRight()){
             velX = VEL;
             animation = walkRightAnimation;
             animation.start();
-        }else if(!handler.isLeft()){
+        }else if(!isLeft()){
             velX = 0;
         }
         animation.update();
@@ -197,6 +202,38 @@ public class Player extends GameObject{
         this.gemObtained = gemObtained;
     }
 
+    public boolean isUp() {
+        return up;
+    }
+
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+
+    public boolean isDown() {
+        return down;
+    }
+
+    public void setDown(boolean down) {
+        this.down = down;
+    }
+
+    public boolean isLeft() {
+        return left;
+    }
+
+    public void setLeft(boolean left) {
+        this.left = left;
+    }
+
+    public boolean isRight() {
+        return right;
+    }
+
+    public void setRight(boolean right) {
+        this.right = right;
+    }
+    
         
 
     

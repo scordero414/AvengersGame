@@ -23,8 +23,8 @@ public class Chuzo extends Trap{
     private int typeChuzo;
     public static final int DAMAGE = 3;
     
-    public Chuzo(Handler handler, int x, int y,int typeChuzo) {
-        super(handler, x, y);
+    public Chuzo(int x, int y,int typeChuzo) {
+        super( x, y);
         this.typeChuzo = typeChuzo;
         setWidth(32);
         setHeight(32);

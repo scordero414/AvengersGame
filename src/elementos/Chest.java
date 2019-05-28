@@ -16,8 +16,8 @@ import java.awt.image.BufferedImage;
 public class Chest extends GameObject{
     private boolean itsFull;
     private BufferedImage chestImage = loadSprite("cofre.png");
-    public Chest(Handler handler, int x, int y) {
-        super(handler, x, y);
+    public Chest( int x, int y) {
+        super( x, y);
         itsFull = false;
     }
 

@@ -11,8 +11,8 @@ package elementos;
  */
 public abstract class Enemy extends GameObject {
     
-    public Enemy(Handler handler, int x, int y) {
-        super(handler, x, y);
+    public Enemy(int x, int y) {
+        super( x, y);
     }
     
 }

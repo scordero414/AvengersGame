@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author ASUS
  */
-public class Map extends Sprite{
+public class Map {
 
     private Handler handler;
     private ArrayList<GameObject> gameObjects;
@@ -24,25 +24,40 @@ public class Map extends Sprite{
     private boolean right;
     private Player player;
 
-    public Map(Handler handler, int x, int y) {
-        super(handler, x, y);
-        this.handler = handler;
+    public Map(Handler handler) {
         gameObjects = new ArrayList<>();
-        setWidth(1920);
-        setHeight(1600);
+        this.handler = handler;
+//        setWidth(1920);
+//        setHeight(1600);
         
     }
 
-    @Override
+    
     public void tick() {
         player = getPlayerOfMap();
         ArrayList<Chainsaw> chainsaws = getChainsawsOfMap();
         checkCollisionInTheMap(player,chainsaws);
-        
-        handler.tick();
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject tempObject =  gameObjects.get(i);
+            if(tempObject instanceof Floor){
+                continue;
+            }if(tempObject instanceof Block){
+                continue;
+            }if(tempObject instanceof Chuzo){
+                continue;
+            }if(tempObject instanceof Trap){
+                continue;
+            }if(tempObject instanceof ConsumableItem){
+                continue;
+            }if(tempObject instanceof Gem){
+                continue;
+            }else{
+                tempObject.tick();
+            }
+        }
+        //handler.tick();
     }
 
-    @Override
     public void render(Graphics g) {
 //        g.setColor(Color.white);
 //        g.fillRect(x, y, getWidth(), getHeight());
@@ -50,10 +65,6 @@ public class Map extends Sprite{
         handler.render(g);
     }
 
-    @Override
-    public Rectangle getBounds() {
-        return new Rectangle(x, y, getWidth(), getHeight());
-    }
 
     public ArrayList<GameObject> getGameObjects() {
         return gameObjects;
@@ -118,6 +129,7 @@ public class Map extends Sprite{
         return null;
     }
     public void checkCollisionInTheMap(Player player,ArrayList<Chainsaw> chainsaws){
+        System.out.println("Holalaaaa");
         checkPlayerCollisionChainsaw(chainsaws, player);
         
         for (int i = 0; i < gameObjects.size(); i++) {
@@ -131,7 +143,7 @@ public class Map extends Sprite{
                             gameObjects.remove(tempObject);                        
                         }
                         if(player.getGemObtained() != null){
-                            gameObjects.add(new Gem(handler, player.getX(), player.getY()));
+                            gameObjects.add(new Gem(player.getX(), player.getY()));
                         }  
                     }else{
                         player.setHaveGem(false);

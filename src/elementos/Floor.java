@@ -15,8 +15,8 @@ import java.awt.image.BufferedImage;
  */
 public class Floor extends GameObject{
     private BufferedImage floor = loadSprite("fondo (2).png");
-    public Floor(Handler handler, int x, int y) {
-        super(handler, x, y);
+    public Floor( int x, int y) {
+        super( x, y);
     }
 
     @Override

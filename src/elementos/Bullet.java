@@ -17,12 +17,10 @@ import java.awt.image.BufferedImage;
 public class Bullet extends GameObject{
 
     public static int BULLET_SPEED = 40;
-    private Handler handler;
     private BufferedImage bulletImage = loadSprite("bala.png");
     
-    public Bullet(Handler handler, int x, int y,int xMouse, int yMouse) {
-        super(handler, x, y);
-        this.handler = handler;
+    public Bullet(int x, int y,int xMouse, int yMouse) {
+        super(x, y);
         setVelX((xMouse - getX()) / BULLET_SPEED);
         setVelY((yMouse - getY()) / BULLET_SPEED);
         setWidth(12);

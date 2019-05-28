@@ -26,8 +26,8 @@ public class Chainsaw extends MobileEnemy{
     private int typeChainsaw;
     
     
-    public Chainsaw(Handler handler, int x, int y,int typeChainsaw) {
-        super(handler, x, y);
+    public Chainsaw( int x, int y,int typeChainsaw) {
+        super( x, y);
         setWidth(32);
         setHeight(32);
         this.typeChainsaw = typeChainsaw;
