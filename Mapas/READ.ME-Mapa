@@ -1,0 +1,12 @@
+0: Floor
+1: Vertical wall
+2: Horizontal wall
+3: Corners
+k: Horizontal lasers
+l: Vertical lasers
+s: Shields
+h: Chest
+c: Vertical thorns
+x: Horizontal thorns
+-: Empty space
+p: Start player

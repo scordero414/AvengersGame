@@ -5,6 +5,8 @@
  */
 package vistas;
 
+import java.awt.Color;
+
 /**
  *
  * @author dgutierrezd
@@ -21,6 +23,7 @@ public class InstructionsView extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(this);
         setVisible(true);
+        setBackground(Color.black);
     }
 
     /**
@@ -32,6 +35,9 @@ public class InstructionsView extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -49,9 +55,19 @@ public class InstructionsView extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Purisa", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(140, 140, 140));
         jLabel2.setText("Instructions");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/InstructionsAvengers.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GauntletGif (1).gif"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 110, 100));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AvengersInstructions (3) (1).jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 500, 330));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/avengersLogo.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 120, 110));
+
+        fondo.setForeground(new java.awt.Color(1, 1, 1));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/black16.jpg"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 400));
 
         pack();
@@ -70,5 +86,8 @@ public class InstructionsView extends javax.swing.JDialog {
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
