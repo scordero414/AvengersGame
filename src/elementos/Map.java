@@ -37,7 +37,7 @@ public class Map extends Sprite{
     public void tick() {
         player = getPlayerOfMap();
         ArrayList<Chainsaw> chainsaws = getChainsawsOfMap();
-        checkPlayerCollisionAnotherElements(player,chainsaws);
+        checkCollisionInTheMap(player,chainsaws);
         
         handler.tick();
     }
@@ -107,7 +107,7 @@ public class Map extends Sprite{
         }
         return null;
     }
-    public void checkPlayerCollisionAnotherElements(Player player,ArrayList<Chainsaw> chainsaws){
+    public void checkCollisionInTheMap(Player player,ArrayList<Chainsaw> chainsaws){
         checkPlayerCollisionChainsaw(chainsaws, player);
         
         for (int i = 0; i < gameObjects.size(); i++) {
@@ -178,6 +178,7 @@ public class Map extends Sprite{
         }
         
     }
+    
     private void checkChainsawCollisionBlock( ArrayList<Chainsaw> chainsaws,Block block){
         for(int j = 0; j<chainsaws.size();j++){
             if(chainsaws.get(j).checkCollision(block)){

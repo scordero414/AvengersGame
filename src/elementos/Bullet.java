@@ -8,6 +8,7 @@ package elementos;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Bullet extends GameObject{
 
     public static int BULLET_SPEED = 40;
     private Handler handler;
+    private BufferedImage bulletImage = loadSprite("bala.png");
     
     public Bullet(Handler handler, int x, int y,int xMouse, int yMouse) {
         super(handler, x, y);
@@ -46,8 +48,7 @@ public class Bullet extends GameObject{
     }
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.RED);
-        g.fillOval(x, y, getWidth(),getHeight());
+        g.drawImage(bulletImage, x, y, null);
     }
 
     @Override
