@@ -61,6 +61,11 @@ public class Handler {
     public void setInGame(boolean inGame) {
         this.inGame = inGame;
     }
+
+    public ArrayList<Map> getMaps() {
+        return maps;
+    }
+    
     
     
    

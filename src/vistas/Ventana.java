@@ -11,6 +11,8 @@ import java.awt.Label;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -23,7 +25,7 @@ import javax.swing.Timer;
  *
  * @author ASUS
  */
-public class Ventana extends JFrame{
+public class Ventana extends javax.swing.JFrame{
     
     private World world;
     private int width;

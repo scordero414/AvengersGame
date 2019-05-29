@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import keyElements.KeyInput;
 import mouseElements.MouseInput;
+import vistas.MenuView;
 import vistas.Ventana;
 
 /**
@@ -51,7 +52,6 @@ public class World extends Canvas implements Runnable{
         this.addMouseListener(new MouseInput(handler, camera));
         
     }
-    
     /**
      * @param args the command line arguments
      */
@@ -107,12 +107,13 @@ public class World extends Canvas implements Runnable{
     }
 
     public void tick() {
-        camera.tick(handler.getMap().getPlayerOfMap());
-        inGame = handler.isInGame();
-        if(inGame){
-            
+        if(handler.getMap().getPlayerOfMap() != null){
+            camera.tick(handler.getMap().getPlayerOfMap());
+            handler.tick();
+        }else{
+            ventana.setVisible(false);
+            MenuView menuView = new MenuView(ventana, true);
         }
-        handler.tick();
     }
 
     private void render() {
