@@ -108,6 +108,9 @@ public class Player extends GameObject{
     
     public void loseLife(int amount){        
         setLife(getLife()- amount);
+        if(life <=0){
+            isAlive = false;
+        }
     }
     public void loseAmmo(int amount){        
         setAmmo(getAmmo()- amount);
@@ -166,8 +169,10 @@ public class Player extends GameObject{
         
     }
     public void stop(){
-        x += velX * -1;
-        y += velY * -1;
+        velX *= -1;
+        velY *=-1;
+        x += velX;
+        y += velY;
     }
 
     public int getLife() {
@@ -233,10 +238,13 @@ public class Player extends GameObject{
     public void setRight(boolean right) {
         this.right = right;
     }
-    
-        
 
-    
-    
+    public boolean isIsAlive() {
+        return isAlive;
+    }
+
+    public void setIsAlive(boolean isAlive) {
+        this.isAlive = isAlive;
+    }
     
 }

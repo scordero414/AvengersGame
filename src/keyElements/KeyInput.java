@@ -32,14 +32,14 @@ public class KeyInput extends KeyAdapter{
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
         
-        for (int i = 0; i < handler.getMaps().get(0).getGameObjects().size(); i++) {
-            GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
+        for (int i = 0; i < handler.getMap().getGameObjects().size(); i++) {
+            GameObject tempObject = handler.getMap().getGameObjects().get(i);
             
             if (tempObject instanceof Player) {
-                if(key == KeyEvent.VK_W) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setUp(true);
-                if(key == KeyEvent.VK_S) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setDown(true);  
-                if(key == KeyEvent.VK_A) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setLeft(true);
-                if(key == KeyEvent.VK_D) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setRight(true);
+                if(key == KeyEvent.VK_W) handler.getMap().setUp(true);
+                if(key == KeyEvent.VK_S) handler.getMap().setDown(true);  
+                if(key == KeyEvent.VK_A) handler.getMap().setLeft(true);
+                if(key == KeyEvent.VK_D) handler.getMap().setRight(true);
                 //if(key == KeyEvent.VK_E) handler.setPressE(true);
             }
         }
@@ -52,14 +52,14 @@ public class KeyInput extends KeyAdapter{
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
         
-        for (int i = 0; i < handler.getMaps().get(0).getGameObjects().size(); i++) {
-            GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
+        for (int i = 0; i < handler.getMap().getGameObjects().size(); i++) {
+            GameObject tempObject = handler.getMap().getGameObjects().get(i);
             
             if (tempObject instanceof Player) {
-                if(key == KeyEvent.VK_W) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setUp(false);
-                if(key == KeyEvent.VK_S) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setDown(false);  
-                if(key == KeyEvent.VK_A) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setLeft(false);
-                if(key == KeyEvent.VK_D) handler.getMaps().get(Handler.LEVEL-1).getPlayerOfMap().setRight(false);
+                if(key == KeyEvent.VK_W) handler.getMap().setUp(false);
+                if(key == KeyEvent.VK_S) handler.getMap().setDown(false);  
+                if(key == KeyEvent.VK_A) handler.getMap().setLeft(false);
+                if(key == KeyEvent.VK_D) handler.getMap().setRight(false);
 //                if(key == KeyEvent.VK_E) handler.setPressE(false);
             }
         }

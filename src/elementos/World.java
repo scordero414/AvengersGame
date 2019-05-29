@@ -33,7 +33,8 @@ public class World extends Canvas implements Runnable{
     private LectorMapa lectorMapa;
     private Camera camera;
     public static int LEVEL = 0;
-    
+    private boolean inGame;
+    private Ventana ventana;
     public World() throws IOException  {
         Ventana ventana = new Ventana(1280, 960, "AvengersGame",this);
         
@@ -106,11 +107,10 @@ public class World extends Canvas implements Runnable{
     }
 
     public void tick() {
-        for (int i = 0; i < (handler.getGameObjectsOfMap()).size(); i++) {
-            GameObject tempObject = handler.getGameObjectsOfMap().get(i);
-            if(tempObject instanceof Player){
-                camera.tick(tempObject);
-            }
+        camera.tick(handler.getMap().getPlayerOfMap());
+        inGame = handler.isInGame();
+        if(inGame){
+            
         }
         handler.tick();
     }
@@ -130,24 +130,27 @@ public class World extends Canvas implements Runnable{
         
         g.setColor(Color.black);
         g.fillRect(0, 0, 1920, 1600);
-        handler.getMaps().get(Handler.LEVEL-1).render(g);
         handler.render(g);
         
         g2d.translate(camera.getX(), camera.getY());
         for (int i = 0; i < (handler.getGameObjectsOfMap()).size(); i++) {
             GameObject tempObject = handler.getGameObjectsOfMap().get(i);
             if(tempObject instanceof Player){
-                handler.getMaps().get(0).getPlayerOfMap().drawLifeLine(g,(getWidth()/2),getHeight()-60);
-                handler.getMaps().get(0).getPlayerOfMap().drawAmmoLine(g,(getWidth()/2),getHeight()-30);
-                handler.getMaps().get(0).getPlayerOfMap().drawInventary(g,0,0);
+                handler.getMap().getPlayerOfMap().drawLifeLine(g,(getWidth()/2),getHeight()-60);
+                handler.getMap().getPlayerOfMap().drawAmmoLine(g,(getWidth()/2),getHeight()-30);
+                handler.getMap().getPlayerOfMap().drawInventary(g,0,0);
             }
         }
-        
         
         g.dispose();
         bs.show();
     }
 
+    public void setVentana(Ventana ventana) {
+        this.ventana = ventana;
+    }
+    
+    
 
    
 

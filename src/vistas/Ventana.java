@@ -23,10 +23,9 @@ import javax.swing.Timer;
  *
  * @author ASUS
  */
-public class Ventana {
+public class Ventana extends JFrame{
     
     private World world;
-    private JFrame frame;
     private int width;
     private int height;
     private int seg;
@@ -35,35 +34,32 @@ public class Ventana {
         this.width = width;
         this.world = world;
         this.height = height;
-        this.frame = new JFrame(name);
-        inicializarFrame();
-        initPanel();
+        world.setVentana(this);
+        inicializarFrame(name);
         crearVistaMenu();
     }
 
-    public void inicializarFrame(){
-        frame.setPreferredSize(new Dimension(width, height));
-        frame.setMaximumSize(new Dimension(width, height));
-        frame.setMinimumSize(new Dimension(width, height));
-        frame.add(world);
-        frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(false);
-    }
-    public void initPanel(){
-        
+    public void inicializarFrame(String name){
+        setName(name);
+        setPreferredSize(new Dimension(width, height));
+        setMaximumSize(new Dimension(width, height));
+        setMinimumSize(new Dimension(width, height));
+        add(world);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(false);
     }
     
     public void decidirBotonesMenu(MenuView menuView) {
         switch(menuView.getEstado()) {
             case 1:
-                frame.setVisible(true);
-                LoadView loadView = new LoadView(frame, false);
+                setVisible(true);
+                LoadView loadView = new LoadView(this, false);
                 
             break;
             case 2:
-                InstructionsView instructionsView = new InstructionsView(frame, true);
+                InstructionsView instructionsView = new InstructionsView(this, true);
                 decidirBotonesInstrucciones(instructionsView);
             break;
             case 3:
@@ -81,7 +77,7 @@ public class Ventana {
     }
     
     public void crearVistaMenu() {
-       MenuView menuView = new MenuView(frame, true);
+       MenuView menuView = new MenuView(this, true);
        decidirBotonesMenu(menuView);
     }
 
@@ -90,7 +86,7 @@ public class Ventana {
     }
 
     public JFrame getFrame() {
-        return frame;
+        return this;
     }
     
     

@@ -36,11 +36,11 @@ public class MouseInput extends MouseAdapter{
         int xMouse = (int)(e.getX() + camera.getX());
         int yMouse = (int)(e.getY() + camera.getY());
         if(e.getButton() == MouseEvent.BUTTON1){
-            for (int i = 0; i < handler.getMaps().get(0).getGameObjects().size(); i++) {
-               GameObject tempObject = handler.getMaps().get(0).getGameObjects().get(i);
+            for (int i = 0; i < handler.getMap().getGameObjects().size(); i++) {
+               GameObject tempObject = handler.getMap().getGameObjects().get(i);
 
                if (tempObject instanceof Player) {
-                   handler.getMaps().get(0).getGameObjects().add(new Bullet(tempObject.getX()+32, tempObject.getY()+32,xMouse,yMouse));
+                   handler.getMap().getGameObjects().add(new Bullet(tempObject.getX()+32, tempObject.getY()+32,xMouse,yMouse));
 
                }
                

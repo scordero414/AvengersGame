@@ -35,6 +35,13 @@ public class Map {
     
     public void tick() {
         player = getPlayerOfMap();
+        player.setUp(up);
+        player.setDown(down);
+        player.setLeft(left);
+        player.setRight(right);
+        if(playerDIed()){
+            handler.isInGame();
+        }
         ArrayList<Chainsaw> chainsaws = getChainsawsOfMap();
         checkCollisionInTheMap(player,chainsaws);
         for (int i = 0; i < gameObjects.size(); i++) {
@@ -59,10 +66,10 @@ public class Map {
     }
 
     public void render(Graphics g) {
-//        g.setColor(Color.white);
-//        g.fillRect(x, y, getWidth(), getHeight());
-                
-        handler.render(g);
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject tempObject = gameObjects.get(i);
+            tempObject.render(g);  
+        }
     }
 
 
@@ -129,7 +136,6 @@ public class Map {
         return null;
     }
     public void checkCollisionInTheMap(Player player,ArrayList<Chainsaw> chainsaws){
-        System.out.println("Holalaaaa");
         checkPlayerCollisionChainsaw(chainsaws, player);
         
         for (int i = 0; i < gameObjects.size(); i++) {
@@ -204,6 +210,10 @@ public class Map {
         }
         
     }
+    
+    private boolean playerDIed(){
+        return !player.isIsAlive();
+    }
     private void checkBulletCollisionBlock(ArrayList<Block> blocks, Bullet bullet){
         for(int j = 0; j<blocks.size();j++){
             if(bullet.checkBulletHitsGameObjects(blocks.get(j))){
@@ -238,5 +248,40 @@ public class Map {
             handler.getGameObjectsOfMap().remove(player);
         }
     }
+
+    public boolean isUp() {
+        return up;
+    }
+
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+
+    public boolean isDown() {
+        return down;
+    }
+
+    public void setDown(boolean down) {
+        this.down = down;
+    }
+
+    public boolean isLeft() {
+        return left;
+    }
+
+    public void setLeft(boolean left) {
+        this.left = left;
+    }
+
+    public boolean isRight() {
+        return right;
+    }
+
+    public void setRight(boolean right) {
+        this.right = right;
+    }
+    
+    
+    
     
 }

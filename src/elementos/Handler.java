@@ -18,22 +18,17 @@ public class Handler {
     
     private boolean pressBuuton2;
     public static int LEVEL = 1;
-    
+    private boolean inGame;
     public Handler() {
         this.maps = new ArrayList<>();
     }
     
     public void tick(){
-        ArrayList<GameObject> gameObjects = getGameObjectsOfMap();
-       
+       getMap().tick();
     }
     
     public void render(Graphics g){
-        ArrayList<GameObject> gameObjects = getGameObjectsOfMap();
-        for (int i = 0; i < gameObjects.size(); i++) {
-            GameObject tempObject = gameObjects.get(i);
-            tempObject.render(g);  
-        }
+        getMap().render(g);
     }
     
     public ArrayList<GameObject> getGameObjectsOfMap(){
@@ -47,8 +42,8 @@ public class Handler {
         maps.remove(tempGameObject);
     }
 
-    public ArrayList<Map> getMaps() {
-        return maps;
+    public Map getMap() {
+        return maps.get(LEVEL-1);
     }
 
     public boolean isPressBuuton2() {
@@ -59,8 +54,14 @@ public class Handler {
         this.pressBuuton2 = pressBuuton2;
     }
 
-    
+    public boolean isInGame(){
+        return inGame;
+    }
 
+    public void setInGame(boolean inGame) {
+        this.inGame = inGame;
+    }
+    
     
    
 }
