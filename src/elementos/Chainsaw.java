@@ -75,7 +75,8 @@ public class Chainsaw extends GameObjectMobile{
         
     }
     
-    public boolean checkCollision(GameObjectStatic tempObject){
+    @Override
+    public boolean checkCollision(GameObject tempObject){
         return getBounds().intersects(tempObject.getBounds());
     }
 }

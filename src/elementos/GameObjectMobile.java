@@ -21,6 +21,7 @@ public abstract class GameObjectMobile extends GameObject{
     }
     
     public abstract void tick();
+    public abstract boolean checkCollision(GameObject tempObject);
 
     public int getVelX() {
         return velX;

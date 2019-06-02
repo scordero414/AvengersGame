@@ -41,7 +41,8 @@ public class Bullet extends GameObjectMobile{
         //checkBulletHitsGameObjects();
     }
     
-    public boolean checkBulletHitsGameObjects(GameObjectStatic tempObject){
+    @Override
+    public boolean checkCollision(GameObject tempObject){
         return getBounds().intersects(tempObject.getBounds());
     }
     

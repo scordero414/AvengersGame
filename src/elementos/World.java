@@ -39,7 +39,7 @@ public class World extends Canvas implements Runnable{
         camera = new Camera(0, 0);
         handler = new Handler();
         Ventana ventana = new Ventana(1280, 960, "AvengersGame",this,camera);
-        this.lectorMapa = new LectorMapaTxt(handler);
+        this.lectorMapa = new LectorMapaTxt();
         Map map1 = lectorMapa.leerMapa();        
         handler.addMap(map1);
         start();

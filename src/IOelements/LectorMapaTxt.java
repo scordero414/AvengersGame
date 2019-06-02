@@ -41,16 +41,12 @@ public class LectorMapaTxt implements LectorMapa {
     private int width = 60;
     private int height = 50;
     private final Path ruta = Paths.get("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\Mapas\\mapa_1.txt");
-    private Handler handler;
-    public LectorMapaTxt(Handler handler) {
-        this.handler =  handler;
-    }
     
     
     @Override
     public Map leerMapa() throws IOException{
         
-        Map map = new Map(handler);
+        Map map = new Map();
         
         char [][] matriz  = new char[width][width];
         
@@ -134,10 +130,10 @@ public class LectorMapaTxt implements LectorMapa {
                         map.addGameObject(floor);
                     break;
                     case 'e':
-                        GameObjectMobile outrider = new Outrider( j*32, i*32);
-                        mobileObjects.add(outrider);
                         floor = new Floor( j*32, i*32);
                         map.addGameObject(floor);
+                        GameObjectMobile outrider = new Outrider( j*32, i*32);
+                        mobileObjects.add(outrider);
                     break;
                     case 'p':
                         GameObjectMobile player = new Player( j*32, i*32);
