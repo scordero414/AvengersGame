@@ -23,8 +23,8 @@ public class Bullet extends GameObject{
         super(x, y);
         setVelX((xMouse - getX()) / BULLET_SPEED);
         setVelY((yMouse - getY()) / BULLET_SPEED);
-        setWidth(12);
-        setHeight(12);
+        setWidth(32);
+        setHeight(32);
     }
 
     @Override
