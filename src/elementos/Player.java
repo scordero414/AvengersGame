@@ -183,7 +183,7 @@ public class Player extends GameObjectMobile{
     public static BufferedImage getSprite(int xGrid, int yGrid) {
 
         if (spriteSheet == null) {
-            spriteSheet = loadSprite("ImagePlayer.png");
+            spriteSheet = loadSprite("capAmerica.png");
         }
 
         return spriteSheet.getSubimage(xGrid * TILE_SIZE, yGrid * TILE_SIZE, TILE_SIZE, TILE_SIZE);

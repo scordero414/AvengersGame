@@ -16,13 +16,11 @@ import java.util.ArrayList;
  */
 public class Map {
 
-    private Handler handler;
     private ArrayList<GameObject> gameObjects;
     private Player player;
 
     public Map(Handler handler) {
         gameObjects = new ArrayList<>();
-        this.handler = handler;
 //        setWidth(1920);
 //        setHeight(1600);
         
@@ -31,9 +29,6 @@ public class Map {
     
     public void tick() {
         player = getPlayerOfMap();
-        if(playerDIed()){
-            handler.isInGame();
-        }
         ArrayList<Chainsaw> chainsaws = getChainsawsOfMap();
         checkCollisionInTheMap(player,chainsaws);
         for (int i = 0; i < gameObjects.size(); i++) {
@@ -189,6 +184,9 @@ public class Map {
             }
             if(tempObject instanceof Bullet){
                 Bullet bullet = (Bullet) tempObject;
+                if(bullet.isWentBack()){
+                    gameObjects.remove(bullet);
+                }
                 checkBulletCollisionBlock(getBlocksOfMap(), bullet);
             }
             
@@ -200,9 +198,10 @@ public class Map {
         return !player.isIsAlive();
     }
     private void checkBulletCollisionBlock(ArrayList<Block> blocks, Bullet bullet){
+        bullet.setPlayer(player);
         for(int j = 0; j<blocks.size();j++){
             if(bullet.checkBulletHitsGameObjects(blocks.get(j))){
-                gameObjects.remove(bullet);
+                bullet.setGoBack(true);
             }
         }
     }
@@ -230,7 +229,7 @@ public class Map {
         }else if(player.getLife()>0){
            player.loseLife(amountDamage);
         }else if(player.getLife() <= 0){
-            handler.getGameObjectsOfMap().remove(player);
+            gameObjects.remove(player);
         }
     }
 

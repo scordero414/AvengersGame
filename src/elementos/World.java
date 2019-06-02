@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import keyElements.KeyInput;
 import mouseElements.MouseInput;
 import vistas.GameView;
 import vistas.MenuView;
