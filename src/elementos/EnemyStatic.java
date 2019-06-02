@@ -9,10 +9,10 @@ package elementos;
  *
  * @author ASUS
  */
-public abstract class Enemy extends GameObjectMobile {
+public abstract class EnemyStatic extends GameObjectStatic{
     
-    public Enemy(int x, int y) {
-        super( x, y);
+    public EnemyStatic(int x, int y) {
+        super(x, y);
     }
     
 }

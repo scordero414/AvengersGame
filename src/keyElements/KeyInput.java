@@ -6,6 +6,7 @@
 package keyElements;
 
 import elementos.GameObject;
+import elementos.GameObjectStatic;
 import elementos.Gem;
 import elementos.Handler;
 import elementos.Player;

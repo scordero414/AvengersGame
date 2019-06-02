@@ -14,16 +14,14 @@ import java.awt.image.BufferedImage;
  * @author ASUS
  */
 public class Floor extends GameObject{
+    
     private BufferedImage floor = loadSprite("fondo (2).png");
+    
     public Floor( int x, int y) {
         super( x, y);
     }
 
-    @Override
-    public void tick() {
-        
-    }
-
+   
     @Override
     public void render(Graphics g) {
         g.drawImage(floor, x, y, null);
@@ -33,5 +31,6 @@ public class Floor extends GameObject{
     public Rectangle getBounds() {
         return null;
     }
+
     
 }

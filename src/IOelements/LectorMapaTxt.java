@@ -13,6 +13,8 @@ import elementos.Chest;
 import elementos.Chuzo;
 import elementos.Floor;
 import elementos.GameObject;
+import elementos.GameObjectMobile;
+import elementos.GameObjectStatic;
 import elementos.Gem;
 import elementos.Handler;
 import elementos.LaserBeam;
@@ -72,7 +74,7 @@ public class LectorMapaTxt implements LectorMapa {
     }
     
     public void dibujarMatriz(Map map,char[][] matriz){
-        ArrayList<GameObject> mobileObjects = new ArrayList<>();
+        ArrayList<GameObjectMobile> mobileObjects = new ArrayList<>();
         for(int i = 0 ; i<matriz.length ; i++){
             for(int j=0; j<matriz[0].length ; j++){
                 GameObject floor;
@@ -82,77 +84,77 @@ public class LectorMapaTxt implements LectorMapa {
                         map.addGameObject(floor);
                     break;
                     case '1':
-                        GameObject sideBlock = new Block( j*32, i*32,1);
+                        GameObjectStatic sideBlock = new Block( j*32, i*32,1);
                         map.addGameObject(sideBlock);
                     break;
                     case '2':
-                        GameObject higherBlock = new Block(j*32, i*32,2);
+                        GameObjectStatic higherBlock = new Block(j*32, i*32,2);
                         map.addGameObject(higherBlock);
                     break;
                     case '3':
-                        GameObject cornerBlock = new Block( j*32, i*32,3);
+                        GameObjectStatic cornerBlock = new Block( j*32, i*32,3);
                         map.addGameObject(cornerBlock);
                     break;
                     case 'l':
                         floor = new Floor( j*32, i*32);
                         map.addGameObject(floor);
-                        GameObject laser = new LaserBeam( j*32, i*32,2);
+                        GameObjectStatic laser = new LaserBeam( j*32, i*32,2);
                         map.addGameObject(laser);                        
                     break;
                     case 'k':
                         floor = new Floor( j*32, i*32);
                         map.addGameObject(floor);
-                        GameObject laser2 = new LaserBeam(j*32, i*32,1);
+                        GameObjectStatic laser2 = new LaserBeam(j*32, i*32,1);
                         map.addGameObject(laser2);                        
                     break;
                     case 's':
                         floor = new Floor( j*32, i*32);
                         map.addGameObject(floor);
-                        GameObject shield = new ShieldRecharge(j*32, i*32);
+                        GameObjectStatic shield = new ShieldRecharge(j*32, i*32);
                         map.addGameObject(shield);
                     break;
                     case 'c':
-                        GameObject chuzo = new Chuzo(j*32, i*32,1);
+                        GameObjectStatic chuzo = new Chuzo(j*32, i*32,1);
                         map.addGameObject(chuzo);
                     break;
                     case 'x':
-                        GameObject chuzo2 = new Chuzo( j*32, i*32,2);
+                        GameObjectStatic chuzo2 = new Chuzo( j*32, i*32,2);
                         map.addGameObject(chuzo2);
                     break;
                     case 'm':
-                        GameObject chainsaw = new Chainsaw(j*32, i*32,1);
+                        GameObjectMobile chainsaw = new Chainsaw(j*32, i*32,1);
                         mobileObjects.add(chainsaw);
                         floor = new Floor( j*32, i*32);
                         map.addGameObject(floor);
                     break;
                     case 'n':
-                        GameObject chainsaw2 = new Chainsaw( j*32, i*32,2);
+                        GameObjectMobile chainsaw2 = new Chainsaw( j*32, i*32,2);
                         mobileObjects.add(chainsaw2);
                         floor = new Floor(j*32, i*32);
                         map.addGameObject(floor);
                     break;
                     case 'e':
-                        GameObject outrider = new Outrider( j*32, i*32);
+                        GameObjectMobile outrider = new Outrider( j*32, i*32);
                         mobileObjects.add(outrider);
                         floor = new Floor( j*32, i*32);
                         map.addGameObject(floor);
                     break;
                     case 'p':
-                        GameObject player = new Player( j*32, i*32);
+                        GameObjectMobile player = new Player( j*32, i*32);
                         mobileObjects.add(player);
-                        GameObject floor3 = new Floor(j*32, i*32);
-                        map.addGameObject(floor3);
+                        floor = new Floor(j*32, i*32);
+                        map.addGameObject(floor);
                     break;
                     case 'g':
                         floor = new Floor( j*32, i*32);
                         map.addGameObject(floor);
-                        GameObject gem = new Gem( j*32, i*32);
+                        GameObjectStatic gem = new Gem( j*32, i*32);
                         map.addGameObject(gem);
                     break;
                     case 'h':
                         floor = new Floor( j*32, i*32);
                         map.addGameObject(floor);
-                        GameObject chest = new Chest(j*32, i*32);
+                        GameObjectStatic chest = new Chest(j*32, i*32);
                         map.addGameObject(chest);
                     break;
                 }
@@ -161,7 +163,7 @@ public class LectorMapaTxt implements LectorMapa {
         }
         
         for (int i = 0; i < mobileObjects.size(); i++) {
-            GameObject get = mobileObjects.get(i);
+            GameObjectMobile get = mobileObjects.get(i);
             map.addGameObject(get);
         }
    }

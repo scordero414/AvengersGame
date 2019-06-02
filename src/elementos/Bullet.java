@@ -14,17 +14,17 @@ import java.awt.image.BufferedImage;
  *
  * @author ASUS
  */
-public class Bullet extends GameObject{
+public class Bullet extends GameObjectMobile{
 
     public static int BULLET_SPEED = 40;
     private BufferedImage bulletImage = loadSprite("bala.png");
     
     public Bullet(int x, int y,int xMouse, int yMouse) {
         super(x, y);
-        setVelX((xMouse - getX()) / BULLET_SPEED);
-        setVelY((yMouse - getY()) / BULLET_SPEED);
         setWidth(32);
         setHeight(32);
+        setVelX((xMouse - getX()) / BULLET_SPEED);
+        setVelY((yMouse - getY()) / BULLET_SPEED);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Bullet extends GameObject{
         //checkBulletHitsGameObjects();
     }
     
-    public boolean checkBulletHitsGameObjects(GameObject tempObject){
+    public boolean checkBulletHitsGameObjects(GameObjectStatic tempObject){
         return getBounds().intersects(tempObject.getBounds());
     }
     

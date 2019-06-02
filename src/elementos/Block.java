@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
  *
  * @author ASUS
  */
-public class Block extends GameObject{
+public class Block extends GameObjectStatic{
     private final int SIDE_BLOCK = 2;
     private final int HIGHER_BLOCK = 1;
     private final int CORNER_BLOCK = 3;
@@ -28,10 +28,6 @@ public class Block extends GameObject{
         this.typeBlock = typeBlock;
     }
 
-    @Override
-    public void tick() {
-        
-    }
 
     @Override
     public void render(Graphics g) {

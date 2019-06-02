@@ -13,16 +13,12 @@ import java.awt.Rectangle;
  *
  * @author ASUS
  */
-public class Outrider extends MobileEnemy{
+public class Outrider extends GameObjectMobile{
 
     public Outrider( int x, int y) {
         super( x, y);
     }
 
-    @Override
-    public void run() {
-        
-    }
 
     @Override
     public void tick() {

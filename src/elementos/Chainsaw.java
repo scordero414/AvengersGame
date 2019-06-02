@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author ASUS
  */
-public class Chainsaw extends MobileEnemy{
+public class Chainsaw extends GameObjectMobile{
     
     public static final int DAMAGE = 6;
     private BufferedImage chainsawImage = loadSprite("Sierra.gif");
@@ -39,22 +39,8 @@ public class Chainsaw extends MobileEnemy{
                 velY = 6;
             break;
         }
-//        this.running = false;
-//        start();
     }
 
-//    public void start(){
-//        running = true;
-//        thread = new Thread(this);
-//        thread.start();
-//    }
-    @Override
-    public void run() {
-//        while(running){
-//           velY = 3;
-//            mov
-//        }
-    }
     @Override
     public void tick(){
         x += velX;
@@ -89,7 +75,7 @@ public class Chainsaw extends MobileEnemy{
         
     }
     
-    public boolean checkCollision(GameObject tempObject){
+    public boolean checkCollision(GameObjectStatic tempObject){
         return getBounds().intersects(tempObject.getBounds());
     }
 }

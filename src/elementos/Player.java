@@ -15,7 +15,7 @@ import static javafx.scene.text.Font.font;
  *
  * @author ASUS
  */
-public class Player extends GameObject{
+public class Player extends GameObjectMobile{
 
     private static final int VEL = 8;
     private final BufferedImage[] walkingUp = {getSprite(0, 3), getSprite(1, 3), getSprite(2, 3)};
@@ -33,6 +33,7 @@ public class Player extends GameObject{
 
     // This is the actual animation
     private Animation animation = standingAnimation;
+    private static BufferedImage spriteSheet;
     
     private int life;
     private int ammo;
@@ -40,6 +41,8 @@ public class Player extends GameObject{
     private boolean haveGem;
     private Gem gemObtained;
     private boolean isAlive;
+    private boolean itsFull;
+    
     
     private boolean up;
     private boolean down;
@@ -55,6 +58,7 @@ public class Player extends GameObject{
         haveGem = false;
         this.life = 100;
         this.ammo = 0;
+        itsFull = false;
     }
 
 
@@ -175,6 +179,16 @@ public class Player extends GameObject{
         y += velY;
     }
 
+    
+    public static BufferedImage getSprite(int xGrid, int yGrid) {
+
+        if (spriteSheet == null) {
+            spriteSheet = loadSprite("ImagePlayer.png");
+        }
+
+        return spriteSheet.getSubimage(xGrid * TILE_SIZE, yGrid * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+    }
+    
     public int getLife() {
         return life;
     }

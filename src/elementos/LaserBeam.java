@@ -5,7 +5,6 @@
  */
 package elementos;
 
-import static elementos.Sprite.loadSprite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -27,11 +26,6 @@ public class LaserBeam extends Trap{
         setHeight(32);
         initLaserImages();
         this.typeLaser = typeLaser;
-        
-    }
-
-    @Override
-    public void tick() {
         
     }
 

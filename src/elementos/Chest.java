@@ -13,17 +13,12 @@ import java.awt.image.BufferedImage;
  *
  * @author ASUS
  */
-public class Chest extends GameObject{
+public class Chest extends GameObjectStatic{
     private boolean itsFull;
     private BufferedImage chestImage = loadSprite("cofre.png");
     public Chest( int x, int y) {
         super( x, y);
         itsFull = false;
-    }
-
-    @Override
-    public void tick() {
-        
     }
 
     @Override

@@ -9,7 +9,7 @@ package elementos;
  *
  * @author ASUS
  */
-public abstract class ConsumableItem extends GameObject{
+public abstract class ConsumableItem extends GameObjectStatic{
     
     public ConsumableItem( int x, int y) {
         super( x, y);

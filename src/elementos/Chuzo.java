@@ -5,7 +5,6 @@
  */
 package elementos;
 
-import static elementos.Sprite.loadSprite;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -30,10 +29,7 @@ public class Chuzo extends Trap{
         setHeight(32);
     }
 
-    @Override
-    public void tick() {
-        
-    }
+    
 
     @Override
     public void render(Graphics g) {

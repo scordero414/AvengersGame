@@ -12,14 +12,11 @@ import java.awt.Rectangle;
  *
  * @author ASUS
  */
-public abstract class MobileEnemy extends Enemy implements Runnable{
+public abstract class GameObjectStatic extends GameObject {
 
-    protected Thread thread;
-    public MobileEnemy( int x, int y) {
+    public GameObjectStatic(int x, int y) {
         super( x, y);
-        //thread = new Thread(this);
     }
 
-    public abstract void run();
-    
+
 }

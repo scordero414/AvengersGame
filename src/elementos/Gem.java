@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
  *
  * @author ASUS
  */
-public class Gem extends GameObject{
+public class Gem extends GameObjectStatic{
     
     protected BufferedImage[] gemImage = new BufferedImage[6];
     private int level;
@@ -23,11 +23,7 @@ public class Gem extends GameObject{
         level = Handler.LEVEL;
     }
 
-    @Override
-    public void tick() {
-        
-    }
-
+    
     @Override
     public void render(Graphics g) {
         g.drawImage(gemImage[level], x, y, null);

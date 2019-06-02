@@ -9,7 +9,7 @@ package elementos;
  *
  * @author ASUS
  */
-public abstract class Trap extends Enemy{
+public abstract class Trap extends EnemyStatic{
     
     public Trap(int x, int y) {
         super( x, y);

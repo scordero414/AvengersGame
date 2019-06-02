@@ -48,18 +48,11 @@ public class Map {
             GameObject tempObject =  gameObjects.get(i);
             if(tempObject instanceof Floor){
                 continue;
-            }if(tempObject instanceof Block){
-                continue;
-            }if(tempObject instanceof Chuzo){
-                continue;
-            }if(tempObject instanceof Trap){
-                continue;
-            }if(tempObject instanceof ConsumableItem){
-                continue;
-            }if(tempObject instanceof Gem){
+            }if(tempObject instanceof GameObjectStatic){
                 continue;
             }else{
-                tempObject.tick();
+                GameObjectMobile tempObjectMobile = (GameObjectMobile) tempObject;
+                tempObjectMobile.tick();
             }
         }
         //handler.tick();
@@ -85,7 +78,7 @@ public class Map {
         gameObjects.add(tempObject);
     }
     
-    public void removeGameObject(GameObject tempGameObject){
+    public void removeGameObject(GameObjectStatic tempGameObject){
         gameObjects.remove(tempGameObject);
     }
 

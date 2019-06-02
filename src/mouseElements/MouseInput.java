@@ -8,6 +8,7 @@ package mouseElements;
 import elementos.Bullet;
 import elementos.Camera;
 import elementos.GameObject;
+import elementos.GameObjectStatic;
 import elementos.Handler;
 import elementos.Player;
 import java.awt.event.KeyEvent;

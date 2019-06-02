@@ -25,10 +25,6 @@ public class ShieldRecharge extends ConsumableItem{
         setHeight(32);
     }
 
-    @Override
-    public void tick() {
-            
-    }
 
     @Override
     public void render(Graphics g) {
