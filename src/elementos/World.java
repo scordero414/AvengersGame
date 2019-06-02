@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import keyElements.KeyInput;
 import mouseElements.MouseInput;
+import vistas.GameView;
 import vistas.MenuView;
 import vistas.Ventana;
 
@@ -35,22 +36,16 @@ public class World extends Canvas implements Runnable{
     private Camera camera;
     public static int LEVEL = 0;
     private boolean inGame;
-    private Ventana ventana;
     public World() throws IOException  {
-        Ventana ventana = new Ventana(1280, 960, "AvengersGame",this);
-        
-        handler = new Handler();
         camera = new Camera(0, 0);
+        handler = new Handler();
+        Ventana ventana = new Ventana(1280, 960, "AvengersGame",this,camera);
         this.lectorMapa = new LectorMapaTxt(handler);
-        
-        Map map1;
-        System.out.println("Hola");
-        map1 = lectorMapa.leerMapa();        
+        Map map1 = lectorMapa.leerMapa();        
         handler.addMap(map1);
         start();
-        this.addKeyListener(new KeyInput(handler,ventana));
-        this.addMouseListener(new MouseInput(handler, camera));
-        
+        this.addKeyListener(ventana);
+        this.addMouseListener(new MouseInput(handler, camera,this));
     }
     /**
      * @param args the command line arguments
@@ -107,13 +102,8 @@ public class World extends Canvas implements Runnable{
     }
 
     public void tick() {
-        if(handler.getMap().getPlayerOfMap() != null){
-            camera.tick(handler.getMap().getPlayerOfMap());
-            handler.tick();
-        }else{
-            ventana.setVisible(false);
-            MenuView menuView = new MenuView(ventana, true);
-        }
+        camera.tick(handler.getMap().getPlayerOfMap());
+        handler.tick();
     }
 
     private void render() {
@@ -147,13 +137,24 @@ public class World extends Canvas implements Runnable{
         bs.show();
     }
 
-    public void setVentana(Ventana ventana) {
-        this.ventana = ventana;
+    public void keyPressed(int estateMove,boolean decision){
+        handler.getMap().keyPressed(estateMove, decision);
+    }
+
+    public void keyReleased(int estateMove,boolean decision){
+        handler.getMap().keyReleased(estateMove, decision);
     }
     
+    public void mousePressed(boolean decision) {
+        handler.getMap().mousePressed(decision);
+    }
     
+    public void mouseReleased(boolean decision) {
+        handler.getMap().mouseReleased(decision);
+    }
 
-   
-
+    public Camera getCamera() {
+        return camera;
+    }
     
 }

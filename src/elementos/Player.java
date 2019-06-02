@@ -260,5 +260,15 @@ public class Player extends GameObjectMobile{
     public void setIsAlive(boolean isAlive) {
         this.isAlive = isAlive;
     }
+
+    public boolean isItsFull() {
+        return itsFull;
+    }
+
+    public void setItsFull(boolean itsFull) {
+        this.itsFull = itsFull;
+    }
+    
+    
     
 }

@@ -5,8 +5,11 @@
  */
 package vistas;
 
+import elementos.GameObject;
+import elementos.Player;
 import elementos.World;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 
 /**
@@ -21,7 +24,7 @@ public class GameView extends javax.swing.JFrame {
     /**
      * Creates new form GameView
      */
-    public GameView(int width, int height, String name,World world) {
+    public GameView(int width, int height, String name , World world) {
         initComponents();
         this.width = width;
         this.world = world;
@@ -40,6 +43,19 @@ public class GameView extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -54,6 +70,33 @@ public class GameView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        int key = evt.getKeyCode();
+        
+        if(key == KeyEvent.VK_W) world.keyPressed(1, true);
+        if(key == KeyEvent.VK_S) world.keyPressed(2, true);
+        if(key == KeyEvent.VK_A) world.keyPressed(3, true);
+        if(key == KeyEvent.VK_D) world.keyPressed(4, true);
+        
+//        if(key == KeyEvent.VK_ESCAPE){
+//            ventana.getFrame().setVisible(false);
+//            ventana.crearVistaMenu();
+//        }
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        int key = evt.getKeyCode();
+        
+        if(key == KeyEvent.VK_W) world.keyPressed(1, false);
+        if(key == KeyEvent.VK_S) world.keyPressed(2, false);
+        if(key == KeyEvent.VK_A) world.keyPressed(3, false);
+        if(key == KeyEvent.VK_D) world.keyPressed(4, false);
+    }//GEN-LAST:event_formKeyReleased
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMousePressed
 
     
 

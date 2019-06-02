@@ -41,6 +41,8 @@ public class Bullet extends GameObjectMobile{
     @Override
     public void render(Graphics g) {
         g.drawImage(bulletImage, x, y, null);
+//        g.setColor(Color.yellow);
+//        g.fillOval(x, y, width, height);
     }
 
     @Override

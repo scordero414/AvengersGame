@@ -5,9 +5,16 @@
  */
 package vistas;
 
+import elementos.Camera;
+import elementos.GameObject;
+import elementos.Player;
 import elementos.World;
 import java.awt.Dimension;
 import java.awt.Label;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.TimerTask;
@@ -25,18 +32,19 @@ import javax.swing.Timer;
  *
  * @author ASUS
  */
-public class Ventana extends javax.swing.JFrame{
+public class Ventana extends javax.swing.JFrame implements KeyListener{
     
     private World world;
+    private Camera camera;
     private int width;
     private int height;
     private int seg;
     
-    public Ventana(int width, int height, String name,World world){
+    public Ventana(int width, int height, String name,World world,Camera camera){
         this.width = width;
         this.world = world;
         this.height = height;
-        world.setVentana(this);
+        this.camera = camera;
         inicializarFrame(name);
         crearVistaMenu();
     }
@@ -91,7 +99,35 @@ public class Ventana extends javax.swing.JFrame{
         return this;
     }
     
+    public void keyPressed(KeyEvent evt){
+        int key = evt.getKeyCode();
+        
+        if(key == KeyEvent.VK_W) world.keyPressed(1, true);
+        if(key == KeyEvent.VK_S) world.keyPressed(2, true);
+        if(key == KeyEvent.VK_A) world.keyPressed(3, true);
+        if(key == KeyEvent.VK_D) world.keyPressed(4, true);
+        
+        
+//        if(key == KeyEvent.VK_ESCAPE){
+//            ventana.getFrame().setVisible(false);
+//            ventana.crearVistaMenu();
+//        }
+    }
     
-    
+    @Override
+    public void keyReleased(KeyEvent evt){
+        int key = evt.getKeyCode();
+        
+        if(key == KeyEvent.VK_W) world.keyPressed(1, false);
+        if(key == KeyEvent.VK_S) world.keyPressed(2, false);
+        if(key == KeyEvent.VK_A) world.keyPressed(3, false);
+        if(key == KeyEvent.VK_D) world.keyPressed(4, false);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        
+    }
+
     
 }

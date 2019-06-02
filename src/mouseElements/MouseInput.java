@@ -11,6 +11,7 @@ import elementos.GameObject;
 import elementos.GameObjectStatic;
 import elementos.Handler;
 import elementos.Player;
+import elementos.World;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -24,10 +25,12 @@ public class MouseInput extends MouseAdapter{
     
     private Handler handler;
     private Camera camera;
+    private World world;
 
-    public MouseInput(Handler hanlder, Camera camera) {
+    public MouseInput(Handler hanlder, Camera camera,World world) {
         this.handler = hanlder;
         this.camera = camera;
+        this.world = world;
     }
     
     
@@ -49,7 +52,7 @@ public class MouseInput extends MouseAdapter{
         }
         
         if(e.getButton()==MouseEvent.BUTTON3){
-            handler.setPressBuuton2(true);
+            world.mousePressed(true);
         }
         
     }

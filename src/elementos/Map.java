@@ -18,10 +18,6 @@ public class Map {
 
     private Handler handler;
     private ArrayList<GameObject> gameObjects;
-    private boolean up;
-    private boolean down;
-    private boolean left;
-    private boolean right;
     private Player player;
 
     public Map(Handler handler) {
@@ -35,10 +31,6 @@ public class Map {
     
     public void tick() {
         player = getPlayerOfMap();
-        player.setUp(up);
-        player.setDown(down);
-        player.setLeft(left);
-        player.setRight(right);
         if(playerDIed()){
             handler.isInGame();
         }
@@ -135,7 +127,7 @@ public class Map {
             GameObject tempObject = gameObjects.get(i);
             if(tempObject instanceof Gem){
                 if(player.checkCollision(tempObject)){
-                    if(handler.isPressBuuton2()){
+                    if(player.isItsFull()){
                         player.setHaveGem(true);
                         if(player.isHaveGem()){
                             player.saveGem((Gem) tempObject);
@@ -242,39 +234,45 @@ public class Map {
         }
     }
 
-    public boolean isUp() {
-        return up;
-    }
-
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-    public boolean isDown() {
-        return down;
-    }
-
-    public void setDown(boolean down) {
-        this.down = down;
-    }
-
-    public boolean isLeft() {
-        return left;
-    }
-
-    public void setLeft(boolean left) {
-        this.left = left;
-    }
-
-    public boolean isRight() {
-        return right;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
+    public void keyPressed(int estateMove,boolean decision){
+        switch(estateMove){
+            case 1:
+                player.setUp(decision);
+            break;
+            case 2:
+                player.setDown(decision);
+            break;
+            case 3:
+                player.setLeft(decision);
+            break;
+            case 4:
+                player.setRight(decision);
+            break;
+        }
     }
     
+    void keyReleased(int estateMove, boolean decision) {
+        switch(estateMove){
+            case 1:
+                player.setUp(decision);
+            break;
+            case 2:
+                player.setDown(decision);
+            break;
+            case 3:
+                player.setLeft(decision);
+            break;
+            case 4:
+                player.setRight(decision);
+            break;
+        }
+    }
     
+    public void mousePressed(boolean decision) {
+        player.setItsFull(decision);
+    }
     
-    
+    public void mouseReleased(boolean decision) {
+        player.setItsFull(decision);
+    }
 }
