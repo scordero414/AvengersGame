@@ -44,7 +44,11 @@ public class MouseInput extends MouseAdapter{
                GameObject tempObject = handler.getMap().getGameObjects().get(i);
 
                if (tempObject instanceof Player) {
-                   handler.getMap().getGameObjects().add(new Bullet(tempObject.getX()+32, tempObject.getY()+32,xMouse,yMouse));
+                   if(((Player) tempObject).isHaveShield()){
+                       handler.getMap().getGameObjects().add(new Bullet(tempObject.getX()+32, tempObject.getY()+32,xMouse,yMouse));
+                       ((Player) tempObject).setHaveShield(false);
+                   }
+                   
 
                }
                
@@ -59,8 +63,8 @@ public class MouseInput extends MouseAdapter{
     @Override
     public void mouseReleased(MouseEvent e){
         if(e.getButton()==MouseEvent.BUTTON3){
-                handler.setPressBuuton2(false);
-            }
+            world.mouseReleased(false);
+        }
     }
     
 }

@@ -73,6 +73,7 @@ public class Bullet extends GameObjectMobile{
         }
         if(player.getBounds().intersects(getBounds())){
             wentBack = true;
+            player.setHaveShield(true);
         }
     }
 

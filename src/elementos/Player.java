@@ -49,6 +49,9 @@ public class Player extends GameObjectMobile{
     private boolean left;
     private boolean right;
     
+    
+    private boolean haveShield;
+    
     public Player( int x, int y) {
         super( x, y);
         setWidth(32);
@@ -56,6 +59,7 @@ public class Player extends GameObjectMobile{
         isAlive = true;
         obtGem = false;
         haveGem = false;
+        haveShield = true;
         this.life = 100;
         this.ammo = 0;
         itsFull = false;
@@ -267,6 +271,14 @@ public class Player extends GameObjectMobile{
 
     public void setItsFull(boolean itsFull) {
         this.itsFull = itsFull;
+    }
+
+    public boolean isHaveShield() {
+        return haveShield;
+    }
+
+    public void setHaveShield(boolean haveShield) {
+        this.haveShield = haveShield;
     }
     
     
