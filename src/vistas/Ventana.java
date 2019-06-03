@@ -6,6 +6,7 @@
 package vistas;
 
 import elementos.Camera;
+import elementos.Container;
 import elementos.GameObject;
 import elementos.Player;
 import elementos.World;
@@ -37,7 +38,7 @@ import sun.applet.AppletAudioClip;
  *
  * @author ASUS
  */
-public class Ventana extends javax.swing.JFrame implements KeyListener{
+public class Ventana extends javax.swing.JFrame implements KeyListener,Container{
     
     private World world;
     private AudioClip soundtrack;
@@ -53,7 +54,7 @@ public class Ventana extends javax.swing.JFrame implements KeyListener{
         this.camera = camera;
         inicializarFrame(name);
         crearVistaMenu();
-        
+        world.setContainer(this);
 //        soundtrack = java.applet.Applet.newAudioClip(getClass().getResource("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\src\\Sounds\\music.wav"));
 //        soundtrack.play();
     }
@@ -143,6 +144,15 @@ public class Ventana extends javax.swing.JFrame implements KeyListener{
     
     public void generarSonidoFondo() {
         soundtrack = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/music.wav"));
+        
+    }
+
+    @Override
+    public void refresh() {
+        DieView dieView = new DieView(this, true);
+        dieView.setLocationRelativeTo(this);
+        dieView.setResizable(false);
+        dieView.setVisible(true);
         
     }
     

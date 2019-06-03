@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author ASUS
  */
-public class Map {
+public class Map implements Container{
 
     private ArrayList<GameObject> gameObjects;
     private Player player;
@@ -22,7 +22,7 @@ public class Map {
     private ArrayList<Outrider> outriders;
     private ArrayList<Block> blocks;
     private ArrayList<Bullet> bullets;
-
+    private Container container;
     public Map() {
         gameObjects = new ArrayList<>();
     }
@@ -37,7 +37,6 @@ public class Map {
         }
         outriders = getOutridersOfMap();
         bullets = getBulletsOfMap();
-        
         for (int i = 0; i < outriders.size(); i++) {
             Outrider tempOutrider = outriders.get(i);
             tempOutrider.setMap(this);
@@ -242,9 +241,6 @@ public class Map {
         
     }
     
-    private boolean playerDIed(){
-        return !player.isIsAlive();
-    }
     private void checkBulletCollisionBlocks( Shield bullet){
         bullet.setPlayer(player);
         for(int j = 0; j<blocks.size();j++){
@@ -317,6 +313,7 @@ public class Map {
            player.loseLife(amountDamage);
         }else if(player.getLife() <= 0){
             gameObjects.remove(player);
+            container.refresh();
         }
     }
 
@@ -360,5 +357,15 @@ public class Map {
     
     public void mouseReleased(boolean decision) {
         player.setItsFull(decision);
+    }
+
+    public void setContainer(Container container) {
+        this.container = container;
+    }
+
+    
+    @Override
+    public void refresh() {
+        container.refresh();
     }
 }

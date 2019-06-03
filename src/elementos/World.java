@@ -25,7 +25,7 @@ import vistas.Ventana;
  *
  * @author ASU  S
  */
-public class World extends Canvas implements Runnable{
+public class World extends Canvas implements Runnable,Container{
     
     private static final long serialVersionUID = 1L;
     private Thread thread;
@@ -35,13 +35,18 @@ public class World extends Canvas implements Runnable{
     private Camera camera;
     public static int LEVEL = 0;
     private boolean inGame;
+    private Container container;
+    
     public World() throws IOException  {
+        this.container = container;
         camera = new Camera(0, 0);
         handler = new Handler();
         Ventana ventana = new Ventana(1280, 960, "AvengersGame",this,camera);
         this.lectorMapa = new LectorMapaTxt();
-        Map map1 = lectorMapa.leerMapa();        
+        Map map1 = lectorMapa.leerMapa(); 
+        map1.setContainer(this);
         handler.addMap(map1);
+        
         start();
         this.addKeyListener(ventana);
         this.addMouseListener(new MouseInput(handler, camera,this));
@@ -155,5 +160,16 @@ public class World extends Canvas implements Runnable{
     public Camera getCamera() {
         return camera;
     }
+
+    @Override
+    public void refresh() {
+        container.refresh();
+    }
+
+    public void setContainer(Container container) {
+        this.container = container;
+    }
+    
+    
     
 }
