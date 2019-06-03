@@ -5,18 +5,26 @@
  */
 package vistas;
 
+import java.awt.Frame;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+
 /**
  *
  * @author dgutierrezd
  */
 public class DieView extends javax.swing.JDialog {
 
+    private Ventana ventana;
     /**
      * Creates new form DieView
      */
-    public DieView(java.awt.Frame parent, boolean modal) {
+    public DieView(java.awt.Frame parent, boolean modal,Ventana ventana) {
         super(parent, modal);
         initComponents();
+        this.ventana = ventana;
     }
 
     /**
@@ -26,10 +34,19 @@ public class DieView extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Volver a jugar.");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 180, 80));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/FocusGauntlet.jpg"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 370));
@@ -37,7 +54,21 @@ public class DieView extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        try {
+            ventana.getWorld().deleteWorld();
+            ventana.getWorld().initWorld(ventana);
+            //ventana.setVisible(true);
+            dispose();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(DieView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

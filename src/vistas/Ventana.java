@@ -47,7 +47,7 @@ public class Ventana extends javax.swing.JFrame implements KeyListener,Container
     private int height;
     private int seg;
     
-    public Ventana(int width, int height, String name,World world,Camera camera){
+    public Ventana(int width, int height, String name,World world){
         this.width = width;
         this.world = world;
         this.height = height;
@@ -75,7 +75,7 @@ public class Ventana extends javax.swing.JFrame implements KeyListener,Container
         switch(menuView.getEstado()) {
             case 1:
                 setVisible(true);
-                LoadView loadView = new LoadView(this, false);
+                crearLoadView();
                 generarSonidoFondo();
                 soundtrack.loop();
             break;
@@ -88,7 +88,9 @@ public class Ventana extends javax.swing.JFrame implements KeyListener,Container
             break;
         }
     }
-    
+    public void crearLoadView(){
+        LoadView loadView = new LoadView(this, false);
+    }
     public void decidirBotonesInstrucciones(InstructionsView instructionsView) {
         switch(instructionsView.getEstado()) {
             case 1:
@@ -118,6 +120,7 @@ public class Ventana extends javax.swing.JFrame implements KeyListener,Container
         if(key == KeyEvent.VK_S) world.keyPressed(2, true);
         if(key == KeyEvent.VK_A) world.keyPressed(3, true);
         if(key == KeyEvent.VK_D) world.keyPressed(4, true);
+        if(key == KeyEvent.VK_N) world.keyPressed(5, true); /// PRESS N ----> NEXT
         
         
 //        if(key == KeyEvent.VK_ESCAPE){
@@ -149,11 +152,24 @@ public class Ventana extends javax.swing.JFrame implements KeyListener,Container
 
     @Override
     public void refresh() {
-        DieView dieView = new DieView(this, true);
+        System.out.println("REFRRSHHHH");
+        //setVisible(false);
+        DieView dieView = new DieView(this, true,this);
         dieView.setLocationRelativeTo(this);
         dieView.setResizable(false);
         dieView.setVisible(true);
         
     }
+
+    public World getWorld() {
+        return world;
+    }
+
+    public void setCamera(Camera camera) {
+        this.camera = camera;
+    }
+
+    
+    
     
 }

@@ -22,9 +22,14 @@ public class Map implements Container{
     private ArrayList<Outrider> outriders;
     private ArrayList<Block> blocks;
     private ArrayList<Bullet> bullets;
+    private Portal portal;
     private Container container;
+    
+    private boolean nextLevel;
     public Map() {
         gameObjects = new ArrayList<>();
+        
+        nextLevel = false;
     }
 
     
@@ -34,6 +39,10 @@ public class Map implements Container{
             player.setMap(this);
             chainsaws = getChainsawsOfMap();
             blocks = getBlocksOfMap();
+            portal = getPortal();
+        }
+        if(player.getLife() <= 0){
+            container.refresh();
         }
         outriders = getOutridersOfMap();
         bullets = getBulletsOfMap();
@@ -137,6 +146,15 @@ public class Map implements Container{
             }
         }
     }
+    public Portal getPortal(){
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject get = gameObjects.get(i);
+            if(get instanceof Portal){
+                return (Portal)get;
+            }
+        }
+        return null;
+    }
     public Gem getGemOfMap(){
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject get = gameObjects.get(i);
@@ -149,6 +167,7 @@ public class Map implements Container{
     public void checkCollisionInTheMap(){
         checkPlayerCollisionChainsaw();
         checkBallFireCollisionPlayer();
+        checkPlayerInPortal();
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
             if(tempObject instanceof Gem){
@@ -249,7 +268,13 @@ public class Map implements Container{
             }
         }
     }
-    
+    private void checkPlayerInPortal(){
+        if(player.checkCollision(portal)){
+            if(portal.isCheckPoint()){
+                nextLevel = true;
+            }
+        }
+    }
     private void checkBallFireCollisionPlayer(){
         for(int j = 0; j<bullets.size();j++){
             BallOfFire bullet = (BallOfFire) bullets.get(j);
@@ -311,10 +336,11 @@ public class Map implements Container{
             }
         }else if(player.getLife()>0){
            player.loseLife(amountDamage);
-        }else if(player.getLife() <= 0){
-            gameObjects.remove(player);
-            container.refresh();
         }
+//          else if(player.getLife() <= 0){
+//            gameObjects.remove(player);
+//            container.refresh();
+//        }
     }
 
     public void keyPressed(int estateMove,boolean decision){
@@ -330,6 +356,9 @@ public class Map implements Container{
             break;
             case 4:
                 player.setRight(decision);
+            break;
+            case 5:
+                portal.setCheckPoint(true);
             break;
         }
     }
@@ -368,4 +397,16 @@ public class Map implements Container{
     public void refresh() {
         container.refresh();
     }
+
+    
+
+    public boolean isNextLevel() {
+        return nextLevel;
+    }
+
+    public void setNextLevel(boolean nextLevel) {
+        this.nextLevel = nextLevel;
+    }
+    
+    
 }

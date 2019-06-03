@@ -20,7 +20,7 @@ public class Gem extends GameObjectStatic{
     public Gem( int x, int y) {
         super( x, y);
         initImages();
-        level = Handler.LEVEL;
+        level = Handler.LEVEL-1;
     }
 
     

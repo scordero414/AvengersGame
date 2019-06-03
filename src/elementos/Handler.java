@@ -65,6 +65,10 @@ public class Handler {
     public ArrayList<Map> getMaps() {
         return maps;
     }
+
+    public static void setLEVEL(int LEVEL) {
+        Handler.LEVEL = LEVEL;
+    }
     
     
     

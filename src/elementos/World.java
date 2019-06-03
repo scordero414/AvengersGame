@@ -13,6 +13,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -33,23 +35,37 @@ public class World extends Canvas implements Runnable,Container{
     private Handler handler;
     private LectorMapa lectorMapa;
     private Camera camera;
-    public static int LEVEL = 0;
     private boolean inGame;
     private Container container;
+    private final Path rutaMapa1 = Paths.get("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\Mapas\\mapa_1.txt");
+    private final Path rutaMapa2 = Paths.get("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\Mapas\\mapa_2.txt");
     
     public World() throws IOException  {
         this.container = container;
+        Ventana ventana = new Ventana(1280, 960, "AvengersGame",this);
+        initWorld(ventana);
+        start();
+    }
+    
+    public void initWorld(Ventana ventana) throws IOException{
         camera = new Camera(0, 0);
         handler = new Handler();
-        Ventana ventana = new Ventana(1280, 960, "AvengersGame",this,camera);
+        ventana.setCamera(camera);
         this.lectorMapa = new LectorMapaTxt();
-        Map map1 = lectorMapa.leerMapa(); 
+        Map map1 = lectorMapa.leerMapa(rutaMapa1); 
         map1.setContainer(this);
         handler.addMap(map1);
-        
-        start();
+        Map map2 = lectorMapa.leerMapa(rutaMapa2); 
+        map2.setContainer(this);
+        handler.addMap(map2 );
         this.addKeyListener(ventana);
         this.addMouseListener(new MouseInput(handler, camera,this));
+    }
+    public void deleteWorld(){
+        camera = null;
+        handler = null;
+        //handler.getMaps().clear();
+        
     }
     /**
      * @param args the command line arguments
@@ -106,8 +122,18 @@ public class World extends Canvas implements Runnable,Container{
     }
 
     public void tick() {
-        camera.tick(handler.getMap().getPlayerOfMap());
-        handler.tick();
+        if( handler != null){
+           handler.tick(); 
+           if(camera != null){
+                camera.tick(handler.getMap().getPlayerOfMap());
+                
+            }
+           if(handler.getMap().isNextLevel()){
+               Handler.setLEVEL(Handler.LEVEL+1);
+               System.out.println("Next level");
+           }
+        }
+        
     }
 
     private void render() {
@@ -125,36 +151,47 @@ public class World extends Canvas implements Runnable,Container{
         
         g.setColor(Color.black);
         g.fillRect(0, 0, 1920, 1600);
-        handler.render(g);
         
-        g2d.translate(camera.getX(), camera.getY());
-        for (int i = 0; i < (handler.getGameObjectsOfMap()).size(); i++) {
-            GameObject tempObject = handler.getGameObjectsOfMap().get(i);
-            if(tempObject instanceof Player){
-                handler.getMap().getPlayerOfMap().drawLifeLine(g,(getWidth()/2),getHeight()-60);
-                handler.getMap().getPlayerOfMap().drawAmmoLine(g,(getWidth()/2),getHeight()-30);
-                handler.getMap().getPlayerOfMap().drawInventary(g,0,0);
+        if(camera != null && handler != null){
+            
+            handler.render(g);
+
+            g2d.translate(camera.getX(), camera.getY());
+            for (int i = 0; i < (handler.getGameObjectsOfMap()).size(); i++) {
+                GameObject tempObject = handler.getGameObjectsOfMap().get(i);
+                if(tempObject instanceof Player){
+                    handler.getMap().getPlayerOfMap().drawLifeLine(g,(getWidth()/2),getHeight()-60);
+                    handler.getMap().getPlayerOfMap().drawAmmoLine(g,(getWidth()/2),getHeight()-30);
+                    handler.getMap().getPlayerOfMap().drawInventary(g,0,0);
+                }
             }
         }
-        
         g.dispose();
         bs.show();
     }
 
     public void keyPressed(int estateMove,boolean decision){
-        handler.getMap().keyPressed(estateMove, decision);
+        if(handler != null){
+            handler.getMap().keyPressed(estateMove, decision);
+        }
     }
 
     public void keyReleased(int estateMove,boolean decision){
-        handler.getMap().keyReleased(estateMove, decision);
+        if(handler != null){
+            handler.getMap().keyReleased(estateMove, decision);
+        }
     }
-    
     public void mousePressed(boolean decision) {
-        handler.getMap().mousePressed(decision);
+        if(handler != null){
+            handler.getMap().mousePressed(decision);
+        }
+        
     }
     
     public void mouseReleased(boolean decision) {
-        handler.getMap().mouseReleased(decision);
+        if(handler != null){
+            handler.getMap().mouseReleased(decision);
+        }
     }
 
     public Camera getCamera() {

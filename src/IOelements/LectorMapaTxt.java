@@ -42,11 +42,11 @@ public class LectorMapaTxt implements LectorMapa {
     
     private int width = 60;
     private int height = 50;
-    private final Path ruta = Paths.get("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\Mapas\\mapa_1.txt");
+    
     
     
     @Override
-    public Map leerMapa() throws IOException{
+    public Map leerMapa(Path ruta) throws IOException{
         
         Map map = new Map();
         

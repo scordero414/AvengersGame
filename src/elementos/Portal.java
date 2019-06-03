@@ -16,11 +16,13 @@ import java.awt.image.BufferedImage;
 public class Portal extends GameObjectStatic{
 
     private BufferedImage portalImage = loadSprite("portal.gif");
+    private boolean checkPoint;
     
     public Portal(int x, int y) {
         super(x, y);
         setWidth(32);
         setHeight(32);
+        checkPoint = false;
     }
 
     @Override
@@ -33,4 +35,11 @@ public class Portal extends GameObjectStatic{
         return new Rectangle(x, y, width, height);
     }
     
+    public boolean isCheckPoint() {
+        return checkPoint;
+    }
+
+    public void setCheckPoint(boolean checkPoint) {
+        this.checkPoint = checkPoint;
+    }
 }
