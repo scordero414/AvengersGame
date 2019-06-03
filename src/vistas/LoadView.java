@@ -131,6 +131,7 @@ public class LoadView extends javax.swing.JDialog {
         segundos++;
         return segundos;
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

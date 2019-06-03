@@ -25,11 +25,11 @@ public class Player extends GameObjectMobile{
     private final BufferedImage[] standing = {getSprite(1, 0)};
 
     // These are animation states
-    private Animation walkUpAnimation = new Animation(walkingUp, 2);
-    private Animation walkDownAnimation = new Animation(walkingDown, 2);
-    private Animation walkLeftAnimation = new Animation(walkingLeft, 2);
-    private Animation walkRightAnimation = new Animation(walkingRight,2);
-    private final Animation standingAnimation = new Animation(standing,2);
+    private Animation walkUpAnimation = new Animation(walkingUp, 6);
+    private Animation walkDownAnimation = new Animation(walkingDown, 6);
+    private Animation walkLeftAnimation = new Animation(walkingLeft, 6);
+    private Animation walkRightAnimation = new Animation(walkingRight,6);
+    private final Animation standingAnimation = new Animation(standing,6);
 
     // This is the actual animation
     private Animation animation = standingAnimation;

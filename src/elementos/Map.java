@@ -21,6 +21,7 @@ public class Map {
     private ArrayList<Chainsaw> chainsaws;
     private ArrayList<Outrider> outriders;
     private ArrayList<Block> blocks;
+    private ArrayList<Bullet> bullets;
 
     public Map() {
         gameObjects = new ArrayList<>();
@@ -35,6 +36,12 @@ public class Map {
             blocks = getBlocksOfMap();
         }
         outriders = getOutridersOfMap();
+        bullets = getBulletsOfMap();
+        
+        for (int i = 0; i < outriders.size(); i++) {
+            Outrider tempOutrider = outriders.get(i);
+            tempOutrider.setMap(this);
+        }
         checkCollisionInTheMap();
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject =  gameObjects.get(i);
@@ -101,6 +108,16 @@ public class Map {
             }
         }
         return outriders;
+    }
+    public ArrayList<Bullet> getBulletsOfMap(){
+        ArrayList<Bullet> bullets = new ArrayList<>();
+        for (int j = 0; j < gameObjects.size(); j++) {
+            GameObject get = gameObjects.get(j);
+            if(get instanceof BallOfFire){
+                bullets.add((Bullet) get);
+            }
+        }
+        return bullets;
     }
     public ArrayList<Block> getBlocksOfMap(){
         ArrayList<Block> blocks = new ArrayList<>();
@@ -174,6 +191,8 @@ public class Map {
                 }
                 checkChainsawCollisionBlock(block);
                 checkOutriderCollisionBlock(block);
+                checkBulletCollisionBlock(block);
+                
             }
             if(tempObject instanceof LaserBeam){
                 
@@ -198,8 +217,8 @@ public class Map {
                     }
                 }
             }
-            if(tempObject instanceof Bullet){
-                Bullet bullet = (Bullet) tempObject;
+            if(tempObject instanceof Shield){
+                Shield bullet = (Shield) tempObject;
                  checkBulletCollisionEnemys(bullet);
                 if(bullet.isWentBack()){
                     gameObjects.remove(bullet);
@@ -217,7 +236,7 @@ public class Map {
     private boolean playerDIed(){
         return !player.isIsAlive();
     }
-    private void checkBulletCollisionBlocks( Bullet bullet){
+    private void checkBulletCollisionBlocks( Shield bullet){
         bullet.setPlayer(player);
         for(int j = 0; j<blocks.size();j++){
             if(bullet.checkCollision(blocks.get(j))){
@@ -225,7 +244,15 @@ public class Map {
             }
         }
     }
-    private void checkBulletCollisionEnemys(Bullet bullet){
+    private void checkBulletCollisionBlock(Block block){
+        for(int j = 0; j<bullets.size();j++){
+            Bullet bullet = bullets.get(j);
+            if(bullet.checkCollision(block)){
+                gameObjects.remove(bullet);
+            }
+        }
+    }
+    private void checkBulletCollisionEnemys(Shield bullet){
         bullet.setPlayer(player);
         for(int j = 0; j<outriders.size();j++){
             if(bullet.checkCollision(outriders.get(j))){

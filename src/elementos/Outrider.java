@@ -13,12 +13,14 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
  * @author ASUS
  */
-public class Outrider extends GameObjectMobile{
+public class Outrider extends GameObjectMobile {
 
     private final BufferedImage[] standing = {getSprite(1, 0)};
 
@@ -29,6 +31,7 @@ public class Outrider extends GameObjectMobile{
     private Random random;
     private int choose;
     private int life;
+    private int segundos = 0;
     
     public Outrider( int x, int y) {
         super( x, y);
@@ -46,12 +49,21 @@ public class Outrider extends GameObjectMobile{
     public void tick() {
         x += velX;
         y += velY;
+        
         choose = random.nextInt(10);
         if(choose == 1){
             velX = (random.nextInt(4 +4) - 4);
             velY = (random.nextInt(4 +4) - 4);
         }
-     }
+        if(segundos == 300){
+            map.addGameObject(new BallOfFire(x+32, y+32,1));
+            map.addGameObject(new BallOfFire(x, y,2));
+            map.addGameObject(new BallOfFire(x, y,3));
+            map.addGameObject(new BallOfFire(x+32, y+32,4));
+            segundos =0;
+        }
+        segundos++;
+    }
 
     @Override
     public void render(Graphics g) {
@@ -118,6 +130,11 @@ public class Outrider extends GameObjectMobile{
         this.life = life;
     }
     
-    
+    private Map map;
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
     
 }

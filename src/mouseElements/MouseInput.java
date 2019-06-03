@@ -5,7 +5,7 @@
  */
 package mouseElements;
 
-import elementos.Bullet;
+import elementos.Shield;
 import elementos.Camera;
 import elementos.GameObject;
 import elementos.GameObjectStatic;
@@ -45,7 +45,7 @@ public class MouseInput extends MouseAdapter{
 
                if (tempObject instanceof Player) {
                    if(((Player) tempObject).isHaveShield()){
-                       handler.getMap().getGameObjects().add(new Bullet(tempObject.getX()+32, tempObject.getY()+32,xMouse,yMouse));
+                       handler.getMap().getGameObjects().add(new Shield(tempObject.getX()+32, tempObject.getY()+32,xMouse,yMouse));
                        ((Player) tempObject).setHaveShield(false);
                    }
                    
