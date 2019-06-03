@@ -21,6 +21,7 @@ public class Bullet extends GameObjectMobile{
     private boolean goBack;
     private Player player;
     private boolean wentBack;
+    final int DAMAGE = 15;
     
     public Bullet(int x, int y,int xMouse, int yMouse) {
         super(x, y);

@@ -55,15 +55,23 @@ public class Outrider extends GameObjectMobile{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.GRAY);
-        g.fillRect(x,y-10,width,5);
-        g.setColor(new Color(135, 233, 94));
-        g.fillRect(x,y-10,width,5);
-        g.setColor(Color.BLACK);
-        g.drawRect(x,y-10,width,5);
+        drawLifeLine(g);
         g.drawImage(animation.getSprite(), x, y, null);
     }
 
+    public void drawLifeLine(Graphics g){
+        g.setColor(Color.GRAY);
+        g.fillRect(x,y-10,width,5);
+        if(getLife()>50){
+            g.setColor(new Color(135, 233, 94));
+        }else if(getLife()>0 && getLife()<=50){
+            g.setColor(Color.red);
+        }
+        g.fillRect(x,y-10,(getLife()/width)*10,5);
+        g.setColor(Color.BLACK);
+        g.drawRect(x,y-10,width,5);
+    }
+    
     public void move(){
 //        velX += (velX*2)-1;
 //        velY += (velY*2)-1;
@@ -75,6 +83,11 @@ public class Outrider extends GameObjectMobile{
         x += (velX*6) * -1;
         velX *= -1;
     }
+    
+    public void loseLife(int amount){        
+        setLife(getLife()- amount);
+    }
+    
     @Override
     public boolean checkCollision(GameObject tempObject){
         return getBigBounds().intersects(tempObject.getBounds());

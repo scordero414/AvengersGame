@@ -25,11 +25,11 @@ public class Player extends GameObjectMobile{
     private final BufferedImage[] standing = {getSprite(1, 0)};
 
     // These are animation states
-    private Animation walkUpAnimation = new Animation(walkingUp, 4);
-    private Animation walkDownAnimation = new Animation(walkingDown, 4);
-    private Animation walkLeftAnimation = new Animation(walkingLeft, 4);
-    private Animation walkRightAnimation = new Animation(walkingRight,4);
-    private final Animation standingAnimation = new Animation(standing,4);
+    private Animation walkUpAnimation = new Animation(walkingUp, 2);
+    private Animation walkDownAnimation = new Animation(walkingDown, 2);
+    private Animation walkLeftAnimation = new Animation(walkingLeft, 2);
+    private Animation walkRightAnimation = new Animation(walkingRight,2);
+    private final Animation standingAnimation = new Animation(standing,2);
 
     // This is the actual animation
     private Animation animation = standingAnimation;
@@ -51,6 +51,11 @@ public class Player extends GameObjectMobile{
     
     
     private boolean haveShield;
+    private Map map;
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
     
     public Player( int x, int y) {
         super( x, y);
@@ -70,7 +75,7 @@ public class Player extends GameObjectMobile{
     public void tick() {
         x += velX;
         y += velY; 
-        //handler.getMaps().get(0).checkCollisionInTheMap(this,handler.getMaps().get(0).getChainsawsOfMap());
+        map.checkCollisionInTheMap();
         move();
         animation.stop();
     }
