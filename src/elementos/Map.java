@@ -149,7 +149,7 @@ public class Map {
     }
     public void checkCollisionInTheMap(){
         checkPlayerCollisionChainsaw();
-        
+        checkBallFireCollisionPlayer();
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
             if(tempObject instanceof Gem){
@@ -244,6 +244,16 @@ public class Map {
             }
         }
     }
+    
+    private void checkBallFireCollisionPlayer(){
+        for(int j = 0; j<bullets.size();j++){
+            BallOfFire bullet = (BallOfFire) bullets.get(j);
+            if(bullet.checkCollision(player)){
+                determineWhatToDecrease(player, bullet.DAMAGE);
+                gameObjects.remove(bullet);
+            }
+        }
+    }
     private void checkBulletCollisionBlock(Block block){
         for(int j = 0; j<bullets.size();j++){
             Bullet bullet = bullets.get(j);
@@ -282,7 +292,7 @@ public class Map {
     
     private void checkPlayerCollisionChainsaw(){
         for(int j = 0; j<chainsaws.size();j++){
-            if(player.getBounds().intersects(chainsaws.get(j).getBounds())){
+            if(player.checkCollision(chainsaws.get(j))){
                 //gameObjects.remove(chainsaws.get(j));
                 determineWhatToDecrease(player,Chainsaw.DAMAGE);
             }

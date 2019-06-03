@@ -18,6 +18,7 @@ public class BallOfFire extends Bullet{
     
     private BufferedImage ballFireImage = loadSprite("bolaFuego.png");
     private int typeBall;
+    final int DAMAGE = 10;
     public BallOfFire(int x, int y,int typeBall) {
         super(x, y);
         setHeight(32);
