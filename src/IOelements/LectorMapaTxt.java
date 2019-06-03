@@ -18,9 +18,11 @@ import elementos.GameObjectStatic;
 import elementos.Gem;
 import elementos.Handler;
 import elementos.LaserBeam;
+import elementos.LifeRecharge;
 import elementos.Map;
 import elementos.Outrider;
 import elementos.Player;
+import elementos.Portal;
 import elementos.ShieldRecharge;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -152,6 +154,18 @@ public class LectorMapaTxt implements LectorMapa {
                         map.addGameObject(floor);
                         GameObjectStatic chest = new Chest(j*32, i*32);
                         map.addGameObject(chest);
+                    break;
+                    case 'd':
+                        floor = new Floor( j*32, i*32);
+                        map.addGameObject(floor);
+                        GameObjectStatic portal = new Portal( j*32, i*32);
+                        map.addGameObject(portal);                        
+                    break;
+                    case 'f':
+                        floor = new Floor( j*32, i*32);
+                        map.addGameObject(floor);
+                        GameObjectStatic lifeRecharge = new LifeRecharge( j*32, i*32);
+                        map.addGameObject(lifeRecharge);                        
                     break;
                 }
 

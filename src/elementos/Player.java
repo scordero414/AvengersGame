@@ -173,6 +173,9 @@ public class Player extends GameObjectMobile{
     public void increaseShield(int amount){
         setAmmo(getAmmo()+ amount);
     }
+    public void increaseLife(int amount){
+        setLife(getLife()+ amount);
+    }
     @Override
     public Rectangle getBounds() {
         return new Rectangle(x,y,getWidth(), getHeight());

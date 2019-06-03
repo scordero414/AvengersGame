@@ -9,6 +9,7 @@ import elementos.Camera;
 import elementos.GameObject;
 import elementos.Player;
 import elementos.World;
+import java.applet.AudioClip;
 import java.awt.Dimension;
 import java.awt.Label;
 import java.awt.event.KeyEvent;
@@ -17,16 +18,20 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import sun.applet.AppletAudioClip;
 
 /**
  *
@@ -35,6 +40,7 @@ import javax.swing.Timer;
 public class Ventana extends javax.swing.JFrame implements KeyListener{
     
     private World world;
+    private AudioClip soundtrack;
     private Camera camera;
     private int width;
     private int height;
@@ -47,6 +53,9 @@ public class Ventana extends javax.swing.JFrame implements KeyListener{
         this.camera = camera;
         inicializarFrame(name);
         crearVistaMenu();
+        
+//        soundtrack = java.applet.Applet.newAudioClip(getClass().getResource("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\src\\Sounds\\music.wav"));
+//        soundtrack.play();
     }
 
     public void inicializarFrame(String name){
@@ -66,7 +75,8 @@ public class Ventana extends javax.swing.JFrame implements KeyListener{
             case 1:
                 setVisible(true);
                 LoadView loadView = new LoadView(this, false);
-                
+                generarSonidoFondo();
+                soundtrack.loop();
             break;
             case 2:
                 InstructionsView instructionsView = new InstructionsView(this, true);
@@ -89,6 +99,7 @@ public class Ventana extends javax.swing.JFrame implements KeyListener{
     public void crearVistaMenu() {
        MenuView menuView = new MenuView(this, true);
        decidirBotonesMenu(menuView);
+       
     }
 
     public void setMundo(World world) {
@@ -129,5 +140,10 @@ public class Ventana extends javax.swing.JFrame implements KeyListener{
         
     }
 
+    
+    public void generarSonidoFondo() {
+        soundtrack = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/music.wav"));
+        
+    }
     
 }

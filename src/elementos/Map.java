@@ -217,6 +217,15 @@ public class Map {
                     }
                 }
             }
+            if(tempObject instanceof LifeRecharge){
+                LifeRecharge lifeRecharge = (LifeRecharge) tempObject;
+                if(player.checkCollision(lifeRecharge)){
+                    if(player.getAmmo() >= 0  && player.getAmmo() <100){
+                        player.increaseLife(LifeRecharge.RECHARGE);
+                        gameObjects.remove(lifeRecharge);
+                    }
+                }
+            }
             if(tempObject instanceof Shield){
                 Shield bullet = (Shield) tempObject;
                  checkBulletCollisionEnemys(bullet);
