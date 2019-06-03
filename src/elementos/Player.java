@@ -175,6 +175,10 @@ public class Player extends GameObjectMobile{
     }
     public void increaseLife(int amount){
         setLife(getLife()+ amount);
+        if(getLife()>100){
+            setLife(100);
+        }
+        
     }
     @Override
     public Rectangle getBounds() {

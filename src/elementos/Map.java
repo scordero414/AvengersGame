@@ -220,7 +220,7 @@ public class Map {
             if(tempObject instanceof LifeRecharge){
                 LifeRecharge lifeRecharge = (LifeRecharge) tempObject;
                 if(player.checkCollision(lifeRecharge)){
-                    if(player.getAmmo() >= 0  && player.getAmmo() <100){
+                    if(player.getLife() >= 0  && player.getLife() <100){
                         player.increaseLife(LifeRecharge.RECHARGE);
                         gameObjects.remove(lifeRecharge);
                     }
