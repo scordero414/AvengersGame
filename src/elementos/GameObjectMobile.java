@@ -9,7 +9,7 @@ package elementos;
  *
  * @author ASUS
  */
-public abstract class GameObjectMobile extends GameObject{
+public abstract class GameObjectMobile extends GameObject {
     
     protected int velX;
     protected int velY;

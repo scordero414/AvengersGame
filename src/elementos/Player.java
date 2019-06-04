@@ -16,7 +16,7 @@ import static javafx.scene.text.Font.font;
  *
  * @author ASUS
  */
-public class Player extends GameObjectMobile{
+public class Player extends GameObjectMobile {
 
     private static final int VEL = 8;
     private final BufferedImage[] walkingUp = {getSprite(0, 3), getSprite(1, 3), getSprite(2, 3)};
@@ -77,6 +77,7 @@ public class Player extends GameObjectMobile{
     public void tick() {
         x += velX;
         y += velY; 
+        
         map.checkCollisionInTheMap();
         move();
         animation.stop();

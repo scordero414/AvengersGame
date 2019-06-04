@@ -38,7 +38,7 @@ import java.util.ArrayList;
  *
  * @author ASUS
  */
-public class LectorMapaTxt implements LectorMapa {
+public class MapReaderTxt implements MapReader {
     
     private int width = 60;
     private int height = 50;

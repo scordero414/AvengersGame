@@ -5,11 +5,13 @@
  */
 package elementos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author ASUS
  */
-public class Camera {
+public class Camera implements Serializable{
     private float x;
     private float y;
 

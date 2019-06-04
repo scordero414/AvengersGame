@@ -8,13 +8,14 @@ package elementos;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author ASUS
  */
-public class Map implements Container{
+public class Map implements Container,Serializable{
 
     private ArrayList<GameObject> gameObjects;
     private Player player;
@@ -28,20 +29,19 @@ public class Map implements Container{
     private boolean nextLevel;
     public Map() {
         gameObjects = new ArrayList<>();
-        
         nextLevel = false;
     }
 
     
     public void tick() {
         if(chainsaws == null){
-            player = getPlayerOfMap();
-            player.setMap(this);
+            
+            
             chainsaws = getChainsawsOfMap();
             blocks = getBlocksOfMap();
             portal = getPortal();
         }
-        
+        player = getPlayerOfMap();player.setMap(this);
         if(player.getLife() <= 0){
             container.refresh();
         }

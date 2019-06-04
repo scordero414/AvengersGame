@@ -6,13 +6,14 @@
 package elementos;
 
 import java.awt.Graphics;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author ASUS
  */
-public class Handler {
+public class Handler implements Serializable{
     
     private ArrayList<Map> maps;
     

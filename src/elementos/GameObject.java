@@ -10,13 +10,14 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import javax.imageio.ImageIO;
 
 /**
  *
  * @author ASUS
  */
-public abstract class GameObject{
+public abstract class GameObject implements Serializable{
     
     protected int x;
     protected int y;

@@ -125,8 +125,8 @@ public class Ventana extends javax.swing.JFrame implements KeyListener,Container
         if(key == KeyEvent.VK_ESCAPE){
             //setVisible(false);
             //world.stop();
-            crearVistaMenu();
-            
+            //crearVistaMenu();
+            crearPauseView();
         }
     }
     
@@ -145,6 +145,9 @@ public class Ventana extends javax.swing.JFrame implements KeyListener,Container
         
     }
 
+    public void crearPauseView(){
+        PauseGameView pause = new PauseGameView(this, true, this);
+    }
     
     public void generarSonidoFondo() {
         soundtrack = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/music.wav"));

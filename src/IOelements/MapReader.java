@@ -13,6 +13,6 @@ import java.nio.file.Path;
  *
  * @author ASUS
  */
-public interface LectorMapa {
+public interface MapReader {
     public abstract Map leerMapa(Path ruta) throws IOException;
 }

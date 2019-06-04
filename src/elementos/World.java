@@ -5,8 +5,9 @@
  */
 package elementos;
 
-import IOelements.LectorMapa;
-import IOelements.LectorMapaTxt;
+import IOelements.JSONReader;
+import IOelements.JSONWriter;
+import IOelements.MapReaderTxt;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 import mouseElements.MouseInput;
 import vistas.MenuView;
 import vistas.Ventana;
+import IOelements.MapReader;
 
 /**
  *
@@ -32,7 +34,9 @@ public class World extends Canvas implements Runnable,Container{
     private Thread thread;
     private boolean isRunning;
     private Handler handler;
-    private LectorMapa lectorMapa;
+    private MapReader lectorMapa;
+    private JSONWriter jsonWriter;
+    private JSONReader jsonReader;
     private Camera camera;
     private boolean inGame;
     private Container container;
@@ -48,9 +52,11 @@ public class World extends Canvas implements Runnable,Container{
     
     public void initWorld(Ventana ventana) throws IOException{
         camera = new Camera(0, 0);
+        jsonWriter = new JSONWriter();
+        jsonReader = new JSONReader();
         handler = new Handler();
         ventana.setCamera(camera);
-        this.lectorMapa = new LectorMapaTxt();
+        this.lectorMapa = new MapReaderTxt();
         Map map1 = lectorMapa.leerMapa(rutaMapa1); 
         map1.setContainer(this);
         handler.addMap(map1);
@@ -207,6 +213,24 @@ public class World extends Canvas implements Runnable,Container{
     public void setContainer(Container container) {
         this.container = container;
     }
+
+    public JSONWriter getJsonWriter() {
+        return jsonWriter;
+    }
+
+    public Handler getHandler() {
+        return handler;
+    }
+
+    public JSONReader getJsonReader() {
+        return jsonReader;
+    }
+
+    public void setJsonReader(JSONReader jsonReader) {
+        this.jsonReader = jsonReader;
+    }
+    
+    
     
     
     
