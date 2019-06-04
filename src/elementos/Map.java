@@ -34,13 +34,14 @@ public class Map implements Container{
 
     
     public void tick() {
-        if(player == null ||chainsaws == null){
+        if(chainsaws == null){
             player = getPlayerOfMap();
             player.setMap(this);
             chainsaws = getChainsawsOfMap();
             blocks = getBlocksOfMap();
             portal = getPortal();
         }
+        
         if(player.getLife() <= 0){
             container.refresh();
         }
@@ -407,6 +408,13 @@ public class Map implements Container{
     public void setNextLevel(boolean nextLevel) {
         this.nextLevel = nextLevel;
     }
-    
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
     
 }

@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import java.applet.AudioClip;
 import java.awt.Color;
 
 /**
@@ -14,7 +15,6 @@ import java.awt.Color;
 public class InstructionsView extends javax.swing.JDialog {
 
     int estado;
-    
     /**
      * Creates new form InstructionsView
      */

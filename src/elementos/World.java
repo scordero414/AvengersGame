@@ -19,7 +19,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import mouseElements.MouseInput;
-import vistas.GameView;
 import vistas.MenuView;
 import vistas.Ventana;
 
@@ -57,6 +56,7 @@ public class World extends Canvas implements Runnable,Container{
         handler.addMap(map1);
         Map map2 = lectorMapa.leerMapa(rutaMapa2); 
         map2.setContainer(this);
+        map2.addGameObject(map1.getPlayerOfMap());
         handler.addMap(map2 );
         this.addKeyListener(ventana);
         this.addMouseListener(new MouseInput(handler, camera,this));

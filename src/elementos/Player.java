@@ -48,7 +48,7 @@ public class Player extends GameObjectMobile{
     private boolean down;
     private boolean left;
     private boolean right;
-    
+    private int score;
     
     private boolean haveShield;
     private Map map;
@@ -61,6 +61,7 @@ public class Player extends GameObjectMobile{
         super( x, y);
         setWidth(32);
         setHeight(32);
+        score = 0;
         isAlive = true;
         obtGem = false;
         haveGem = false;
@@ -292,6 +293,15 @@ public class Player extends GameObjectMobile{
     public void setHaveShield(boolean haveShield) {
         this.haveShield = haveShield;
     }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+    
     
     
     

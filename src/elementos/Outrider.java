@@ -32,6 +32,7 @@ public class Outrider extends GameObjectMobile {
     private int choose;
     private int life;
     private int segundos = 0;
+    public static final int COIN = 20;
     
     public Outrider( int x, int y) {
         super( x, y);
@@ -49,7 +50,11 @@ public class Outrider extends GameObjectMobile {
     public void tick() {
         x += velX;
         y += velY;
-        
+        shoot();
+        segundos++;
+    }
+
+    private void shoot(){
         choose = random.nextInt(10);
         if(choose == 1){
             velX = (random.nextInt(4 +4) - 4);
@@ -62,9 +67,7 @@ public class Outrider extends GameObjectMobile {
             map.addGameObject(new BallOfFire(x+32, y+32,4));
             segundos =0;
         }
-        segundos++;
     }
-
     @Override
     public void render(Graphics g) {
         drawLifeLine(g);

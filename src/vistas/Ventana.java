@@ -55,8 +55,7 @@ public class Ventana extends javax.swing.JFrame implements KeyListener,Container
         inicializarFrame(name);
         crearVistaMenu();
         world.setContainer(this);
-//        soundtrack = java.applet.Applet.newAudioClip(getClass().getResource("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\src\\Sounds\\music.wav"));
-//        soundtrack.play();
+//        
     }
 
     public void inicializarFrame(String name){
@@ -123,10 +122,12 @@ public class Ventana extends javax.swing.JFrame implements KeyListener,Container
         if(key == KeyEvent.VK_N) world.keyPressed(5, true); /// PRESS N ----> NEXT
         
         
-//        if(key == KeyEvent.VK_ESCAPE){
-//            ventana.getFrame().setVisible(false);
-//            ventana.crearVistaMenu();
-//        }
+        if(key == KeyEvent.VK_ESCAPE){
+            //setVisible(false);
+            //world.stop();
+            crearVistaMenu();
+            
+        }
     }
     
     @Override
