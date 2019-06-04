@@ -118,7 +118,7 @@ public class LoadView extends javax.swing.JDialog {
         tarea = new TimerTask() {
             @Override
             public void run() {
-                if(cerrar() ==2){
+                if(cerrar() ==3){
                     dispose();
                     parent.setVisible(true);
                 }

@@ -12,11 +12,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *
- * @author ASUS
+ * Clase donde se almacenan los objetos.
+ * Se determina el movimiento de la cámara.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class Map implements Container,Serializable{
 
+    /**
+     * Se almacenan los objetos.
+     */
     private ArrayList<GameObject> gameObjects;
     private Player player;
     private ArrayList<Chainsaw> chainsaws;
@@ -32,7 +39,10 @@ public class Map implements Container,Serializable{
         nextLevel = false;
     }
 
-    
+    /**
+     * Se busca el movimiento exitoso
+     * para cada uno de los objetos.
+     */
     public void tick() {
         if(chainsaws == null){
             
@@ -66,6 +76,10 @@ public class Map implements Container,Serializable{
         //handler.tick();
     }
 
+   /**
+    * Se grafican los objetos.
+    * @param g 
+    */
     public void render(Graphics g) {
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
@@ -82,6 +96,10 @@ public class Map implements Container,Serializable{
         this.gameObjects = gameObjects;
     }
     
+    /**
+     * Se almacenan los objetos al  arraylist.
+     * @param tempObject 
+     */
     public void addGameObject(GameObject tempObject){
         gameObjects.add(tempObject);
     }
@@ -90,6 +108,11 @@ public class Map implements Container,Serializable{
         gameObjects.remove(tempGameObject);
     }
 
+    /**
+     * Se recorre todos los objetos, y si se encuentra el jugador, 
+     * se agrega a la partida.
+     * @return 
+     */
     public Player getPlayerOfMap(){
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
@@ -98,6 +121,12 @@ public class Map implements Container,Serializable{
         }
         return null;
     }
+    
+    /**
+     * Se recorre todos los objetos, y se agrega a un
+     * arraylist las sierras.
+     * @return 
+     */
     public ArrayList<Chainsaw> getChainsawsOfMap(){
         ArrayList<Chainsaw> chainsaws = new ArrayList<>();
         for (int j = 0; j < gameObjects.size(); j++) {
@@ -108,6 +137,12 @@ public class Map implements Container,Serializable{
         }
         return chainsaws;
     }
+    
+    /**
+     * Se recorre todos los objetos y se agrega a un
+     * arraylist a los enemigos u outriders.
+     * @return 
+     */
     public ArrayList<Outrider> getOutridersOfMap(){
         ArrayList<Outrider> outriders = new ArrayList<>();
         for (int j = 0; j < gameObjects.size(); j++) {
@@ -128,6 +163,12 @@ public class Map implements Container,Serializable{
         }
         return bullets;
     }
+    
+    /**
+     * Se recorre tods los objetos y se agregan a un
+     * arraylist a los bloques o paredes.
+     * @return 
+     */
     public ArrayList<Block> getBlocksOfMap(){
         ArrayList<Block> blocks = new ArrayList<>();
         for (int j = 0; j < gameObjects.size(); j++) {
@@ -147,6 +188,12 @@ public class Map implements Container,Serializable{
             }
         }
     }
+    
+    /**
+     * Se recorre todos los objetos, y al encontrar este
+     * objeto, se obtiene, para agregar al mapa.
+     * @return 
+     */
     public Portal getPortal(){
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject get = gameObjects.get(i);
@@ -156,6 +203,12 @@ public class Map implements Container,Serializable{
         }
         return null;
     }
+    
+    /**
+     * Se recorre todos los objetos, y al encontrar este
+     * objeto, se obtiene, para agregar al mapa.
+     * @return 
+     */
     public Gem getGemOfMap(){
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject get = gameObjects.get(i);
@@ -165,6 +218,11 @@ public class Map implements Container,Serializable{
         }
         return null;
     }
+    
+    /**
+     * Se recorre todos los objetos y se verifica si alguno
+     * tiene colision o choca con algun otro objeto en especifico.
+     */
     public void checkCollisionInTheMap(){
         checkPlayerCollisionChainsaw();
         checkBallFireCollisionPlayer();
@@ -261,6 +319,11 @@ public class Map implements Container,Serializable{
         
     }
     
+    /**
+     * Se recorren todos los bloques o paredes, y se
+     * verifica si algun cuerpo choca con ella.
+     * @param bullet 
+     */
     private void checkBulletCollisionBlocks( Shield bullet){
         bullet.setPlayer(player);
         for(int j = 0; j<blocks.size();j++){
@@ -269,6 +332,11 @@ public class Map implements Container,Serializable{
             }
         }
     }
+    
+    /**
+     * Se verifica que le jugador este en colision con el portal,
+     * y se abre la opcion de pasar.
+     */
     private void checkPlayerInPortal(){
         if(player.checkCollision(portal)){
             if(portal.isCheckPoint()){
@@ -276,6 +344,10 @@ public class Map implements Container,Serializable{
             }
         }
     }
+    /**
+     * Se recorren todas las balas del enemigo, y se verifica si
+     * alguna colisiona con el jugador.
+     */
     private void checkBallFireCollisionPlayer(){
         for(int j = 0; j<bullets.size();j++){
             BallOfFire bullet = (BallOfFire) bullets.get(j);
@@ -285,6 +357,11 @@ public class Map implements Container,Serializable{
             }
         }
     }
+    
+    /**
+     * Se recorren todas las balas del enemigo, y se verifica si
+     * alguna colisiona con la pared, y la bala se elimina.
+     */
     private void checkBulletCollisionBlock(Block block){
         for(int j = 0; j<bullets.size();j++){
             Bullet bullet = bullets.get(j);
@@ -293,6 +370,11 @@ public class Map implements Container,Serializable{
             }
         }
     }
+    
+    /**
+     * Se recorren todas las balas del enemigo, y se verifica si
+     * alguna colisiona con otro objeto.
+     */
     private void checkBulletCollisionEnemys(Shield bullet){
         bullet.setPlayer(player);
         for(int j = 0; j<outriders.size();j++){
@@ -306,6 +388,12 @@ public class Map implements Container,Serializable{
             }
         }
     }
+    
+    /**
+     * Se conocen todas las sierras y en caso que alguna choque con la pared,
+     * esta vuelve su recorrido hacia atras.
+     * @param block 
+     */
     private void checkChainsawCollisionBlock(Block block){
         for(int j = 0; j<chainsaws.size();j++){
             if(chainsaws.get(j).checkCollision(block)){
@@ -313,6 +401,12 @@ public class Map implements Container,Serializable{
             }
         }
     }
+    
+    /**
+     * Se conocen todos los enemigos u outriders y en caso de que
+     * alguno choque con la pared, se mueve a otro lado.
+     * @param block 
+     */
     private void checkOutriderCollisionBlock(Block block){
         for(int j = 0; j<outriders.size();j++){
             if(outriders.get(j).checkCollision(block)){
@@ -321,7 +415,10 @@ public class Map implements Container,Serializable{
         }
     }
     
-    
+    /**
+     * Se conocen las sierras y en caso que el jugador choque con alguna, la vida de éste 
+     * disminuye.
+     */
     private void checkPlayerCollisionChainsaw(){
         for(int j = 0; j<chainsaws.size();j++){
             if(player.checkCollision(chainsaws.get(j))){
@@ -340,6 +437,11 @@ public class Map implements Container,Serializable{
         }
     }
 
+    /**
+     * Se conocen las teclas presionadas, para poder mover el jugador
+     * @param estateMove tecla presionada.
+     * @param decision 
+     */
     public void keyPressed(int estateMove,boolean decision){
         switch(estateMove){
             case 1:

@@ -50,6 +50,7 @@ public class World extends Canvas implements Runnable,Container{
      */
     private final Path rutaMapa1 = Paths.get("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\Mapas\\mapa_1.txt");
     private final Path rutaMapa2 = Paths.get("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\Mapas\\mapa_2.txt");
+     //private final Path rutaMapa3 = Paths.get("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\Mapas\\mapa_3.txt");
     
     public World() {
         this.container = container;
@@ -72,9 +73,11 @@ public class World extends Canvas implements Runnable,Container{
         this.lectorMapa = new MapReaderTxt();
         Map map1 = null; 
         Map map2 = null;
+        //Map map3 = null;
         try {
             map1 = lectorMapa.leerMapa(rutaMapa1);
             map2 = lectorMapa.leerMapa(rutaMapa2); 
+            //map3 = lectorMapa.leerMapa(rutaMapa3); 
         } catch (IOException ex) {
             System.out.println("ERROR:  Hay algun problema con la lectura del mapa.");;
         }
