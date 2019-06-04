@@ -301,6 +301,7 @@ public class Map implements Container{
                 bullet.setGoBack(true);
                 if(outriders.get(j).getLife() <=0 ){
                     gameObjects.remove(outriders.get(j));
+                    player.addCoin(Outrider.COIN);
                 }       
             }
         }
@@ -324,7 +325,6 @@ public class Map implements Container{
     private void checkPlayerCollisionChainsaw(){
         for(int j = 0; j<chainsaws.size();j++){
             if(player.checkCollision(chainsaws.get(j))){
-                //gameObjects.remove(chainsaws.get(j));
                 determineWhatToDecrease(player,Chainsaw.DAMAGE);
             }
         }
@@ -338,10 +338,6 @@ public class Map implements Container{
         }else if(player.getLife()>0){
            player.loseLife(amountDamage);
         }
-//          else if(player.getLife() <= 0){
-//            gameObjects.remove(player);
-//            container.refresh();
-//        }
     }
 
     public void keyPressed(int estateMove,boolean decision){

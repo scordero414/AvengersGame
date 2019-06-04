@@ -6,6 +6,7 @@
 package elementos;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -34,7 +35,7 @@ public class Player extends GameObjectMobile{
     // This is the actual animation
     private Animation animation = standingAnimation;
     private static BufferedImage spriteSheet;
-    
+    private BufferedImage scoreImage = loadSprite("star.png");
     private int life;
     private int ammo;
     private boolean obtGem;
@@ -153,21 +154,28 @@ public class Player extends GameObjectMobile{
     }
     
     public void drawInventary(Graphics g,int width,int height){
-        
         g.setColor(Color.GRAY);
-        g.fillRect(width+5,height+5,100,100);
-//        g.setColor(new Color(84, 169, 242));
-//        g.fillRect(width-300,height,getAmmo()*6,20);
+        g.fillRect(width+5,height+5,50,50);
         g.setColor(Color.BLACK);
-        g.fillRect(width+10,height+10,90,90);
-        g.drawRect(width+5,height+5,100,100);
+        g.fillRect(width+10,height+10,40,40);
+        g.drawRect(width+5,height+5,50,50);
         if(isHaveGem()){
-            g.drawImage(gemObtained.getImageOfGem(),width+40,height+40,null);
+            g.drawImage(gemObtained.getImageOfGem(),width+15,height+15,null);
         }
-//        String ammo = getAmmo()+"/100";
-//        g.drawString(ammo, width-ammo.length(), height+15);
+    }
+    public void drawScore(Graphics g,int width,int height){
+        g.setColor(Color.GRAY);
+        g.fillRect(width+5,height+5,100,50);
+        g.setColor(Color.BLACK);
+        g.fillRect(width+10,height+10,90,40);
+        g.drawRect(width+5,height+5,100,50);
+        g.drawImage(scoreImage, width+13, height+13,null);
+        g.setColor(Color.white);
+        g.setFont( new Font( "Tahoma", Font.BOLD, 32 ) );
+        g.drawString(score+"", width+45, height+45 );
     }
     
+    @Override
     public boolean checkCollision(GameObject tempObject){
         return getBounds().intersects(tempObject.getBounds());
     }
@@ -300,6 +308,10 @@ public class Player extends GameObjectMobile{
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public void addCoin(int amountCoin) {
+       score += amountCoin;
     }
     
     

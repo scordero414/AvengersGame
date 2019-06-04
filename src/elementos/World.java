@@ -163,6 +163,7 @@ public class World extends Canvas implements Runnable,Container{
                     handler.getMap().getPlayerOfMap().drawLifeLine(g,(getWidth()/2),getHeight()-60);
                     handler.getMap().getPlayerOfMap().drawAmmoLine(g,(getWidth()/2),getHeight()-30);
                     handler.getMap().getPlayerOfMap().drawInventary(g,0,0);
+                    handler.getMap().getPlayerOfMap().drawScore(g,getWidth()-115,0);
                 }
             }
         }
