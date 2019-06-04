@@ -11,12 +11,22 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author ASUS
+ * Poción o aumento de vida, para recargar la energía y vida
+ * del jugador.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class LifeRecharge extends ConsumableItem{
 
+    /**
+     * Cantidad de vida que se aumenta al tomarla.
+     */
     public static final int RECHARGE = 10;
+    /**
+     * Ruta de la imagen.
+     */
     private BufferedImage potionImage = loadSprite("pocionVerde.png");
     
     public LifeRecharge(int x, int y) {

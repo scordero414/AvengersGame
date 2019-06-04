@@ -11,8 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author dgutierrezd
+ * Animación de los personajes.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class Animation {
     
@@ -23,6 +26,9 @@ public class Animation {
     private int totalFrames;
     private boolean stopped;
     
+    /**
+     * Se guardan las imagenes de los personajes.
+     */
     private ArrayList<Frame> frames = new ArrayList<Frame>();
     
     public Animation(BufferedImage[] frames, int frameDelay) {
@@ -40,6 +46,9 @@ public class Animation {
         this.totalFrames = this.frames.size();
     }
     
+    /**
+     * Se da el incio al movimiento del personaje.
+     */
     public void start() {
         if (!stopped) {
             return;
@@ -52,6 +61,9 @@ public class Animation {
         stopped = false;
     }
 
+    /**
+     * Se detiene el movimiento del personaje.
+     */
     public void stop() {
         if (frames.size() == 0) {
             return;
@@ -60,6 +72,9 @@ public class Animation {
         stopped = true;
     }
 
+    /**
+     * Se reinicia su movimiento.
+     */
     public void restart() {
         if (frames.size() == 0) {
             return;
@@ -75,6 +90,11 @@ public class Animation {
         this.currentFrame = 0;
     }
 
+    /**
+     * Se añde un grupo de imagenes para un jugador determinado.
+     * @param frame
+     * @param duration 
+     */
     private void addFrame(BufferedImage frame, int duration) {
         if (duration <= 0) {
             System.err.println("Invalid duration: " + duration);
@@ -89,6 +109,9 @@ public class Animation {
         return frames.get(currentFrame).getFrame();
     }
 
+    /**
+     * Se actualiza o se va modificando las imagenes o posición del jugador.
+     */
     public void update() {
         if (!stopped) {
             frameCount++;

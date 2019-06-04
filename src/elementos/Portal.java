@@ -10,12 +10,19 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author ASUS
+ * Lugar para pasar de un nivel al siguiente.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class Portal extends GameObjectStatic{
 
+    /**
+     * Ruta de la imagen del portal.
+     */
     private BufferedImage portalImage = loadSprite("portal.gif");
+    
     private boolean checkPoint;
     
     public Portal(int x, int y) {

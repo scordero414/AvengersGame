@@ -6,11 +6,17 @@
 package elementos;
 
 /**
- *
- * @author ASUS
+ * Objetos que se mueven ya se manualmente o por hilos.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public abstract class GameObjectMobile extends GameObject {
     
+    /**
+     * Velocidad del objeto.
+     */
     protected int velX;
     protected int velY;
     
@@ -20,7 +26,16 @@ public abstract class GameObjectMobile extends GameObject {
         this.velY = 0;
     }
     
+    /**
+     * Actualiza 60 veces por segundo, para
+     * mover a los jugadores.
+     */
     public abstract void tick();
+    /**
+     * Verificar las colisiones de un objeto con otro.
+     * @param tempObject objeto a colisionar.
+     * @return Si la colision fue acertada.
+     */
     public abstract boolean checkCollision(GameObject tempObject);
 
     public int getVelX() {

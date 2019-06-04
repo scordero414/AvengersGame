@@ -8,12 +8,21 @@ package elementos;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author dgutierrezd
+ * Imagenes de los jugadores en movimiento.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class Frame {
 
+    /**
+     * Imagen por determinar o cargar.
+     */
     private BufferedImage frame;
+    /**
+     * Velocidad o duración a la que corre la imagen.
+     */
     private int duration;
 
     public Frame(BufferedImage frame, int duration) {

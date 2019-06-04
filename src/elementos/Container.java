@@ -6,8 +6,11 @@
 package elementos;
 
 /**
- *
- * @author ASUS
+ * Interface para poder refrescar el mapa.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public interface Container {
     public abstract void refresh();

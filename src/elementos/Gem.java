@@ -10,12 +10,21 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author ASUS
+ * Gema a recoger para poder pasar los niveles.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class Gem extends GameObjectStatic{
     
+    /**
+     * Arreglo donde se almacenan las imagenes de las gemas.
+     */
     protected BufferedImage[] gemImage = new BufferedImage[6];
+    /**
+     * Nivel donde se carga la gema determinada.
+     */
     private int level;
     public Gem( int x, int y) {
         super( x, y);
@@ -33,6 +42,10 @@ public class Gem extends GameObjectStatic{
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
     }
+    
+    /**
+     * Se almacenan las imagenes de las gemas al arreglo.
+     */
     private void initImages(){
         gemImage[0] = loadSprite("gemaRoja.png");
         gemImage[1] = loadSprite("gemaAmarilla.png");
@@ -42,6 +55,11 @@ public class Gem extends GameObjectStatic{
         gemImage[5] = loadSprite("gemaDorada.png");
     }
     
+    /**
+     * Se obtiene la imagen de la gema,
+     * conociendo el nivel en el que se está.
+     * @return 
+     */
     public BufferedImage getImageOfGem(){
         return gemImage[level];
     }

@@ -9,8 +9,12 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 /**
- *
- * @author ASUS
+ * Objetos que dependen en el mapa y sirven
+ * para el buen servicio del juego.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public abstract class GameObjectStatic extends GameObject {
 

@@ -10,11 +10,17 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author ASUS
+ * Piso del mapa, lugar de batalla.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class Floor extends GameObject{
     
+    /**
+     * Ruta de la imagen del piso.
+     */
     private BufferedImage floor = loadSprite("fondo (2).png");
     
     public Floor( int x, int y) {

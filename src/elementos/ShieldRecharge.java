@@ -11,12 +11,21 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author ASUS
+ * Objeto de aumento de poder.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class ShieldRecharge extends ConsumableItem{
 
+    /**
+     * Cantidad de poder que se aumenta.
+     */
     public static final int RECHARGE = 10;
+    /**
+     * Ruta de la imagen del objeto.
+     */
     private BufferedImage potionImage = loadSprite("potion.png");
     
     public ShieldRecharge(int x, int y) {

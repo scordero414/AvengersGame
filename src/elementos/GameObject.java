@@ -14,17 +14,26 @@ import java.io.Serializable;
 import javax.imageio.ImageIO;
 
 /**
- *
- * @author ASUS
+ * Clase que determina los atributos 
+ * o métodos de los objetos.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public abstract class GameObject implements Serializable{
     
+    /**
+     * Dimensiones del objeto.
+     */
     protected int x;
     protected int y;
     protected int width;
     protected int height;
     
-    
+    /**
+     * Tamaño del jugador.
+     */
     protected static final int TILE_SIZE = 32;
     
     public GameObject(int x, int y) {
@@ -34,11 +43,22 @@ public abstract class GameObject implements Serializable{
         this.height = 20;
     }
     
-    
+    /**
+     * Grafica las imagenes,
+     * se actualiza 1000 veces por segundo
+     * @param g gráfica o imagen.
+     */
     public abstract void render(Graphics g);
+    /**
+     * Se conocen los límites para determinar las colisiones.
+     * @return 
+     */
     public abstract Rectangle getBounds();
-    
-    
+    /**
+     * Se carga la imagen desdela carpeta Assets.
+     * @param file
+     * @return 
+     */
     public static BufferedImage loadSprite(String file) {
 
         BufferedImage sprite = null;

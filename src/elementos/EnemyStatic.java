@@ -6,8 +6,11 @@
 package elementos;
 
 /**
- *
- * @author ASUS
+ * Enemigos que se mueven por si solos, sin hilos.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public abstract class EnemyStatic extends GameObjectStatic{
     

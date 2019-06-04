@@ -8,11 +8,21 @@ package elementos;
 import java.io.Serializable;
 
 /**
- *
- * @author ASUS
+ * Se determina el movimiento de la cámara.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
-public class Camera implements Serializable{
+public class Camera {
+    
+    /**
+     * Posición horizontal de la camara.
+     */
     private float x;
+    /**
+     * Posisión vertical de la cámara.
+     */
     private float y;
 
     public Camera(float x, float y) {
@@ -20,9 +30,18 @@ public class Camera implements Serializable{
         this.y = y;
     }
     
+    /**
+     * Permite mover la cámara y de igual manera se actualiza 60 veces x segundo.
+     * @param object 
+     */
     public void tick(GameObject object){
         move(object);
     }
+    
+    /**
+     * Determina el movimiento de la cámara.
+     * @param object 
+     */
     private void move(GameObject object){
         if(object != null){
             x += ((object.getX() - x) - 1920/2) * 0.05f;

@@ -6,8 +6,11 @@
 package elementos;
 
 /**
- *
- * @author ASUS
+ * Enemigos o objetos que le causan daño al jugador.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public abstract class Enemy extends GameObjectMobile {
     

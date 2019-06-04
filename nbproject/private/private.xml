@@ -2,6 +2,31 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/World.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/IOelements/JSONWriter.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Player.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/EnemyStatic.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Outrider.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/IOelements/MapReaderTxt.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Trap.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/EnemyMobile.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/vistas/DieView.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Map.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/vistas/InstructionsView.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Gem.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/IOelements/MapReader.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/vistas/LoadView.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/GameObject.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Handler.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/LaserBeam.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/BallOfFire.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Camera.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/GameObjectMobile.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/vistas/PauseGameView.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/elementos/Chainsaw.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/IOelements/JSONReader.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/JavaAvengersV2/src/vistas/Ventana.java</file>
+        </group>
     </open-files>
 </project-private>

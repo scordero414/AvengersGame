@@ -5,6 +5,8 @@
  */
 package elementos;
 
+import IOelements.JSONPlayerReader;
+import IOelements.JSONPlayerWriter;
 import IOelements.JSONReader;
 import IOelements.JSONWriter;
 import IOelements.MapReaderTxt;
@@ -25,8 +27,11 @@ import vistas.Ventana;
 import IOelements.MapReader;
 
 /**
- *
- * @author ASU  S
+ * Clase control, se inicia el juego.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class World extends Canvas implements Runnable,Container{
     
@@ -40,27 +45,41 @@ public class World extends Canvas implements Runnable,Container{
     private Camera camera;
     private boolean inGame;
     private Container container;
+    /**
+     * Rutas de los mapas.
+     */
     private final Path rutaMapa1 = Paths.get("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\Mapas\\mapa_1.txt");
     private final Path rutaMapa2 = Paths.get("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\JavaAvengersV2\\Mapas\\mapa_2.txt");
     
-    public World() throws IOException  {
+    public World() {
         this.container = container;
         Ventana ventana = new Ventana(1280, 960, "AvengersGame",this);
         initWorld(ventana);
         start();
     }
     
-    public void initWorld(Ventana ventana) throws IOException{
+    /**
+     * Se crean los nuevos objetos y se añaden a esta clase.
+     * @param ventana
+     * @throws IOException 
+     */
+    public void initWorld(Ventana ventana) {
         camera = new Camera(0, 0);
-        jsonWriter = new JSONWriter();
-        jsonReader = new JSONReader();
+        jsonWriter = new JSONPlayerWriter();
+        jsonReader = new JSONPlayerReader();
         handler = new Handler();
         ventana.setCamera(camera);
         this.lectorMapa = new MapReaderTxt();
-        Map map1 = lectorMapa.leerMapa(rutaMapa1); 
+        Map map1 = null; 
+        Map map2 = null;
+        try {
+            map1 = lectorMapa.leerMapa(rutaMapa1);
+            map2 = lectorMapa.leerMapa(rutaMapa2); 
+        } catch (IOException ex) {
+            System.out.println("ERROR:  Hay algun problema con la lectura del mapa.");;
+        }
         map1.setContainer(this);
         handler.addMap(map1);
-        Map map2 = lectorMapa.leerMapa(rutaMapa2); 
         map2.setContainer(this);
         map2.addGameObject(map1.getPlayerOfMap());
         handler.addMap(map2 );
@@ -77,12 +96,7 @@ public class World extends Canvas implements Runnable,Container{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
-            World world = new World();
-        } catch (IOException ex) {
-            System.out.println("Hj");
-        }
-        
+        World world = new World();
     }
 
     @Override
@@ -113,6 +127,10 @@ public class World extends Canvas implements Runnable,Container{
         stop();
     }
     
+    /**
+     * Se indica que esta corriendo el juego, y
+     * se crea un nuevo hilo.
+     */
     public void start(){
         isRunning = true;
         thread = new Thread(this);
@@ -127,6 +145,9 @@ public class World extends Canvas implements Runnable,Container{
         }
     }
 
+    /**
+     * Se indica el movimiento principalmente de la camara.
+     */
     public void tick() {
         if( handler != null){
            handler.tick(); 
@@ -142,6 +163,9 @@ public class World extends Canvas implements Runnable,Container{
         
     }
 
+    /**
+     * Se crean las graficas del juego.
+     */
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
         
@@ -214,20 +238,23 @@ public class World extends Canvas implements Runnable,Container{
         this.container = container;
     }
 
-    public JSONWriter getJsonWriter() {
-        return jsonWriter;
-    }
+    
 
     public Handler getHandler() {
         return handler;
     }
 
-    public JSONReader getJsonReader() {
-        return jsonReader;
+
+    public void setJsonReader(JSONPlayerReader jsonReader) {
+        this.jsonReader = jsonReader;
     }
 
-    public void setJsonReader(JSONReader jsonReader) {
-        this.jsonReader = jsonReader;
+    public JSONWriter getJsonWriter() {
+        return jsonWriter;
+    }
+
+    public JSONReader getJsonReader() {
+        return jsonReader;
     }
     
     

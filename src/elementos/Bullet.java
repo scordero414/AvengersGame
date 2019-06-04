@@ -6,8 +6,11 @@
 package elementos;
 
 /**
- *
- * @author ASUS
+ * Objetos que disparan los enemigos.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public abstract class Bullet extends GameObjectMobile{
     

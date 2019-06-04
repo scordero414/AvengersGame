@@ -17,13 +17,21 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- *
- * @author ASUS
+ * Enemigo móvil del jugador.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class Outrider extends GameObjectMobile {
 
+     /**
+     * Posicion de la imagen del objeto.
+     */
     private final BufferedImage[] standing = {getSprite(1, 0)};
-
+    /**
+     * Se determina en una posición de frente el objeto.
+     */
     private final Animation standingAnimation = new Animation(standing,4);
     private Animation animation = standingAnimation;
     private static BufferedImage spriteSheet;
@@ -45,7 +53,9 @@ public class Outrider extends GameObjectMobile {
         velY = 0;
     }
 
-
+    /**
+     * Se determina el movimiento aleatorio.
+     */
     @Override
     public void tick() {
         x += velX;
@@ -54,6 +64,10 @@ public class Outrider extends GameObjectMobile {
         segundos++;
     }
 
+    /**
+     * Se crean cuatro bolas de fuego para ser lanzadas
+     * hacia las cuatro direcciones.
+     */
     private void shoot(){
         choose = random.nextInt(10);
         if(choose == 1){
@@ -74,6 +88,11 @@ public class Outrider extends GameObjectMobile {
         g.drawImage(animation.getSprite(), x, y, null);
     }
 
+    /**
+     * Se pinta la vida del objeto, y según su capacidad y
+     * los disparos que reciba se le irá disminuyendo.
+     * @param g 
+     */
     public void drawLifeLine(Graphics g){
         g.setColor(Color.GRAY);
         g.fillRect(x,y-10,width,5);
@@ -87,6 +106,10 @@ public class Outrider extends GameObjectMobile {
         g.drawRect(x,y-10,width,5);
     }
     
+    /**
+     * Se determina el movimiento y su 
+     * distancia.
+     */
     public void move(){
 //        velX += (velX*2)-1;
 //        velY += (velY*2)-1;
@@ -99,6 +122,11 @@ public class Outrider extends GameObjectMobile {
         velX *= -1;
     }
     
+    /**
+     * Se modifica la vida, restandole una cantidad
+     * determinada.
+     * @param amount 
+     */
     public void loseLife(int amount){        
         setLife(getLife()- amount);
     }
@@ -108,6 +136,12 @@ public class Outrider extends GameObjectMobile {
         return getBigBounds().intersects(tempObject.getBounds());
     }
     
+    /**
+     * Se carga la imagen del Sprite.
+     * @param xGrid
+     * @param yGrid
+     * @return 
+     */
     public static BufferedImage getSprite(int xGrid, int yGrid) {
 
         if (spriteSheet == null) {

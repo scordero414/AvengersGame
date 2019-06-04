@@ -10,11 +10,21 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author ASUS
+ * Cofre, lugar donde se deposita la gema.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class Chest extends GameObjectStatic{
+    
+    /**
+     * Determina si el cofre ya esta ocupado o no.
+     */
     private boolean itsFull;
+    /**
+     * Ruta de la imagen del cofre.
+     */
     private BufferedImage chestImage = loadSprite("cofre.png");
     public Chest( int x, int y) {
         super( x, y);

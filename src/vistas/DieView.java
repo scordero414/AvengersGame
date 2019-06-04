@@ -73,15 +73,10 @@ public class DieView extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        try {
-            ventana.getWorld().deleteWorld();
-            ventana.getWorld().initWorld(ventana);
-            //ventana.setVisible(true);
-            dispose();
-            
-        } catch (IOException ex) {
-            Logger.getLogger(DieView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        ventana.getWorld().deleteWorld();
+        ventana.getWorld().initWorld(ventana);
+        //ventana.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

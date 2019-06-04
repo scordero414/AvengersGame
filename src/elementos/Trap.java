@@ -6,8 +6,12 @@
 package elementos;
 
 /**
- *
- * @author ASUS
+ * Objetos que causan daño al jugador,
+ * enemigos estaticos
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public abstract class Trap extends EnemyStatic{
     

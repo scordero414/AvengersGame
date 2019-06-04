@@ -13,13 +13,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author ASUS
+ * Objeto de 'sierra' que actua como enemigo del jugador.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class Chainsaw extends GameObjectMobile{
     
+    /**
+     * Cantida de vida que se diminuye.
+     */
     public static final int DAMAGE = 6;
+    /**
+     * Ruta de la imagen de la sierra.
+     */
     private BufferedImage chainsawImage = loadSprite("Sierra.gif");
+    /**
+     * Determinar el lugar de la sierra en movimiento.
+     */
     private final int SIDE_BLOCK = 2;
     private final int UPRIGHT_BLOCK = 1;
 //    private boolean running;
@@ -59,7 +71,11 @@ public class Chainsaw extends GameObjectMobile{
         return new Rectangle(x, y, width, height);
     }
 
-    
+    /**
+     * Determinar el recorrido de la sierra de ida y vuelta,
+     * conociendo su posicio orignal y multiplicandolo por -1 para
+     * que se cambie de posición.
+     */
     public void moveBack(){
         switch(typeChainsaw){
             case SIDE_BLOCK:

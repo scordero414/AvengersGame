@@ -10,15 +10,27 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author ASUS
+ * Objeto lanzado por los enemigos (outriders)
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class BallOfFire extends Bullet{
 
-    
+    /**
+     * Ruta para la imagen de la bola de fuego.
+     */
     private BufferedImage ballFireImage = loadSprite("bolaFuego.png");
+    /**
+     * Conocer la dirección de movimiento de la bola de fuego.
+     */
     private int typeBall;
+    /**
+     * Cantidad de vida que se diminuye.
+     */
     final int DAMAGE = 10;
+    
     public BallOfFire(int x, int y,int typeBall) {
         super(x, y);
         setHeight(32);
@@ -33,6 +45,11 @@ public class BallOfFire extends Bullet{
         x += velX;
         y += velY;
     }
+    
+    /**
+     * Se determina la dirección de movimiento de la bola,
+     * en este caso se dirige hacia las 4 direcciones a la misma vez.
+     */
     public void move(){
         switch(typeBall){
             case 1://vertical abajo

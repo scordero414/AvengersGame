@@ -11,16 +11,28 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author ASUS
+ * Arma del jugador.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class Shield extends GameObjectMobile{
 
+    /**
+     * Velocida a la que viaja el escudo o arma.
+     */
     public static int BULLET_SPEED = 40;
+    /**
+     * Ruta de la imagen del arma.
+     */
     private BufferedImage bulletImage = loadSprite("bala.png");
     private boolean goBack;
     private Player player;
     private boolean wentBack;
+    /**
+     * Cantidad de vida que le quita a los enemigos al usarla.
+     */
     final int DAMAGE = 15;
     
     public Shield(int x, int y,int xMouse, int yMouse) {
@@ -59,6 +71,10 @@ public class Shield extends GameObjectMobile{
         return new Rectangle(x, y, getWidth(),getHeight());
     }
     
+    /**
+     * Se conoce la direccion a la que fue lanzada el arma,
+     * y dependiendo se devuelve hacia el jugador mismo.
+     */
     public void goBack(){
         
         if(player.getX() < x){

@@ -10,8 +10,11 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author ASUS
+ * Paredes horizontales y verticales del mapa.
+ * @author Sebastian Cordero Ramirez
+ * @author Daniel Gutierrez Duque
+ * @since 20191905
+ * @version 1.0
  */
 public class Block extends GameObjectStatic{
     private final int SIDE_BLOCK = 2;
